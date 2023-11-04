@@ -18,7 +18,7 @@ const StyledDots = styled.div`
   position: absolute;
   right: ${(props) => props.right}%;
   top: ${(props) => props.top}%;
-  transform: translateY(-50%);
+  transform: translate(-${(props) => props.right}%, -${(props) => props.top}%);
   cursor: pointer;
 
   & svg {

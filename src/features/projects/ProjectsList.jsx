@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import Project from "./Project";
+import ProjectItem from "./ProjectItem";
 
-const StyledProjectsList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
+const StyledProjectsList = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 function ProjectsList() {
   return (
     <StyledProjectsList>
-      {Array.from({ length: 30 }).map((item, i) => (
-        <Project key={i} />
+      {Array.from({ length: 7 }).map((item, i) => (
+        <ProjectItem key={i} id={+i + 10} />
       ))}
     </StyledProjectsList>
   );

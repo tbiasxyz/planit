@@ -90,7 +90,17 @@ const GlobalStyles = createGlobalStyle`
          --color-accent-600: #4F4FE5;
          --color-accent-700: #4343CA;
          --color-accent-800: #32329A;
-         --color-accent-900: #2E2E81;
+         --color-accent-900: #2E2E81; 
+
+         /* --color-accent-50: #FFE4EA;
+         --color-accent-100: #FFDFE0;
+         --color-accent-200: #FFC7D2;
+         --color-accent-500: #F16377;
+         --color-accent-600: #E54F61;
+         --color-accent-700: #CA434E;
+         --color-accent-800: #9A3240;
+         --color-accent-900: #7E2E3C; */
+
 
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);

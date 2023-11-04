@@ -15,7 +15,7 @@ const Main = styled.main`
   background-color: var(--color-grey-50);
   grid-column: 2 / -1;
   grid-row: 2 / -1;
-  padding: 2.5rem 3.5rem;
+  padding: 1.5rem 2rem;
   overflow: auto;
 `;
 

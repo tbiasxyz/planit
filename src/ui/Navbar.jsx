@@ -1,11 +1,11 @@
 import {
+  HiCalendarDays,
   HiChartBar,
   HiChatBubbleLeftEllipsis,
   HiCog6Tooth,
   HiMiniUserGroup,
   HiRectangleStack,
   HiUser,
-  HiWrenchScrewdriver,
 } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -37,8 +37,8 @@ const StyledNavLink = styled(NavLink)`
   &:hover,
   &.active:link,
   &.active:visited {
-    border-right: 4px solid var(--color-accent-700);
-    color: var(--color-accent-700);
+    border-right: 4px solid var(--color-accent-500);
+    color: var(--color-accent-500);
     font-weight: 700;
   }
 
@@ -53,7 +53,7 @@ const StyledNavLink = styled(NavLink)`
   &:active svg,
   &.active:visited svg,
   &.active:link svg {
-    color: var(--color-accent-700);
+    color: var(--color-accent-500);
   }
 `;
 
@@ -73,9 +73,9 @@ function Navbar() {
         </StyledNavLink>
       </li>
       <li>
-        <StyledNavLink to="teams">
-          <HiWrenchScrewdriver />
-          <span>Teams</span>
+        <StyledNavLink to="calendar">
+          <HiCalendarDays />
+          <span>Calendar</span>
         </StyledNavLink>
       </li>
       <li>

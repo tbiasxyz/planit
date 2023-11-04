@@ -9,9 +9,10 @@ import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Projects from "./pages/Projects";
 import Messages from "./pages/Messages";
-import Teams from "./pages/Teams";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Project from "./pages/Project";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
@@ -27,9 +28,11 @@ function App() {
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="users" element={<Users />} />
-            <Route path="projects" element={<Projects />} />
+            <Route path="projects" element={<Projects />}>
+              <Route path="project/:projectId" element={<Project />} />
+            </Route>
             <Route path="messages" element={<Messages />} />
-            <Route path="teams" element={<Teams />} />
+            <Route path="calendar" element={<Calendar />} />
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
           </Route>

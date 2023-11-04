@@ -75,7 +75,7 @@ function Landing() {
           <span>Get started</span>
           <HiArrowSmallRight />
         </LinkButton>
-        <LinkButton variation="accentHover" to="app">
+        <LinkButton variation="accentHover" to="app" cursor="false">
           App (delete later!)
         </LinkButton>
       </StyledLanding>

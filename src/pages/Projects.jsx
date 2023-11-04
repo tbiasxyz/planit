@@ -1,21 +1,18 @@
-import ProjectsList from "../features/projects/ProjectsList";
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
-import Button from "../ui/Button";
-import { HiPlus } from "react-icons/hi2";
+import styled from "styled-components";
+import ProjectsNavbar from "../features/projects/ProjectsNavbar";
+import { Outlet } from "react-router-dom";
+
+const StyledProjects = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 
 function Projects() {
   return (
-    <>
-      <Row>
-        <Heading as="h2">Projects</Heading>
-        <Button withIcon variation="accentHover" size="large">
-          <HiPlus />
-          <span>New Project</span>
-        </Button>
-      </Row>
-      <ProjectsList />
-    </>
+    <StyledProjects>
+      <ProjectsNavbar />
+      <Outlet />
+    </StyledProjects>
   );
 }
 
