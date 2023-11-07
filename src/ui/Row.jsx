@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 const Row = styled.div`
   display: flex;
+  position: relative;
   ${(props) =>
     props.direction === "horizontal" &&
     css`
@@ -15,6 +16,12 @@ const Row = styled.div`
       flex-direction: column;
       gap: 2.4rem;
     `}
+
+    & div:not(:first-child) {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
 `;
 
 Row.defaultProps = {

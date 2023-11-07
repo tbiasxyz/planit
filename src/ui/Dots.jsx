@@ -1,4 +1,7 @@
-import { HiMiniEllipsisVertical } from "react-icons/hi2";
+import {
+  HiMiniEllipsisHorizontal,
+  HiMiniEllipsisVertical,
+} from "react-icons/hi2";
 import styled, { css } from "styled-components";
 
 const types = {
@@ -16,25 +19,28 @@ const types = {
 
 const StyledDots = styled.div`
   position: absolute;
+  z-index: 10000;
   right: ${(props) => props.right}%;
   top: ${(props) => props.top}%;
   transform: translate(-${(props) => props.right}%, -${(props) => props.top}%);
-  cursor: pointer;
+  cursor: cursor;
 
   & svg {
     font-size: 2rem;
     border-radius: 50%;
     padding: 0.25rem;
     transition: 0.1s ease;
+    color: var(--color-grey-700);
   }
 
   ${(props) => types[props.type]}
 `;
 
-function Dots({ top, right }) {
+function Dots({ top, right, direction }) {
   return (
     <StyledDots top={top} right={right}>
-      <HiMiniEllipsisVertical />
+      {direction === "vertical" && <HiMiniEllipsisVertical />}
+      {direction === "horizontal" && <HiMiniEllipsisHorizontal />}
     </StyledDots>
   );
 }
@@ -42,6 +48,7 @@ function Dots({ top, right }) {
 Dots.defaultProps = {
   top: 0,
   right: 0,
+  direction: "vertical",
 };
 
 export default Dots;

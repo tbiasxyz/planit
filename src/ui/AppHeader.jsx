@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledAppHeader = styled.header`
-  background-color: var(--color-white);
+  background-color: var(--color-grey-0);
   grid-column: 2 / -1;
   display: flex;
   align-items: center;

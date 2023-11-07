@@ -92,20 +92,10 @@ const GlobalStyles = createGlobalStyle`
          --color-accent-800: #32329A;
          --color-accent-900: #2E2E81; 
 
-         /* --color-accent-50: #FFE4EA;
-         --color-accent-100: #FFDFE0;
-         --color-accent-200: #FFC7D2;
-         --color-accent-500: #F16377;
-         --color-accent-600: #E54F61;
-         --color-accent-700: #CA434E;
-         --color-accent-800: #9A3240;
-         --color-accent-900: #7E2E3C; */
-
-
-
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
 
         --color-white: rgb(255,255,255);
+        --color-grey-0: rgb(255,255,255);
         --color-grey-50: #f5f7f8;
         --color-grey-100: rgb(153,153,153);
         --color-grey-200: rgb(119,119,119);
@@ -114,10 +104,10 @@ const GlobalStyles = createGlobalStyle`
         --color-grey-700: rgb(29,29,29);
 
         --color-online: #4caf50;
-        --color-green-100: #b7e4c7;
-        --color-green-700: #52b788;
-        --color-yellow-100: #fff2cc;
-        --color-yellow-700: #ffbc42;
+        --color-solo-100: #b7e4c7;
+        --color-solo-700: #2d6a4f;
+        --color-team-100: #ccc8f9;
+        --color-team-700: #867bef;
 
         --border-radius-rounded: 50%;
         --border-radius-sm: 0.4rem;
@@ -125,7 +115,7 @@ const GlobalStyles = createGlobalStyle`
         --border-radius-lg: 10rem;
 
         --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-        --shadow-md: 0px 0.6rem 2.4rem rgba(255, 255, 255, 0.3);
+        --shadow-md: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
         --shadow-lg: 0 2.4rem 3.2rem rgba(255, 255, 255, 0.4);
     }
     * {
@@ -134,8 +124,11 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
-        /* font-family: 'Nunito', sans-serif; */
-        font-family: 'Urbanist', sans-serif;
+        font-family: 'Nunito', sans-serif;   
+    }
+
+    a {
+        text-decoration: none;
     }
 `;
 

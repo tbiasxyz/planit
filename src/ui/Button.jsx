@@ -13,6 +13,14 @@ const variations = {
       background-color: var(--color-accent-200);
     }
   `,
+  icon: css`
+    background-color: var(--color-accent-700);
+    & svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      color: var(--color-grey-0);
+    }
+  `,
 };
 
 const sizes = {
@@ -21,11 +29,8 @@ const sizes = {
     font-size: 1rem;
     font-weight: 500;
   `,
-
-  large: css`
-    padding: 1rem 3rem;
-    font-size: 1rem;
-    font-weight: 500;
+  icon: css`
+    padding: 0.5rem 0.75rem;
   `,
 };
 
@@ -35,6 +40,9 @@ const types = {
   `,
   rounded: css`
     border-radius: var(--border-radius-rounded);
+  `,
+  icon: css`
+    border-radius: var(--border-radius-sm);
   `,
 };
 

@@ -1,18 +1,23 @@
-import styled from "styled-components";
-import ProjectsNavbar from "../features/projects/ProjectsNavbar";
-import { Outlet } from "react-router-dom";
-
-const StyledProjects = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
+import { HiPlus } from "react-icons/hi2";
+import ProjectsList from "../features/projects/ProjectsList";
+import Button from "../ui/Button";
+import Row from "../ui/Row";
+import ToggleView from "../ui/ToggleView";
 
 function Projects() {
   return (
-    <StyledProjects>
-      <ProjectsNavbar />
-      <Outlet />
-    </StyledProjects>
+    <>
+      <Row>
+        <ToggleView />
+        <div>
+          <span>Filter</span>
+          <Button variation="icon" type="icon" size="icon">
+            <HiPlus />
+          </Button>
+        </div>
+      </Row>
+      <ProjectsList />
+    </>
   );
 }
 

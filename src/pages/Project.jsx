@@ -7,16 +7,15 @@ const StyledProject = styled.div`
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
   height: 50rem;
-  width: 90%;
+  width: 100%;
   padding: 2rem 3rem;
 `;
 
 function Project() {
-  const { projectId } = useParams();
-  console.log(projectId);
+  const { projectID } = useParams();
   return (
     <StyledProject>
-      <Heading as="h2">Project #{projectId}</Heading>
+      <Heading as="h2">Project #{projectID}</Heading>
     </StyledProject>
   );
 }

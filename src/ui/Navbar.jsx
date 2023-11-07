@@ -1,21 +1,22 @@
-import {
-  HiCalendarDays,
-  HiChartBar,
-  HiChatBubbleLeftEllipsis,
-  HiCog6Tooth,
-  HiMiniUserGroup,
-  HiRectangleStack,
-  HiUser,
-} from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "./Divider";
+import {
+  HiOutlineCalendarDays,
+  HiOutlineChartBar,
+  HiOutlineChatBubbleLeftEllipsis,
+  HiOutlineCog6Tooth,
+  HiOutlineFolderOpen,
+  HiOutlineUser,
+  HiOutlineUserGroup,
+} from "react-icons/hi2";
 
 const StyledNavbar = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 1rem;
+  gap: 1.25rem;
+  padding: 2rem;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -26,26 +27,26 @@ const StyledNavLink = styled(NavLink)`
     gap: 1rem;
     text-decoration: none;
     padding: 0.75rem 1.25rem;
-    border-right: 4px solid transparent;
     transition: 0.2s ease;
-    color: var(--color-grey-100);
+    color: var(--color-grey-200);
     font-weight: 500;
     font-size: 1.125rem;
+    border-radius: 1.25rem;
   }
 
   &:active,
   &:hover,
   &.active:link,
   &.active:visited {
-    border-right: 4px solid var(--color-accent-500);
-    color: var(--color-accent-500);
-    font-weight: 700;
+    box-shadow: var(--shadow-md);
+    color: var(--color-accent-700);
+    background-color: var(--color-grey-50);
   }
 
   & svg {
-    height: 2rem;
-    width: 2rem;
-    color: var(--color-grey-100);
+    height: 1.5rem;
+    width: 1.5rem;
+    color: var(--color-grey-200);
     transition: 0.2s ease;
   }
 
@@ -53,7 +54,7 @@ const StyledNavLink = styled(NavLink)`
   &:active svg,
   &.active:visited svg,
   &.active:link svg {
-    color: var(--color-accent-500);
+    color: var(--color-accent-700);
   }
 `;
 
@@ -62,44 +63,44 @@ function Navbar() {
     <StyledNavbar>
       <li>
         <StyledNavLink to="dashboard">
-          <HiChartBar />
+          <HiOutlineChartBar />
           <span>Dashboard</span>
         </StyledNavLink>
       </li>
       <li>
         <StyledNavLink to="projects">
-          <HiRectangleStack />
+          <HiOutlineFolderOpen />
           <span>Projects</span>
         </StyledNavLink>
       </li>
       <li>
         <StyledNavLink to="calendar">
-          <HiCalendarDays />
+          <HiOutlineCalendarDays />
           <span>Calendar</span>
         </StyledNavLink>
       </li>
       <li>
         <StyledNavLink to="messages">
-          <HiChatBubbleLeftEllipsis />
+          <HiOutlineChatBubbleLeftEllipsis />
           <span>Messages</span>
         </StyledNavLink>
       </li>
       <li>
         <StyledNavLink to="users">
-          <HiMiniUserGroup />
+          <HiOutlineUserGroup />
           <span>Users</span>
         </StyledNavLink>
       </li>
       <Divider />
       <li>
         <StyledNavLink to="profile">
-          <HiUser />
+          <HiOutlineUser />
           <span>My Profile</span>
         </StyledNavLink>
       </li>
       <li>
         <StyledNavLink to="settings">
-          <HiCog6Tooth />
+          <HiOutlineCog6Tooth />
           <span>Settings</span>
         </StyledNavLink>
       </li>

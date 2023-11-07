@@ -4,7 +4,8 @@ import Dots from "../../ui/Dots";
 const StyledUserAvatar = styled.div`
   display: grid;
   grid-template-columns: 5rem auto 2rem;
-  background-color: var(--color-accent-50);
+  background-color: var(--color-grey-0);
+  box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-md);
   padding: 0.8rem 1rem;
   margin: 2rem 1.5rem 3rem 1.5rem;
@@ -25,7 +26,7 @@ const AvatarContainer = styled.div`
     height: 12px;
     background-color: var(--color-online);
     border-radius: 50%;
-    border: 3px solid var(--color-white);
+    border: 3px solid var(--color-grey-0);
   }
 `;
 
@@ -72,7 +73,10 @@ function UserAvatar() {
   return (
     <StyledUserAvatar>
       <AvatarContainer>
-        <Avatar src="images/avatar3.jpg" alt="User avatar" />
+        <Avatar
+          src="https://global.discourse-cdn.com/monzo/original/3X/3/a/3aae66f7a0128dc50c915d2687d1abad85de36f3.jpeg"
+          alt="User's avatar"
+        />
       </AvatarContainer>
       <User>
         <Username>John Smith</Username>
