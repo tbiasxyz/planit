@@ -16,7 +16,7 @@ const StyledNavbar = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -31,16 +31,15 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-grey-200);
     font-weight: 500;
     font-size: 1.125rem;
-    border-radius: 1.25rem;
+    border-right: 4px solid transparent;
   }
 
   &:active,
   &:hover,
   &.active:link,
   &.active:visited {
-    box-shadow: var(--shadow-md);
     color: var(--color-accent-700);
-    background-color: var(--color-grey-50);
+    border-right: 4px solid var(--color-accent-700);
   }
 
   & svg {

@@ -12,7 +12,7 @@ const StyledAppLayout = styled.div`
 `;
 
 const Main = styled.main`
-  background-color: var(--color-grey-50);
+  background-color: var(--color-grey-0);
   grid-column: 2 / -1;
   grid-row: 2 / -1;
   padding: 1rem 1.5rem;

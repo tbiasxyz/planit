@@ -10,6 +10,7 @@ import Tag from "../../ui/Tag";
 import Divider from "../../ui/Divider";
 import { Link } from "react-router-dom";
 import Dots from "../../ui/Dots";
+import ProjectUsers from "./ProjectItemUsers";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);
@@ -67,21 +68,21 @@ const Dot = styled.span`
   border-radius: 50%;
 `;
 
-const Users = styled.div`
-  display: flex;
-  position: relative;
+// const Users = styled.div`
+//   display: flex;
+//   position: relative;
 
-  & img {
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-  }
+//   & img {
+//     height: 2.5rem;
+//     width: 2.5rem;
+//     border-radius: 50%;
+//   }
 
-  & img:nth-of-type(2) {
-    position: absolute;
-    left: 1.3rem;
-  }
-`;
+//   & img:nth-of-type(2) {
+//     position: absolute;
+//     left: 1.3rem;
+//   }
+// `;
 
 function ProjectItem({ id, solo }) {
   return (
@@ -99,7 +100,7 @@ function ProjectItem({ id, solo }) {
       <Divider />
       <InfoContainer>
         {!solo && (
-          <Users>
+          <ProjectUsers>
             <img
               src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
               alt="user"
@@ -108,7 +109,7 @@ function ProjectItem({ id, solo }) {
               src="https://dr.savee-cdn.com/things/6/5/2ff05e229b1a53b40edbe2.webp"
               alt="user"
             />
-          </Users>
+          </ProjectUsers>
         )}
 
         <div>

@@ -9,6 +9,7 @@ const StyledToggleView = styled.div`
   gap: 0.5rem;
   padding: 0.25rem;
   box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
 `;
 
 const ToggleViewButton = styled.button`

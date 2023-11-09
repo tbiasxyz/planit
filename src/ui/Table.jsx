@@ -2,27 +2,50 @@ import { createContext, useContext } from "react";
 import styled from "styled-components";
 
 const StyledTable = styled.table`
-  background-color: green;
   width: 100%;
 `;
 
 const StyledHeader = styled.thead`
-  padding: 0.25rem;
-  background-color: var(--color-grey-50);
+  & tr {
+    background-color: var(--color-grey-50);
+    padding: 0.75rem;
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+  }
+
+  & tr td {
+    color: var(--color-grey-500);
+    font-weight: 700;
+    font-size: 1.175rem;
+  }
 `;
 
 const StyledRow = styled.tr`
   display: grid;
   grid-template-columns: ${(props) => props.columns};
+  position: relative;
+`;
+
+const StyledBody = styled.tbody`
+  background-color: var(--color-grey-0);
+
+  & tr {
+    padding: 1rem;
+  }
+
+  & tr:not(:last-of-type) {
+    border-bottom: 2px solid var(--color-grey-50);
+  }
+
+  & tr td {
+    color: var(--color-grey-700);
+    font-size: 1.125rem;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const StyledData = styled.td``;
-
-const StyledBody = styled.tbody``;
-
-// https://dribbble.com/shots/20086925-Users-Table-Preline-UI
-// https://dribbble.com/shots/18566916-Table
-// https://dribbble.com/shots/19626767-Table-Component
 
 const TableContext = createContext();
 
