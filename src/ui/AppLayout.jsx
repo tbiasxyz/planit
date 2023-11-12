@@ -12,6 +12,7 @@ const StyledAppLayout = styled.div`
 `;
 
 const Main = styled.main`
+  position: relative;
   background-color: var(--color-grey-0);
   grid-column: 2 / -1;
   grid-row: 2 / -1;

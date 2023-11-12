@@ -23,14 +23,16 @@ const StyledProjectItem = styled(Link)`
 
 // const Banner = styled.img`
 //   max-height: 15rem;
-//   height: 10rem;
-//   width: 100%;
+//   height: 7rem;
+//   width: 50%;
+//   position: relative;
+//   left: 25%;
 //   border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
 // `;
 
 const Description = styled.p`
   color: var(--color-grey-200);
-  max-width: 90%;
+  width: 100%;
   margin: 1rem 0 0.5rem 0;
 `;
 
@@ -84,18 +86,16 @@ const Dot = styled.span`
 //   }
 // `;
 
-function ProjectItem({ id, solo }) {
+function ProjectItem({ project }) {
+  const { id: projectId, description, name, solo } = project;
   return (
-    <StyledProjectItem to={`project/${id}`}>
+    <StyledProjectItem to={`project/${projectId}`}>
       {/* <Banner src="../images/project.png" /> */}
       <Row>
-        <Heading as="h4">Project {id}</Heading>
+        <Heading as="h4">{name}</Heading>
         <Dots top={0} right={0} type="project" />
       </Row>
-      <Description>
-        These projects will need a new brand identity where they will get
-        recognise.
-      </Description>
+      <Description>{description}</Description>
       <Tag type={solo ? "solo" : "team"}>{solo ? "Solo" : "Team"}</Tag>
       <Divider />
       <InfoContainer>

@@ -14,6 +14,7 @@ const StyledProjectTag = styled.div`
 const StatusTag = styled.span`
   color: var(--color-${(props) => props.color}-700);
   font-weight: 500;
+  font-size: 1rem;
 `;
 
 const StatusDot = styled.span`

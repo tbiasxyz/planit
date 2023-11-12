@@ -19,7 +19,7 @@ const types = {
 
 const StyledDots = styled.div`
   position: absolute;
-  z-index: 10000;
+  z-index: 10;
   right: ${(props) => props.right}%;
   top: ${(props) => props.top}%;
   transform: translate(-${(props) => props.right}%, -${(props) => props.top}%);

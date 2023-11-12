@@ -12,7 +12,7 @@ const StyledProjectsSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem; */
 `;
 
 const StyledProjectsList = styled.div`
@@ -20,34 +20,48 @@ const StyledProjectsList = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   height: auto;
+  padding: 0.5rem;
+  background-color: var(--color-grey-50);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
 `;
 
-function ProjectsList() {
+function ProjectsList({ projects }) {
+  const activeProjects = projects.filter(
+    (project) => project.status.toLowerCase() === "active"
+  );
+  const futureProjects = projects.filter(
+    (project) => project.status.toLowerCase() === "tbd"
+  );
+  const finishedProjects = projects.filter(
+    (project) => project.status.toLowerCase() === "finished"
+  );
+
   return (
     <StyledProjectsView>
       <StyledProjectsSection>
+        <Heading as="h3">Active</Heading>
         <StyledProjectsList>
-          <Heading as="h3">In Progress</Heading>
-          {Array.from({ length: 3 }).map((item, i) => (
-            <ProjectItem key={i} id={i + 10} solo={i % 2 === 0} />
+          {activeProjects?.map((project) => (
+            <ProjectItem key={project.id} id={project.id} project={project} />
           ))}
         </StyledProjectsList>
       </StyledProjectsSection>
 
       <StyledProjectsSection>
+        <Heading as="h3">Future Projects</Heading>
         <StyledProjectsList>
-          <Heading as="h3">Future Projects</Heading>
-          {Array.from({ length: 1 }).map((item, i) => (
-            <ProjectItem key={i} id={i + 10} solo={i % 2 !== 0} />
+          {futureProjects?.map((project) => (
+            <ProjectItem key={project.id} id={project.id} project={project} />
           ))}
         </StyledProjectsList>
       </StyledProjectsSection>
 
       <StyledProjectsSection>
+        <Heading as="h3">Completed</Heading>
         <StyledProjectsList>
-          <Heading as="h3">Completed</Heading>
-          {Array.from({ length: 5 }).map((item, i) => (
-            <ProjectItem key={i} id={i + 10} solo={i % 2 == 0} />
+          {finishedProjects?.map((project) => (
+            <ProjectItem key={project.id} id={project.id} project={project} />
           ))}
         </StyledProjectsList>
       </StyledProjectsSection>

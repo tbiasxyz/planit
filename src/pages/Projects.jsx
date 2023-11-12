@@ -5,24 +5,41 @@ import Row from "../ui/Row";
 import ToggleView from "../ui/ToggleView";
 import { useSearchParams } from "react-router-dom";
 import ProjectsTable from "../features/projects/ProjectsTable";
+import { useState } from "react";
+import NewProjectForm from "../features/projects/NewProjectForm";
+import { useProjects } from "../features/projects/useProjects";
+import Spinner from "../ui/Spinner";
 
 function Projects() {
+  const [isOpenForm, setIsOpenForm] = useState(false);
   const [searchParams] = useSearchParams();
   const view = searchParams.get("view") || "list";
-  console.log(view);
+
+  const { projects, isLoading } = useProjects();
+
+  if (isLoading) return <Spinner size="page" />;
+
+  const closeForm = () => setIsOpenForm(false);
+
   return (
     <>
       <Row>
         <ToggleView />
         <div>
           <span>Filter</span>
-          <Button variation="icon" type="icon" size="icon">
+          <Button
+            variation="icon"
+            type="icon"
+            size="icon"
+            onClick={() => setIsOpenForm((s) => !s)}
+          >
             <HiPlus />
           </Button>
         </div>
       </Row>
-      {view === "list" && <ProjectsList />}
-      {view === "table" && <ProjectsTable />}
+      {isOpenForm && <NewProjectForm closeForm={closeForm} />}
+      {view === "list" && <ProjectsList projects={projects} />}
+      {view === "table" && <ProjectsTable projects={projects} />}
     </>
   );
 }
