@@ -10,11 +10,7 @@ import TextArea from "../../ui/TextArea";
 import Button from "../../ui/Button";
 import { useCreateProject } from "./useCreateProject";
 import Heading from "../../ui/Heading";
-import {
-  HiOutlineGlobeAlt,
-  HiOutlinePaintBrush,
-  HiOutlineWrenchScrewdriver,
-} from "react-icons/hi2";
+import DatePicker from "../../ui/DatePicker";
 
 const move = keyframes`
   0% {
@@ -161,6 +157,8 @@ function NewProjectForm({ closeForm }) {
           Submit
         </Button>
       </Buttons>
+
+      <DatePicker />
     </StyledNewProjectForm>
   );
 }

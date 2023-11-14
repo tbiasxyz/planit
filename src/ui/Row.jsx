@@ -15,13 +15,11 @@ const Row = styled.div`
     css`
       flex-direction: column;
       gap: 2.4rem;
-    `}
-
-    & div:not(:first-child) {
+    `} /* & div:not(:first-child) {
     display: flex;
     gap: 2rem;
     align-items: center;
-  }
+  } */
 `;
 
 Row.defaultProps = {

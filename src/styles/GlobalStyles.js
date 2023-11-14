@@ -103,7 +103,7 @@ const GlobalStyles = createGlobalStyle`
         --color-grey-500: rgb(51,51,51);
         --color-grey-700: rgb(29,29,29);
 
-        --color-grey-0-transparent: rgba(255,255,255,0.5);
+        --color-grey-0-transparent: rgba(255,255,255,0.1);
 
         /* --color-white: rgb(255,255,255);
         --color-grey-700: rgb(255,255,255);

@@ -42,7 +42,7 @@ const Heading = styled.h1`
     props.as === "h5" &&
     css`
       font-size: 1rem;
-      color: var(--color-grey-500);
+      color: var(--color-grey-100);
     `}
 `;
 

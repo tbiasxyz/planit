@@ -13,10 +13,10 @@ import Project from "./pages/Project";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
-import Calendar from "./pages/Calendar";
 import PageNotFound from "./pages/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import CalendarPage from "./pages/CalendarPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,7 +43,7 @@ function App() {
               <Route path="projects" element={<Projects />} />
               <Route path="projects/project/:projectID" element={<Project />} />
               <Route path="messages" element={<Messages />} />
-              <Route path="calendar" element={<Calendar />} />
+              <Route path="calendar" element={<CalendarPage />} />
               <Route path="profile" element={<Profile />} />
               <Route path="settings" element={<Settings />} />
               <Route path="*" element={<PageNotFound />} />

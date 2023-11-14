@@ -47,7 +47,7 @@ const User = styled.div`
 
 const Username = styled.span`
   font-weight: 700;
-  color: var(--color-accent-700);
+  color: var(--color-grey-500);
   display: flex;
   align-items: center;
   font-size: 1.125rem;
@@ -59,9 +59,9 @@ const Nationality = styled.div`
   gap: 0.5rem;
   align-items: center;
   & span {
-    color: var(--color-accent-500);
-    font-weight: 500;
+    color: var(--color-grey-300);
     font-size: 0.875rem;
+    font-weight: 500;
   }
   & img {
     height: 0.8rem;
