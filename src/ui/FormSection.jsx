@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
-const StyledFormRow = styled.div`
+const StyledFormSection = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -24,14 +25,14 @@ const ErrorMessage = styled.span`
   color: var(--color-high-700);
 `;
 
-function FormRow({ children, inputLabel, error, gridArea }) {
+function FormSection({ children, inputLabel, error, gridArea }) {
   return (
-    <StyledFormRow gridArea={gridArea}>
+    <StyledFormSection gridArea={gridArea}>
       {inputLabel && <InputLabel>{inputLabel}</InputLabel>}
       {children}
       {error && <ErrorMessage>{error}</ErrorMessage>}
-    </StyledFormRow>
+    </StyledFormSection>
   );
 }
 
-export default FormRow;
+export default FormSection;

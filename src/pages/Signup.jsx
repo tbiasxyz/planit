@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import SignupForm from "../features/authentication/SignupForm";
-import Heading from "../ui/Heading";
-import Row from "../ui/Row";
 
 const SignupLayoutContainer = styled.div`
   display: flex;
@@ -10,14 +8,12 @@ const SignupLayoutContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: var(--color-grey-50);
 `;
 
 function Signup() {
   return (
     <SignupLayoutContainer>
-      <Row>
-        <Heading as="h2">Sign Up</Heading>
-      </Row>
       <SignupForm />
     </SignupLayoutContainer>
   );

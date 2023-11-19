@@ -28,8 +28,8 @@ const Heading = styled.h1`
     ${(props) =>
     props.as === "h3" &&
     css`
-      font-size: 1.875rem;
       color: var(--color-grey-500);
+      font-size: 1.875rem;
     `}
     ${(props) =>
     props.as === "h4" &&

@@ -1,118 +1,181 @@
-import { HiPencilSquare } from "react-icons/hi2";
 import styled from "styled-components";
-import Heading from "../ui/Heading";
-import { FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const StyledProfile = styled.div`
-  background-color: var(--color-grey-0);
-  height: 50rem;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-md);
-  position: relative;
-`;
-
-const Images = styled.div`
-  position: relative;
-  width: 100%;
-  height: 40%;
-
-  & svg {
-    position: absolute;
-    top: 7%;
-    right: 3%;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--color-grey-0);
-    color: var(--color-grey-700);
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-`;
-
-const Banner = styled.img`
-  display: block;
-  width: 100%;
-  position: relative;
+  display: grid;
+  grid-template-columns: 35rem 1fr;
   height: 100%;
-  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+  overflow-x: hidden;
 `;
 
-const Avatar = styled.img`
-  display: block;
-  position: absolute;
-  height: 12rem;
-  width: 12rem;
-  border-radius: 50%;
-  border: 4px solid var(--color-grey-0);
-  bottom: -20%;
-  left: 5%;
+const User = styled.div`
+  background-color: var(--color-accent-200);
+  padding: 6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const Main = styled.div`
-  margin: 0 0 0 17.5rem;
-  padding: 2rem;
+const UserImage = styled.img`
+  height: 27rem;
+  width: 24.75rem;
+`;
+
+const Username = styled.h3`
+  font-size: 3.25rem;
+  color: var(--color-accent-700);
+  font-family: "Merriweather", serif;
+  margin-top: 2rem;
+`;
+
+const UserInfoContainer = styled.div`
+  background-color: var(--color-grey-0);
+`;
+
+const UserInfo = styled.div`
+  position: relative;
+  background-color: var(--color-accent-200);
+  min-height: 25rem;
+  height: auto;
+  width: 85%;
+  top: 25%;
+  left: 20%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  & h3 {
+    position: absolute;
+    color: var(--color-accent-700);
+    font-size: 3rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    top: -7%;
+    left: 20%;
+  }
 `;
 
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.25rem;
 
-  & span {
-    font-size: 1rem;
-    font-weight: 500;
+  & div {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+
+    & span {
+      font-family: "Merriweather", serif;
+    }
+
+    & span:first-child {
+      width: 7rem;
+      color: var(--color-grey-500);
+      font-size: 1.1rem;
+    }
+
+    & span:nth-child(2) {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-grey-700);
+    }
+
+    & p {
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--color-grey-700);
+      width: 70%;
+      font-family: "Merriweather", serif;
+    }
   }
 `;
 
-const DescriptionPart = styled.div`
+const Socials = styled.div`
+  background-color: var(--color-accent-100);
+  border-radius: var(--border-radius-sm);
+  margin-top: 2rem;
+  padding: 1rem;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
-`;
+  justify-content: center;
+  gap: 2rem;
+  width: 20rem;
+  & a {
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    & svg {
+      font-size: 1.5rem;
+      color: var(--color-accent-700);
+    }
 
-const Buttons = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-`;
-
-const Button = styled.button`
-  padding: 1rem 1.5rem;
-  border: none;
-  border-radius: 3rem;
-  background-color: var(--color-accent-500);
-  font-weight: 500;
-  font-size: 1.125rem;
+    &:hover {
+      background-color: var(--color-accent-200);
+    }
+  }
 `;
 
 function Profile() {
   return (
     <StyledProfile>
-      <Images>
-        <Banner src="https://uhdwallpapers.org/uploads/converted/20/06/25/macos-big-sur-wwdc-1920x1080_785884-mm-90.jpg" />
-        <Avatar src="https://global.discourse-cdn.com/monzo/original/3X/3/a/3aae66f7a0128dc50c915d2687d1abad85de36f3.jpeg" />
-        <HiPencilSquare />
-      </Images>
-      <Main>
-        <Description>
-          <Heading as="h3">John Smith</Heading>
-          <DescriptionPart>
-            <FaLocationDot />
-            <span>Los Angeles, California, USA</span>
-          </DescriptionPart>
-          <DescriptionPart>
-            <FaEnvelope />
-            <span>smith@gmail.com</span>
-          </DescriptionPart>
-          <p>Front-end Developer at Google</p>
-        </Description>
-      </Main>
+      <User>
+        <UserImage src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        <Username>Diane Franklin</Username>
+      </User>
+      <UserInfoContainer>
+        <UserInfo>
+          <h3>User profile</h3>
+          <Description>
+            <div>
+              <span>Full Name</span>
+              <span>Diane Franklin</span>
+            </div>
+            <div>
+              <span>Location</span>
+              <span>New York, USA</span>
+            </div>
+            <div>
+              <span>E-Mail</span>
+              <span>franklin.diane@gmail.com</span>
+            </div>
+            <div>
+              <span>Description</span>
+              <p>Fulltime developer at Google</p>
+            </div>
+          </Description>
+
+          <Socials>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" rel="noreferrer">
+              <FaTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaFacebook />
+            </a>
+          </Socials>
+        </UserInfo>
+      </UserInfoContainer>
     </StyledProfile>
   );
 }

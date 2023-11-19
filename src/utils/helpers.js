@@ -1,9 +1,11 @@
 export const capitalize = (word) => {
-  return (
-    String(word).slice(0, 1).toUpperCase() + String(word).slice(1).toLowerCase()
+  const words = word.split(/[\s-]+/);
+  const capitalizedWords = words.map(
+    (word) =>
+      String(word).slice(0, 1).toUpperCase() +
+      String(word).slice(1).toLowerCase()
   );
-};
-
-export const decapitalize = (word) => {
-  return word.toLowerCase();
+  return capitalizedWords[0].length === 1
+    ? capitalizedWords.join("-")
+    : capitalizedWords.join(" ");
 };

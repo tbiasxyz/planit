@@ -3,18 +3,19 @@ import Dots from "../../ui/Dots";
 import ProjectTag from "./ProjectTag";
 import ProjectUsers from "./ProjectItemUsers";
 import ProjectProgressBar from "./ProjectProgressBar";
-import { capitalize, decapitalize } from "../../utils/helpers";
+import { capitalize } from "../../utils/helpers";
 import { format } from "date-fns";
 
 function ProjectsTable({ projects }) {
   return (
-    <Table columns="0.675fr 0.5fr 0.4fr 0.5fr 0.5fr 0.65fr 0.5fr 0.4fr 0.1fr">
+    <Table columns="0.675fr 0.5fr 0.45fr 0.35fr 0.35fr 0.35fr 0.65fr 0.5fr 0.4fr 0.1fr">
       <Table.Header>
         <Table.Row>
           <Table.Data>Project Name </Table.Data>
           <Table.Data>Project Type</Table.Data>
           <Table.Data>Status</Table.Data>
           <Table.Data>Started</Table.Data>
+          <Table.Data>Due</Table.Data>
           <Table.Data>Finished</Table.Data>
           <Table.Data>Progress</Table.Data>
           <Table.Data>Priority</Table.Data>
@@ -29,13 +30,18 @@ function ProjectsTable({ projects }) {
             <Table.Data>
               <ProjectTag
                 tag={capitalize(project.status)}
-                color={decapitalize(project.status)}
+                color={project.status}
                 type="status"
               />
             </Table.Data>
             <Table.Data>
               {project?.start_date
                 ? format(new Date(project.start_date), "d. M. yyyy")
+                : "—"}
+            </Table.Data>
+            <Table.Data>
+              {project?.due_date
+                ? format(new Date(project.due_date), "d. M. yyyy")
                 : "—"}
             </Table.Data>
             <Table.Data>
@@ -50,7 +56,7 @@ function ProjectsTable({ projects }) {
               {project?.priority ? (
                 <ProjectTag
                   tag={`${capitalize(project.priority)} priority`}
-                  color={decapitalize(project.priority)}
+                  color={project.priority}
                 />
               ) : (
                 "—"

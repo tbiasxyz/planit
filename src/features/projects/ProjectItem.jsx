@@ -15,20 +15,12 @@ import ProjectUsers from "./ProjectItemUsers";
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);
   padding: 1.25rem;
+  min-width: 400px;
   border-radius: var(--border-radius-sm);
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
 `;
-
-// const Banner = styled.img`
-//   max-height: 15rem;
-//   height: 7rem;
-//   width: 50%;
-//   position: relative;
-//   left: 25%;
-//   border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-// `;
 
 const Description = styled.p`
   color: var(--color-grey-200);
@@ -90,7 +82,6 @@ function ProjectItem({ project }) {
   const { id: projectId, description, name, solo } = project;
   return (
     <StyledProjectItem to={`project/${projectId}`}>
-      {/* <Banner src="../images/project.png" /> */}
       <Row>
         <Heading as="h4">{name}</Heading>
         <Dots top={0} right={0} type="project" />

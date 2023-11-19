@@ -15,9 +15,9 @@ function Projects() {
   const [searchParams] = useSearchParams();
   const view = searchParams.get("view") || "list";
 
-  const { projects, isLoading } = useProjects();
+  const { projects, isPending } = useProjects();
 
-  if (isLoading) return <Spinner size="page" />;
+  if (isPending) return <Spinner size="page" />;
 
   const closeForm = () => setIsOpenForm(false);
 

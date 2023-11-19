@@ -2,16 +2,13 @@ import {
   add,
   eachDayOfInterval,
   endOfMonth,
-  endOfWeek,
   format,
   getDay,
   isEqual,
   isSameMonth,
   isToday,
   parse,
-  startOfMonth,
   startOfToday,
-  startOfWeek,
 } from "date-fns";
 import styled, { css } from "styled-components";
 import Heading from "./Heading";
@@ -21,6 +18,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
 const StyledDatePicker = styled.div`
   background-color: var(--color-grey-700);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
@@ -28,6 +26,11 @@ const StyledDatePicker = styled.div`
   & h5 {
     padding: 0.5rem;
   }
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
 `;
 
 const Buttons = styled.div`
@@ -135,7 +138,7 @@ const Day = styled.button`
     `}
 `;
 
-function DatePicker() {
+function DatePicker({ setSelectedFormDate }) {
   const today = startOfToday();
   const [selectedDay, setSelectedDay] = useState(today);
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -182,7 +185,11 @@ function DatePicker() {
           {newDays.map((day, i) => (
             <Day
               key={i}
-              onClick={() => setSelectedDay(day)}
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedDay(day);
+                setSelectedFormDate(format(day, "MMMM-dd-yyyy"));
+              }}
               isToday={isToday(day)}
               isSameMonth={isSameMonth(day, today)}
               isSelected={isEqual(day, selectedDay)}

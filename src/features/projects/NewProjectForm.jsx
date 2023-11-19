@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form";
-import { format } from "date-fns";
+import { format, startOfToday } from "date-fns";
 import styled, { keyframes } from "styled-components";
 
 import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
+import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
 import Select from "../../ui/Select";
 import TextArea from "../../ui/TextArea";
-import Button from "../../ui/Button";
 import { useCreateProject } from "./useCreateProject";
 import Heading from "../../ui/Heading";
-import DatePicker from "../../ui/DatePicker";
+import DateInput from "../../ui/DateInput";
+import FormButton from "../../ui/FormButton";
 
 const move = keyframes`
   0% {
@@ -19,13 +19,6 @@ const move = keyframes`
   100% {
     right: 0%;
   }
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  grid-column: 1 / -1;
-  grid-row: 6 / 7;
 `;
 
 const StyledNewProjectForm = styled(Form)`
@@ -42,7 +35,10 @@ const StyledNewProjectForm = styled(Form)`
   box-shadow: var(--shadow-md);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.75fr repeat(7, 1fr);
+  grid-template-rows: 0.75fr repeat(8, 1fr);
+  row-gap: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   & h3 {
     display: flex;
@@ -54,7 +50,8 @@ const StyledNewProjectForm = styled(Form)`
 `;
 
 function NewProjectForm({ closeForm }) {
-  const today = format(new Date(), "yyyy-MM-dd");
+  const today = format(startOfToday(), "MMMM-dd-yyyy");
+
   const {
     register,
     handleSubmit,
@@ -64,32 +61,35 @@ function NewProjectForm({ closeForm }) {
   } = useForm();
 
   const { createProject, isCreating } = useCreateProject();
+  console.log(isCreating);
 
   function onSubmit(formData) {
-    console.log(formData);
     const newProject = {
       name: formData.projectName,
       type: formData.projectType,
       description: formData.description,
-      finish_date: new Date(formData.finishDate) || null,
-      start_date: new Date(formData.startDate) || null,
-      // Temperary data - fix later
-      status: "active",
-      priority: "normal",
-      solo: false,
+      due_date:
+        formData.dueDate !== null
+          ? format(new Date(formData.dueDate), "yyyy-MM-dd")
+          : null,
+      start_date:
+        format(new Date(formData.startDate), "yyyy-MM-dd") ||
+        format(startOfToday(), "yyyy-MM-dd"),
+      status: formData.status,
+      solo: true,
       progress: 0,
+      priority: formData.priority,
     };
+    console.log(newProject);
     createProject(newProject);
     reset();
     closeForm();
   }
 
-  // https://dribbble.com/shots/23021203-Shipping-details
-
   return (
     <StyledNewProjectForm onSubmit={handleSubmit(onSubmit)}>
       <Heading as="h3">Create new project</Heading>
-      <FormRow
+      <FormSection
         inputLabel="Project name"
         error={errors?.projectName?.message}
         gridArea={{ column: "1 / -1", row: "2 / 3" }}
@@ -102,45 +102,89 @@ function NewProjectForm({ closeForm }) {
           })}
           placeholder="Enter project name"
         />
-      </FormRow>
-      <FormRow inputLabel="Project type" error={errors?.projectType?.message}>
+      </FormSection>
+      <FormSection
+        inputLabel="Project type"
+        error={errors?.projectType?.message}
+      >
         <Select
-          // options={[
-          //   { tag: "Development", icon: <HiOutlineWrenchScrewdriver /> },
-          //   { tag: "Design", icon: <HiOutlinePaintBrush /> },
-          //   { tag: "E-Commerce", icon: <HiOutlineGlobeAlt /> },
-          // ]}
-          options={["Development", "Design", "E-Commerce"]}
+          options={[
+            { tag: "Development", value: "development" },
+            { tag: "Design", value: "design" },
+            { tag: "E-Commerce", value: "e-commerce" },
+            { tag: "Entertainment", value: "entertainment" },
+            { tag: "Social Media", value: "social-media" },
+            { tag: "Marketing", value: "marketing" },
+            { tag: "Research", value: "research" },
+            { tag: "Education", value: "education" },
+            { tag: "Healthcare", value: "healthcare" },
+            { tag: "Finance", value: "finance" },
+          ]}
+          defaultValue={true}
           register={register}
           id="projectType"
           setValue={setValue}
         />
-      </FormRow>
-      <FormRow inputLabel="Status" error={errors?.status?.message}>
+      </FormSection>
+      <FormSection inputLabel="Status" error={errors?.status?.message}>
         <Select
-          options={["Active", "Finished", "To Build", "Paused", "Testing"]}
+          options={[
+            { tag: "Active", value: "active" },
+            { tag: "Finished", value: "finished" },
+            { tag: "To Build", value: "tbd" },
+            { tag: "Paused", value: "paused" },
+            { tag: "Testing", value: "testing" },
+            { tag: "Canceled", value: "canceled" },
+          ]}
+          defaultValue={true}
           register={register}
           id="status"
           setValue={setValue}
         />
-      </FormRow>
-      <FormRow inputLabel="Start date" error={errors?.startDate?.message}>
-        <FormInput
-          type="date"
-          defaultValue={today}
-          id="startDate"
-          {...register("startDate", {
-            required: "Start date is required",
-          })}
+      </FormSection>
+      <FormSection
+        inputLabel="Priority"
+        gridArea={{ column: "1 / 2", row: "4 / 4" }}
+      >
+        <Select
+          options={[
+            { tag: "Normal", value: "normal" },
+            { tag: "Low", value: "low" },
+            { tag: "High", value: "high" },
+          ]}
+          defaultValue={true}
+          id="priority"
+          register={register}
+          setValue={setValue}
         />
-      </FormRow>
-      <FormRow inputLabel="Finish date">
-        <FormInput type="date" id="finishDate" {...register("finishDate")} />
-      </FormRow>
-      <FormRow
+      </FormSection>
+      <FormSection
+        inputLabel="Start date"
+        error={errors?.startDate?.message}
+        gridArea={{ column: "1 / 2", row: "5 / 6" }}
+      >
+        <DateInput
+          date={today}
+          register={register}
+          id="startDate"
+          setValue={setValue}
+        />
+      </FormSection>
+      <FormSection
+        inputLabel="Due date"
+        gridArea={{ column: "2 / -1", row: "5 / 6" }}
+      >
+        <DateInput
+          date={"Unknown"}
+          register={register}
+          id="dueDate"
+          setValue={setValue}
+        />
+      </FormSection>
+      <FormSection
         inputLabel="Description"
         error={errors?.description?.message}
-        gridArea={{ column: "1 / -1", row: "5 / 6" }}
+        gridArea={{ column: "1 / -1", row: "6 / 7" }}
       >
         <TextArea
           id="description"
@@ -148,17 +192,13 @@ function NewProjectForm({ closeForm }) {
             required: "Description is required",
           })}
         />
-      </FormRow>
-      <Buttons>
-        <Button type="reset" disabled={isCreating}>
-          Reset
-        </Button>
-        <Button type="submit" disabled={isCreating}>
-          Submit
-        </Button>
-      </Buttons>
+      </FormSection>
 
-      <DatePicker />
+      <FormSection gridArea={{ column: "1 / 2", row: "7/8" }}>
+        <FormButton type="submit" disabled={isCreating}>
+          Submit
+        </FormButton>
+      </FormSection>
     </StyledNewProjectForm>
   );
 }

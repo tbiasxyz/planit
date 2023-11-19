@@ -83,13 +83,29 @@ const MonthDay = styled.button`
   /* background-color: var(--color-white-0); */
   color: var(--color-grey-700);
   border: none;
-  padding: 2.5rem;
+  padding: 2.75rem;
   cursor: pointer;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   background-color: var(--color-grey-50);
   border-radius: var(--border-radius-md);
 
   grid-column-start: ${(props) => (props.weekDay === 0 ? "7" : props.weekDay)};
+
+  position: relative;
+
+  & time {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent-500);
+    color: var(--color-white);
+    border-radius: 50%;
+  }
 `;
 
 function Calendar() {

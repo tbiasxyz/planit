@@ -4,12 +4,12 @@ import { getProjects } from "../../services/apiProjects";
 export function useProjects() {
   const {
     data: projects,
-    isLoading,
+    isPending,
     error,
   } = useQuery({
     queryKey: ["projects"],
     queryFn: getProjects,
   });
 
-  return { projects, isLoading, error };
+  return { projects, isPending, error };
 }

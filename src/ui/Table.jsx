@@ -7,7 +7,7 @@ const StyledTable = styled.table`
 
 const StyledHeader = styled.thead`
   & tr {
-    background-color: var(--color-grey-50);
+    background-color: var(--color-grey-0);
     padding: 0.75rem;
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
   }

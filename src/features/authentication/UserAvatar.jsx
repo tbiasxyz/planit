@@ -46,11 +46,11 @@ const User = styled.div`
 `;
 
 const Username = styled.span`
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-grey-500);
   display: flex;
   align-items: center;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   word-break: break-all;
 `;
 
@@ -74,12 +74,12 @@ function UserAvatar() {
     <StyledUserAvatar>
       <AvatarContainer>
         <Avatar
-          src="https://global.discourse-cdn.com/monzo/original/3X/3/a/3aae66f7a0128dc50c915d2687d1abad85de36f3.jpeg"
+          src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
           alt="User's avatar"
         />
       </AvatarContainer>
       <User>
-        <Username>John Smith</Username>
+        <Username>Diane Franklin</Username>
         <Nationality>
           <span>United States</span>
           <img src="https://flagcdn.com/us.svg" alt="Flag of Czech Republic" />

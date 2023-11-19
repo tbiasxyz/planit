@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const FormInput = styled.input`
-  padding: 0.5rem 0.875rem;
+const StyledSearchbar = styled.input.attrs({ type: "text" })`
+  padding: 0.35rem 0.75rem;
   background-color: var(--color-grey-0);
   color: var(--color-grey-700);
   border: 2px solid transparent;
@@ -18,7 +18,13 @@ const FormInput = styled.input`
 
   &:focus {
     border: 2px solid var(--color-accent-500);
+    background-color: var(--color-accent-50);
+    color: var(--color-accent-700);
   }
 `;
 
-export default FormInput;
+function Searchbar({ setSearchValue }) {
+  return <StyledSearchbar onChange={(e) => setSearchValue(e.target.value)} />;
+}
+
+export default Searchbar;

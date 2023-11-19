@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 
-const TextArea = styled.textarea`
-  box-shadow: var(--shadow-sm);
+const TextArea = styled.textarea.attrs({
+  placeholder: "Short project description",
+})`
+  box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-sm);
   height: 100px;
   padding: 1rem;
@@ -10,6 +12,12 @@ const TextArea = styled.textarea`
   resize: none;
   outline: none;
   font-family: "Poppins", sans-serif;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+
+  &:focus {
+    border: 2px solid var(--color-accent-700);
+  }
 
   ${(props) =>
     props.gridArea &&

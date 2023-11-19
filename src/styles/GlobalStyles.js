@@ -83,6 +83,25 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-800: #000000;
         --color-accent-900: #000000; */
 
+
+            /* --color-accent-50: #E1BEE7;
+    --color-accent-100: #CE93D8;
+    --color-accent-200: #BA68C8;
+    --color-accent-300: #AB47BC;
+    --color-accent-400: #9C27B0;
+    --color-accent-500: #8E24AA;
+    --color-accent-600: #7B1FA2;
+    --color-accent-700: #6A1B9A; */
+
+        /* --color-accent-50: #EDE7F6;
+        --color-accent-100: #D1C4E9;
+        --color-accent-200: #B39DDB;
+        --color-accent-300: #9575CD;
+        --color-accent-400: #7E57C2;
+        --color-accent-500: #673AB7;
+        --color-accent-600: #5E35B1;
+        --color-accent-700: #512DA8; */
+
          --color-accent-50: #E4E4FF;
          --color-accent-100: #E0E0FF;
          --color-accent-200: #C7C7FE;
@@ -90,7 +109,7 @@ const GlobalStyles = createGlobalStyle`
          --color-accent-600: #4F4FE5;
          --color-accent-700: #4343CA;
          --color-accent-800: #32329A;
-         --color-accent-900: #2E2E81; 
+         --color-accent-900: #2E2E81;
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
 
@@ -119,18 +138,26 @@ const GlobalStyles = createGlobalStyle`
         --color-solo-700: #2d6a4f;
         --color-team-100: #ccc8f9;
         --color-team-700: #867bef;
-        --color-active-100: #d9eef7;
-        --color-active-700: #009cdf;
-        --color-tbd-100: #ffeccf;
-        --color-tbd-700: #e88e5a ;
-        --color-finished-100: #e8faf5;
-        --color-finished-700: #27b28f;
         --color-low-100: #e5fada;
         --color-low-700: #69b04b;
         --color-normal-100: #fff1eb;
         --color-normal-700:	#ff6927;
         --color-high-100: #ffeaea;
         --color-high-700: #fd5151;
+
+        /* Project statuses */
+        --color-active-100: #d9eef7;
+        --color-active-700: #009cdf;
+        --color-tbd-100: #ffeccf;
+        --color-tbd-700: #e88e5a ;
+        --color-finished-100: #e8faf5;
+        --color-finished-700: #27b28f;
+        --color-paused-100: #ffcdde;
+        --color-paused-700: #f1004e;
+        --color-testing-100: #d4f0ef;
+        --color-testing-700: #5db6b5;
+        --color-canceled-100: #ffeaea;
+        --color-canceled-700: #fd5151;
 
         --border-radius-rounded: 50%;
         --border-radius-sm: 0.4rem;
@@ -147,9 +174,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
-        /* font-family: 'Nunito', sans-serif;    */
         font-family: 'Poppins', sans-serif;   
-        /* font-family: 'Work Sans', sans-serif;    */
     }
 
     a {

@@ -21,6 +21,11 @@ const variations = {
       color: var(--color-grey-0);
     }
   `,
+
+  form: css`
+    background-color: var(--color-accent-700);
+    color: var(--color-white);
+  `,
 };
 
 const sizes = {
