@@ -26,7 +26,7 @@ function LandingHeader() {
           role="button"
           to="/login"
           variation="accentHover"
-          cursor="false"
+          cursor={false}
         >
           Login
         </LinkButton>
@@ -34,7 +34,7 @@ function LandingHeader() {
           role="button"
           to="/signup"
           variation="accentHover"
-          cursor="false"
+          cursor={false}
         >
           Sign Up
         </LinkButton>

@@ -8,15 +8,10 @@ export function useSignUp() {
   const { mutate: signUp, isPending: isSigningUp } = useMutation({
     // mutationFn: signUpApi,
     mutationFn: ({ user, provider }) => {
-      try {
-        console.log(user);
-        console.log(provider);
-        signUpApi(user, provider);
-      } catch (err) {
-        throw new Error(err.message);
-      }
+      signUpApi(user, provider);
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log(data);
       toast.success("Succesfully signed up! Start by logging in your account!");
       navigate("/login");
     },

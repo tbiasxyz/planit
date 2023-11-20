@@ -17,6 +17,8 @@ import PageNotFound from "./pages/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CalendarPage from "./pages/CalendarPage";
+import AuthPage from "./pages/AuthPage";
+import SignupForm2 from "./features/authentication/SignupForm-2";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +35,10 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Landing />} />
+            <Route path="auth" element={<AuthPage />}>
+              <Route path="signup" element={<SignupForm2 />} />
+            </Route>
+
             <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
 

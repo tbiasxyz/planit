@@ -12,8 +12,9 @@ import FormInput from "../../ui/FormInput";
 import Select from "../../ui/Select";
 import Spinner from "../../ui/Spinner";
 import FormButton from "../../ui/FormButton";
-import GoogleButton from "../authentication/GoogleButton";
-import Divider from "../../ui/Divider";
+// import GoogleButton from "../authentication/GoogleButton";
+// import Divider from "../../ui/Divider";
+import LinkButton from "../../ui/LinkButton";
 
 const StyledSignupForm = styled(Form)`
   background-color: var(--color-grey-0);
@@ -29,14 +30,28 @@ const SignupMain = styled.div`
   display: grid;
   max-height: 50rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, 100px) 110px 120px 100px 1fr;
+  grid-template-rows: 70px 100px 100px 110px 100px 100px 0.8fr;
+`;
+
+const NavButtons = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  background-color: var(--color-accent-50);
+  padding: 0.25rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: var(--border-radius-md);
 `;
 
 const SignupHeading = styled.h2`
   font-size: 3rem;
   color: var(--color-grey-700);
   grid-column: 1 / -1;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
   text-align: center;
   & span {
     background-image: linear-gradient(
@@ -49,6 +64,7 @@ const SignupHeading = styled.h2`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  align-self: center;
 `;
 
 const SignupImgContainer = styled.div`
@@ -97,13 +113,13 @@ const Icon = styled.span`
   }
 `;
 
-const Buttons = styled.div`
+const SignUpButtons = styled.div`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   grid-column: 1 / -1;
-  grid-row: 6 / 7;
+  grid-row: 7 / 8;
 `;
 
 function SignupForm() {
@@ -171,6 +187,33 @@ function SignupForm() {
         <SignupHeading>
           Sign up to <span>Plan It</span>
         </SignupHeading>
+
+        <NavButtons>
+          <LinkButton
+            role="button"
+            to="/"
+            variation="accentHover"
+            cursor={true}
+          >
+            Homepage
+          </LinkButton>
+          <LinkButton
+            role="button"
+            to="/login"
+            variation="accentHover"
+            cursor={true}
+          >
+            Login
+          </LinkButton>
+          <LinkButton
+            role="button"
+            to="/signup"
+            variation="accentHover"
+            cursor={true}
+          >
+            Sign Up
+          </LinkButton>
+        </NavButtons>
 
         <FormSection
           inputLabel="First name"
@@ -278,19 +321,19 @@ function SignupForm() {
           />
         </FormSection>
 
-        <Buttons>
+        <SignUpButtons>
           <FormButton type="submit">Sign Up</FormButton>
-          <Divider />
+          {/* <Divider />
           <GoogleButton
             onClick={(e) => {
               e.preventDefault();
               console.log("clicked google");
               signUp({ user: {}, provider: "google" });
             }}
-          >
+          > 
             Sign Up with Google
-          </GoogleButton>
-        </Buttons>
+          </GoogleButton> */}
+        </SignUpButtons>
       </SignupMain>
       <SignupImgContainer>
         <SignupImg src="https://dr.savee-cdn.com/things/6/3/d5deb8a89950b3b8c276df.webp" />

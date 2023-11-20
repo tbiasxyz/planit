@@ -48,12 +48,12 @@ const LinkButton = styled(Link)`
   ${(props) => types[props.type]}
 
   ${(props) =>
-    props.cursor === "false" &&
+    props.cursor === false &&
     css`
       cursor: none;
     `}
   ${(props) =>
-    props.cursor === "true" &&
+    props.cursor === true &&
     css`
       cursor: pointer;
     `}
@@ -78,7 +78,7 @@ LinkButton.defaultProps = {
   variation: "accent",
   size: "medium",
   type: "normal",
-  cursor: "true",
+  cursor: true,
 };
 
 export default LinkButton;

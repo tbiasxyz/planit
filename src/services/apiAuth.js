@@ -1,8 +1,7 @@
 import supabase from "./supabase";
 
 export async function signUp(user, provider) {
-  console.log(user);
-  console.log(provider);
+  // !provider - user used email and password to sign up
   if (!provider) {
     console.log("No provider");
     const { data, error } = await supabase.auth.signUp({
@@ -23,6 +22,8 @@ export async function signUp(user, provider) {
       throw new Error(error.message);
     }
     return data;
+
+    // google signup
   } else {
     console.log("provider: ");
     const { data, error } = await supabase.auth.signInWithOAuth({
