@@ -39,7 +39,9 @@ const Buttons = styled.div`
     }
     &:hover {
       background-color: var(--color-accent-700);
-      color: var(--color-grey-0);
+      & svg {
+        color: var(--color-white);
+      }
     }
   }
 `;
