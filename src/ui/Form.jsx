@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Form = styled.form`
-  padding: 2.5rem 3rem;
+  padding: 1.75rem 3rem;
   overflow: auto;
 `;
 

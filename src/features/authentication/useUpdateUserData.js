@@ -1,0 +1,22 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateLoggedUser } from "../../services/apiAuth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
+export function useUpdateUserData() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { mutate: updateUserData, isPending: isUpdatingUser } = useMutation({
+    mutationFn: (formData) => updateLoggedUser(formData),
+    onSuccess: () => {
+      toast.success("Successfully updated");
+      navigate("/app/profile");
+      queryClient.invalidateQueries({
+        queryKey: ["user"],
+      });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  return { updateUserData, isUpdatingUser };
+}

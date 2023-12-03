@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Dots from "../../ui/Dots";
+import { useCurrentUser } from "./useCurrentUser";
+import Spinner from "../../ui/Spinner";
 
 const StyledUserAvatar = styled.div`
   display: grid;
@@ -7,7 +9,7 @@ const StyledUserAvatar = styled.div`
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-md);
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 0.6rem;
   margin: 2rem 1.5rem 3rem 1.5rem;
   position: relative;
 `;
@@ -50,7 +52,7 @@ const Username = styled.span`
   color: var(--color-grey-500);
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   word-break: break-all;
 `;
 
@@ -70,22 +72,27 @@ const Nationality = styled.div`
 `;
 
 function UserAvatar() {
+  const { user } = useCurrentUser();
+  const userData = user.user_metadata;
+  // if (isPending) return <Spinner />;
   return (
     <StyledUserAvatar>
       <AvatarContainer>
         <Avatar
-          src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-          alt="User's avatar"
+          src={userData.avatar}
+          alt={`Avatar of ${userData.firstName} ${userData.lastName}`}
         />
       </AvatarContainer>
       <User>
-        <Username>Diane Franklin</Username>
+        <Username>
+          {userData.firstName} {userData.lastName}
+        </Username>
         <Nationality>
-          <span>United States</span>
-          <img src="https://flagcdn.com/us.svg" alt="Flag of Czech Republic" />
+          <span>{userData.country}</span>
+          <img src={userData.countryFlag} alt={`Flag of ${userData.country}`} />
         </Nationality>
       </User>
-      <Dots right="5" top="50" type="avatar" />
+      <Dots right="2" top="50" type="avatar" />
     </StyledUserAvatar>
   );
 }

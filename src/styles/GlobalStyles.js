@@ -102,6 +102,37 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-600: #5E35B1;
         --color-accent-700: #512DA8; */
 
+        &, &.light-mode {
+            --color-white: rgb(255,255,255);
+            --color-grey-0: rgb(255,255,255);
+            --color-grey-50: #f5f7f8;
+            --color-grey-100: rgb(153,153,153);
+            --color-grey-200: rgb(119,119,119);
+            --color-grey-300: rgb(85,85,85);
+            --color-grey-500: rgb(51,51,51);
+            --color-grey-700: rgb(29,29,29);
+
+            --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+            --shadow-md: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
+            --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+        }
+
+        &.dark-mode {
+            --color-white: rgb(255, 255, 255);
+            --color-grey-700: rgb(255, 255, 255);
+            --color-grey-500: #333333;
+            --color-grey-300: rgb(102, 102, 102);
+            --color-grey-200: rgb(79, 79, 79);
+            --color-grey-100: rgb(56, 56, 56);
+            --color-grey-50: rgb(36, 36, 36);
+            --color-grey-0: rgb(20, 20, 20);
+
+            --shadow-sm: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
+            --shadow-md: rgba(255, 255, 255, 0.05) 0px 6px 24px 0px, rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;;
+            --shadow-lg: 0 2.4rem 3.2rem rgba(255, 255, 255, 0.4);
+        }
+
+
          --color-accent-50: #E4E4FF;
          --color-accent-100: #E0E0FF;
          --color-accent-200: #C7C7FE;
@@ -113,25 +144,8 @@ const GlobalStyles = createGlobalStyle`
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
 
-        --color-white: rgb(255,255,255);
-        --color-grey-0: rgb(255,255,255);
-        --color-grey-50: #f5f7f8;
-        --color-grey-100: rgb(153,153,153);
-        --color-grey-200: rgb(119,119,119);
-        --color-grey-300: rgb(85,85,85);
-        --color-grey-500: rgb(51,51,51);
-        --color-grey-700: rgb(29,29,29);
 
         --color-grey-0-transparent: rgba(255,255,255,0.1);
-
-        /* --color-white: rgb(255,255,255);
-        --color-grey-700: rgb(255,255,255);
-        --color-grey-500: #f5f7f8;
-        --color-grey-300: rgb(153,153,153);
-        --color-grey-200: rgb(119,119,119);
-        --color-grey-100: rgb(85,85,85);
-        --color-grey-50: rgb(51,51,51);
-        --color-grey-0: rgb(29,29,29); */
 
         --color-online: #4caf50;
         --color-solo-100: #b7e4c7;
@@ -163,19 +177,17 @@ const GlobalStyles = createGlobalStyle`
         --border-radius-sm: 0.4rem;
         --border-radius-md: 0.6rem;
         --border-radius-lg: 1.2rem;
-
-        --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-        --shadow-md: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
-        --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
     }
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        transition: background-color 0.3s ease, border 0.3s ease;
     }
     body {
-        font-family: 'Poppins', sans-serif;   
+        font-family: 'Poppins', sans-serif;
     }
+
 
     a {
         text-decoration: none;

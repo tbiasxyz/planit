@@ -9,15 +9,21 @@ import { useState } from "react";
 import NewProjectForm from "../features/projects/NewProjectForm";
 import { useProjects } from "../features/projects/useProjects";
 import Spinner from "../ui/Spinner";
+import { useCurrentUser } from "../features/authentication/useCurrentUser";
 
 function Projects() {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [searchParams] = useSearchParams();
   const view = searchParams.get("view") || "list";
 
-  const { projects, isPending } = useProjects();
+  const { projects, isPending: isLoadingProjects } = useProjects();
+  const { user, isPending } = useCurrentUser();
 
-  if (isPending) return <Spinner size="page" />;
+  if (isLoadingProjects || isPending) return <Spinner size="page" />;
+
+  const filterProjects = projects.filter((project) =>
+    project.user_ids.includes(user.id)
+  );
 
   const closeForm = () => setIsOpenForm(false);
 
@@ -38,8 +44,8 @@ function Projects() {
         </div>
       </Row>
       {isOpenForm && <NewProjectForm closeForm={closeForm} />}
-      {view === "list" && <ProjectsList projects={projects} />}
-      {view === "table" && <ProjectsTable projects={projects} />}
+      {view === "list" && <ProjectsList projects={filterProjects} />}
+      {view === "table" && <ProjectsTable projects={filterProjects} />}
     </>
   );
 }

@@ -85,12 +85,12 @@ function Navbar() {
         </StyledNavLink>
       </li>
       <li>
-        <StyledNavLink to="users">
+        <StyledNavLink to="teams">
           <HiOutlineUserGroup />
-          <span>Users</span>
+          <span>Teams</span>
         </StyledNavLink>
       </li>
-      <Divider />
+      {/* <Divider /> */}
       <li>
         <StyledNavLink to="profile">
           <HiOutlineUser />

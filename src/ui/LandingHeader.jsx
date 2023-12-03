@@ -23,8 +23,16 @@ function LandingHeader() {
     <StyledLandingHeader>
       <StyledButtons>
         <LinkButton
+          to="/app"
           role="button"
-          to="/login"
+          variation="accentHover"
+          cursor={false}
+        >
+          App
+        </LinkButton>
+        <LinkButton
+          role="button"
+          to="/auth/login"
           variation="accentHover"
           cursor={false}
         >
@@ -32,7 +40,7 @@ function LandingHeader() {
         </LinkButton>
         <LinkButton
           role="button"
-          to="/signup"
+          to="/auth/signup"
           variation="accentHover"
           cursor={false}
         >

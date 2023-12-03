@@ -69,14 +69,11 @@ function Landing() {
           size="large"
           role="button"
           withIcon
-          to="/signup"
+          to="auth/signup"
           cursor="false"
         >
           <span>Get started</span>
           <HiArrowSmallRight />
-        </LinkButton>
-        <LinkButton variation="accentHover" to="app" cursor="false">
-          App (delete later!)
         </LinkButton>
       </StyledLanding>
       <Cursor />

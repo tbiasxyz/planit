@@ -37,6 +37,8 @@ const Options = styled.div`
   padding: 1rem;
   max-height: 200px;
   overflow: auto;
+  width: 80%;
+
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -74,9 +76,12 @@ function Select({
   setSearchValue,
   defaultValue,
 }) {
-  const [selectedValue, setSelectedValue] = useState(
-    defaultValue ? options[0] : ""
-  );
+  const [selectedValue, setSelectedValue] = useState(() => {
+    if (!defaultValue) return "";
+    if (typeof defaultValue === "object") return defaultValue;
+    if (typeof defaultValue === "boolean") return options[0];
+  });
+
   const [isOpen, setIsOpen] = useState(false);
 
   const selectOptions = options?.filter(
@@ -100,11 +105,12 @@ function Select({
           if (!isOpen) setIsOpen(true);
           else return;
         }}
+        type={type}
       >
         <span onClick={() => setIsOpen((s) => !s)}>{selectedValue.tag}</span>
         <HiChevronDown />
         {isOpen && (
-          <Options>
+          <Options type={type}>
             {type === "search" && <Searchbar setSearchValue={setSearchValue} />}
             {selectOptions.map((option, i) => (
               <Option
@@ -126,7 +132,7 @@ function Select({
         type="hidden"
         id={id}
         name={id}
-        {...register(id, { required: "This field is required" })}
+        {...register?.(id, { required: "This field is required" })}
       />
     </>
   );

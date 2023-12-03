@@ -24,8 +24,6 @@ const Buttons = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: var(--color-grey-50);
-  border-radius: var(--border-radius-md);
   padding: 0.25rem 0.5rem;
 
   & button {

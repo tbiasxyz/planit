@@ -7,8 +7,7 @@ const StyledAppLayout = styled.div`
   display: grid;
   grid-template-columns: 20rem 1fr;
   grid-template-rows: 5rem 1fr;
-  max-height: 100vh;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Main = styled.main`
@@ -18,6 +17,7 @@ const Main = styled.main`
   grid-row: 2 / -1;
   padding: 1rem 1.5rem;
   overflow: auto;
+  height: 100%;
 `;
 
 function AppLayout() {

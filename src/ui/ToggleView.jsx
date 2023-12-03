@@ -16,7 +16,6 @@ const ToggleViewButton = styled.button`
   background-color: var(--color-grey-0);
   border: 1px solid transparent;
   padding: 0.25rem;
-  transition: 0.2s;
   cursor: pointer;
   border-radius: var(--border-radius-md);
 

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Divider = styled.hr`
-  margin: 1rem 0;
+  margin: 1rem auto;
+  width: 80%;
   border: 1px solid var(--color-grey-50);
 `;
 

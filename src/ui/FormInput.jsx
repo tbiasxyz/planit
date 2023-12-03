@@ -19,6 +19,11 @@ const FormInput = styled.input`
   &:focus {
     border: 2px solid var(--color-accent-500);
   }
+
+  &:disabled {
+    background-color: var(--color-grey-50);
+    color: var(--color-grey-200);
+  }
 `;
 
 export default FormInput;

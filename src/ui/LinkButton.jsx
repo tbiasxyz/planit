@@ -43,6 +43,12 @@ const LinkButton = styled(Link)`
   border: none;
   transition: 0.5s ease;
 
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: var(--color-accent-200);
+    `}
+
   ${(props) => variations[props.variation]}
   ${(props) => sizes[props.size]}
   ${(props) => types[props.type]}

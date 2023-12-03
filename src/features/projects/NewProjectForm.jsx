@@ -11,6 +11,8 @@ import { useCreateProject } from "./useCreateProject";
 import Heading from "../../ui/Heading";
 import DateInput from "../../ui/DateInput";
 import FormButton from "../../ui/FormButton";
+import { useCurrentUser } from "../authentication/useCurrentUser";
+import Spinner from "../../ui/Spinner";
 
 const move = keyframes`
   0% {
@@ -60,10 +62,11 @@ function NewProjectForm({ closeForm }) {
     setValue,
   } = useForm();
 
+  const { user } = useCurrentUser();
   const { createProject, isCreating } = useCreateProject();
-  console.log(isCreating);
 
   function onSubmit(formData) {
+    console.log(formData);
     const newProject = {
       name: formData.projectName,
       type: formData.projectType,
@@ -79,6 +82,7 @@ function NewProjectForm({ closeForm }) {
       solo: true,
       progress: 0,
       priority: formData.priority,
+      user_ids: [user.id],
     };
     console.log(newProject);
     createProject(newProject);
@@ -188,9 +192,10 @@ function NewProjectForm({ closeForm }) {
       >
         <TextArea
           id="description"
-          {...register("description", {
-            required: "Description is required",
-          })}
+          placeholder="Short project description"
+          register={register}
+          charsLimit={50}
+          required={true}
         />
       </FormSection>
 

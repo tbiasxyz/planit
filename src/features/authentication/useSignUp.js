@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 export function useSignUp() {
   const navigate = useNavigate();
   const { mutate: signUp, isPending: isSigningUp } = useMutation({
-    // mutationFn: signUpApi,
     mutationFn: ({ user, provider }) => {
       signUpApi(user, provider);
     },
     onSuccess: (data) => {
       console.log(data);
       toast.success("Succesfully signed up! Start by logging in your account!");
-      navigate("/login");
+      navigate("/auth/login");
     },
     onError: () => {
       toast.error("There was an error signing up. Try again!");
