@@ -1,5 +1,7 @@
+import Heading from "../../ui/Heading";
+
 function TeamsTable() {
-  return <div>Teams table</div>;
+  return <Heading as="h3">Teams table</Heading>;
 }
 
 export default TeamsTable;

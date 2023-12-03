@@ -102,8 +102,9 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-600: #5E35B1;
         --color-accent-700: #512DA8; */
 
+        --color-white: rgb(255,255,255);
+        --color-black: rgb(12,12,12);
         &, &.light-mode {
-            --color-white: rgb(255,255,255);
             --color-grey-0: rgb(255,255,255);
             --color-grey-50: #f5f7f8;
             --color-grey-100: rgb(153,153,153);
@@ -118,9 +119,8 @@ const GlobalStyles = createGlobalStyle`
         }
 
         &.dark-mode {
-            --color-white: rgb(255, 255, 255);
             --color-grey-700: rgb(255, 255, 255);
-            --color-grey-500: #333333;
+            --color-grey-500: rgb(167,167,167);
             --color-grey-300: rgb(102, 102, 102);
             --color-grey-200: rgb(79, 79, 79);
             --color-grey-100: rgb(56, 56, 56);

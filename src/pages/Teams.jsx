@@ -11,7 +11,7 @@ function Teams() {
     <>
       <Row>
         <ToggleView />
-        <span>Filter</span>
+        {/* <span>Filter</span> */}
       </Row>
       {view === "list" && <TeamsList />}
       {view === "table" && <TeamsTable />}

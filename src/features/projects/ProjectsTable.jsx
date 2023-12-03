@@ -5,9 +5,16 @@ import ProjectUsers from "./ProjectItemUsers";
 import ProjectProgressBar from "./ProjectProgressBar";
 import { capitalize } from "../../utils/helpers";
 import { format } from "date-fns";
+import { useCurrentUser } from "../authentication/useCurrentUser";
+import Spinner from "../../ui/Spinner";
+import Heading from "../../ui/Heading";
 
 function ProjectsTable({ projects }) {
-  return (
+  const projectsCount = projects.length;
+  const { user, isPending } = useCurrentUser();
+  if (isPending) return <Spinner size="page" />;
+  const userData = user.user_metadata;
+  return projectsCount ? (
     <Table columns="0.675fr 0.5fr 0.45fr 0.35fr 0.35fr 0.35fr 0.65fr 0.5fr 0.4fr 0.1fr">
       <Table.Header>
         <Table.Row>
@@ -64,13 +71,10 @@ function ProjectsTable({ projects }) {
             </Table.Data>
             <Table.Data>
               <ProjectUsers>
-                <img
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  alt="user"
-                />
+                <img src={userData.avatar} alt="User avatar" />
                 <img
                   src="https://dr.savee-cdn.com/things/6/5/2ff05e229b1a53b40edbe2.webp"
-                  alt="user"
+                  alt="User avatar"
                 />
               </ProjectUsers>
             </Table.Data>
@@ -81,6 +85,8 @@ function ProjectsTable({ projects }) {
         ))}
       </Table.Body>
     </Table>
+  ) : (
+    <Heading as="h4">Start by creating new project</Heading>
   );
 }
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProjectItem from "./ProjectItem";
+import Heading from "../../ui/Heading";
 
 const StyledProjectsView = styled.div`
   display: grid;
@@ -8,12 +9,16 @@ const StyledProjectsView = styled.div`
 `;
 
 function ProjectsList({ projects }) {
-  return (
+  const projectsCount = projects.length;
+  console.log(projectsCount);
+  return projectsCount ? (
     <StyledProjectsView>
       {projects.map((project) => (
         <ProjectItem project={project} key={project.id} />
       ))}
     </StyledProjectsView>
+  ) : (
+    <Heading as="h4">Start by creating new project</Heading>
   );
 }
 

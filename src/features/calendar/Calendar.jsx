@@ -35,6 +35,7 @@ const Buttons = styled.div`
     cursor: pointer;
     & svg {
       font-size: 1.25rem;
+      color: var(--color-grey-700);
     }
     &:hover {
       background-color: var(--color-accent-700);

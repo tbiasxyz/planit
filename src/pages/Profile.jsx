@@ -77,20 +77,23 @@ const Description = styled.div`
 
     & span:first-child {
       width: 7rem;
-      color: var(--color-grey-500);
+      /* color: var(--color-grey-700); */
+      color: var(--color-black);
       font-size: 1.1rem;
     }
 
     & span:nth-child(2) {
       font-size: 1.25rem;
       font-weight: 500;
-      color: var(--color-grey-700);
+      /* color: var(--color-grey-200); */
+      color: var(--color-black);
     }
 
     & p {
       font-weight: 500;
       font-size: 1.25rem;
-      color: var(--color-grey-700);
+      color: var(--color-black);
+      /* color: var(--color-grey-200); */
       width: 70%;
       font-family: "Merriweather", serif;
     }

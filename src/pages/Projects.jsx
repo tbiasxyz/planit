@@ -32,7 +32,7 @@ function Projects() {
       <Row>
         <ToggleView />
         <div>
-          <span>Filter</span>
+          {/* <span>Filter</span> */}
           <Button
             variation="icon"
             type="icon"

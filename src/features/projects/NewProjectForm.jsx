@@ -13,6 +13,7 @@ import DateInput from "../../ui/DateInput";
 import FormButton from "../../ui/FormButton";
 import { useCurrentUser } from "../authentication/useCurrentUser";
 import Spinner from "../../ui/Spinner";
+import { HiChevronLeft } from "react-icons/hi2";
 
 const move = keyframes`
   0% {
@@ -31,7 +32,7 @@ const StyledNewProjectForm = styled(Form)`
   top: 0;
   right: 0;
   background-color: var(--color-grey-0);
-  animation: ${move} 0.2s linear;
+  /* animation: ${move} 0.2s linear; */
   border-top-left-radius: var(--border-radius-lg);
   border-bottom-left-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
@@ -48,6 +49,25 @@ const StyledNewProjectForm = styled(Form)`
     grid-column: 1 / -1;
     margin-bottom: 0.5rem;
     color: var(--color-accent-700);
+  }
+`;
+
+const CloseButton = styled.button`
+  background-color: var(--color-accent-500);
+  position: absolute;
+  padding: 0.25rem;
+  top: 1%;
+  left: 2%;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-accent-700);
+  }
+  & svg {
+    color: var(--color-white);
+    font-size: 1.25rem;
   }
 `;
 
@@ -92,7 +112,12 @@ function NewProjectForm({ closeForm }) {
 
   return (
     <StyledNewProjectForm onSubmit={handleSubmit(onSubmit)}>
-      <Heading as="h3">Create new project</Heading>
+      <CloseButton onClick={closeForm}>
+        <HiChevronLeft />
+      </CloseButton>
+      <Heading as="h3" style={{ marginTop: "0.5rem" }}>
+        Create new project
+      </Heading>
       <FormSection
         inputLabel="Project name"
         error={errors?.projectName?.message}

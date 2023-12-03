@@ -11,7 +11,9 @@ export function useSignUp() {
     },
     onSuccess: (data) => {
       console.log(data);
-      toast.success("Succesfully signed up! Start by logging in your account!");
+      toast.success(
+        "Succesfully signed up! Confirm your account through e-mail"
+      );
       navigate("/auth/login");
     },
     onError: () => {

@@ -1,5 +1,7 @@
+import Heading from "../ui/Heading";
+
 function Messages() {
-  return <div>Messages</div>;
+  return <Heading as="h3">Messages</Heading>;
 }
 
 export default Messages;
