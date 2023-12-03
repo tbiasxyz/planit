@@ -37,7 +37,7 @@ const StyledLanding = styled.div`
 `;
 
 const Paragraph = styled.p`
-  color: var(--color-grey-500);
+  color: rgb(51, 51, 51);
   font-size: 1.5rem;
   width: 50rem;
   text-align: center;
