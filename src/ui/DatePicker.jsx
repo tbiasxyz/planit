@@ -18,7 +18,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useClickOutside } from "../hooks/useClickOutside";
 
 const StyledDatePicker = styled.div`
-  background-color: var(--color-grey-700);
+  background-color: var(--color-grey-50);
   box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ const Buttons = styled.div`
   padding: 0.5rem;
 
   & svg {
-    color: var(--color-grey-0);
+    color: var(--color-grey-700);
     font-size: 1.25rem;
     cursor: pointer;
     transition: 0.3s ease;
@@ -99,20 +99,20 @@ const Day = styled.button`
     css`
       &:hover {
         background-color: var(--color-grey-0-transparent);
-        color: var(--color-grey-50);
+        color: var(--color-accent-500);
       }
     `}
 
   ${(props) =>
     props.isSameMonth &&
     css`
-      color: var(--color-grey-0);
+      color: var(--color-grey-700);
     `}
 
   ${(props) =>
     !props.isSameMonth &&
     css`
-      color: var(--color-grey-200);
+      color: var(--color-grey-500);
     `}
 
     ${(props) =>

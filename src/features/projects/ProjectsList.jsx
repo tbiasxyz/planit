@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import ProjectItem from "./ProjectItem";
 import Heading from "../../ui/Heading";
+import { useCurrentUser } from "../authentication/useCurrentUser";
+import Spinner from "../../ui/Spinner";
 
 const StyledProjectsView = styled.div`
   display: grid;
@@ -10,11 +12,13 @@ const StyledProjectsView = styled.div`
 
 function ProjectsList({ projects }) {
   const projectsCount = projects.length;
-  console.log(projectsCount);
+  const { user, isPending } = useCurrentUser();
+  const userData = user.user_metadata;
+  if (isPending) return <Spinner size="page" />;
   return projectsCount ? (
     <StyledProjectsView>
       {projects.map((project) => (
-        <ProjectItem project={project} key={project.id} />
+        <ProjectItem project={project} key={project.id} user={userData} />
       ))}
     </StyledProjectsView>
   ) : (

@@ -73,7 +73,7 @@ function ProjectsTable({ projects }) {
               <ProjectUsers>
                 <img src={userData.avatar} alt="User avatar" />
                 <img
-                  src="https://dr.savee-cdn.com/things/6/5/2ff05e229b1a53b40edbe2.webp"
+                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   alt="User avatar"
                 />
               </ProjectUsers>

@@ -116,6 +116,7 @@ const GlobalStyles = createGlobalStyle`
             --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
             --shadow-md: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
             --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+            --color-grey-0-transparent: rgba(0,0,0,0.1);
         }
 
         &.dark-mode {
@@ -130,6 +131,7 @@ const GlobalStyles = createGlobalStyle`
             --shadow-sm: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
             --shadow-md: rgba(255, 255, 255, 0.05) 0px 6px 24px 0px, rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;;
             --shadow-lg: 0 2.4rem 3.2rem rgba(255, 255, 255, 0.4);
+            --color-grey-0-transparent: rgba(255,255,255,0.1);
         }
 
 
@@ -145,7 +147,7 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
 
 
-        --color-grey-0-transparent: rgba(255,255,255,0.1);
+        
 
         --color-online: #4caf50;
         --color-solo-100: #b7e4c7;
