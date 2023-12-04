@@ -35,6 +35,8 @@ function DateInput({ date, id, setValue, register }) {
     setValue(id, day);
   }
 
+  const close = () => setIsOpen(false);
+
   useEffect(() => {
     setValue(id, selectedDate !== "Unknown" ? selectedDate : null);
   }, [id, selectedDate, setValue]);
@@ -45,7 +47,9 @@ function DateInput({ date, id, setValue, register }) {
         <span>{selectedDate}</span>
         <HiChevronDown />
       </StyledDateInput>
-      {isOpen && <DatePicker setSelectedFormDate={handleSelectFormDate} />}
+      {isOpen && (
+        <DatePicker setSelectedFormDate={handleSelectFormDate} close={close} />
+      )}
       <input type="hidden" id={id} name={id} {...register(id)} />
     </>
   );

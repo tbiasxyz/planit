@@ -12,7 +12,6 @@ import Heading from "../../ui/Heading";
 import DateInput from "../../ui/DateInput";
 import FormButton from "../../ui/FormButton";
 import { useCurrentUser } from "../authentication/useCurrentUser";
-import Spinner from "../../ui/Spinner";
 import { HiChevronLeft } from "react-icons/hi2";
 
 const move = keyframes`
@@ -86,7 +85,6 @@ function NewProjectForm({ closeForm }) {
   const { createProject, isCreating } = useCreateProject();
 
   function onSubmit(formData) {
-    console.log(formData);
     const newProject = {
       name: formData.projectName,
       type: formData.projectType,
@@ -104,7 +102,6 @@ function NewProjectForm({ closeForm }) {
       priority: formData.priority,
       user_ids: [user.id],
     };
-    console.log(newProject);
     createProject(newProject);
     reset();
     closeForm();

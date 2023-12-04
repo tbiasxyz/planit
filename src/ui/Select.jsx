@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { HiChevronDown } from "react-icons/hi2";
 import Searchbar from "./Searchbar";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 const StyledSelect = styled.div`
   padding: 0.75rem 0.875rem;
@@ -37,7 +38,7 @@ const Options = styled.div`
   padding: 1rem;
   max-height: 200px;
   overflow: auto;
-  width: 80%;
+  width: 100%;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -82,6 +83,10 @@ function Select({
     if (typeof defaultValue === "boolean") return options[0];
   });
 
+  const ref = useClickOutside(() => {
+    setIsOpen(false);
+  });
+
   const [isOpen, setIsOpen] = useState(false);
 
   const selectOptions = options?.filter(
@@ -110,7 +115,7 @@ function Select({
         <span onClick={() => setIsOpen((s) => !s)}>{selectedValue.tag}</span>
         <HiChevronDown />
         {isOpen && (
-          <Options type={type}>
+          <Options type={type} ref={ref}>
             {type === "search" && <Searchbar setSearchValue={setSearchValue} />}
             {selectOptions.map((option, i) => (
               <Option

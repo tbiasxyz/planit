@@ -15,6 +15,7 @@ import Heading from "./Heading";
 import Row from "./Row";
 import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 const StyledDatePicker = styled.div`
   background-color: var(--color-grey-700);
@@ -138,17 +139,14 @@ const Day = styled.button`
     `}
 `;
 
-function DatePicker({ setSelectedFormDate }) {
+function DatePicker({ setSelectedFormDate, close }) {
   const today = startOfToday();
   const [selectedDay, setSelectedDay] = useState(today);
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
   const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
   const newDays = eachDayOfInterval({
-    // start: startOfMonth(today),
-    // start: startOfWeek(firstDayCurrentMonth),
     start: firstDayCurrentMonth,
-    // end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
     end: endOfMonth(firstDayCurrentMonth),
   });
 
@@ -161,8 +159,10 @@ function DatePicker({ setSelectedFormDate }) {
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
 
+  const ref = useClickOutside(close);
+
   return (
-    <StyledDatePicker>
+    <StyledDatePicker ref={ref}>
       <Row>
         <Heading as="h5">{format(firstDayCurrentMonth, "MMMM yyyy")}</Heading>
         <Buttons>
