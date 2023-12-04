@@ -18,7 +18,7 @@ const variations = {
     & svg {
       width: 1.75rem;
       height: 1.75rem;
-      color: var(--color-grey-0);
+      color: var(--color-white);
     }
   `,
 

@@ -3,7 +3,8 @@ import Heading from "../ui/Heading";
 import styled from "styled-components";
 
 const StyledProject = styled.div`
-  background-color: var(--color-white);
+  background-color: var(--color-grey-700);
+  background-color: var(--color-grey-0);
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
   height: 50rem;

@@ -81,7 +81,6 @@ const MonthDays = styled.div`
 `;
 
 const MonthDay = styled.button`
-  /* background-color: var(--color-white-0); */
   color: var(--color-grey-700);
   border: none;
   padding: 2.75rem;
