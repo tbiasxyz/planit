@@ -74,6 +74,7 @@ const Nationality = styled.div`
 function UserAvatar() {
   const { user } = useCurrentUser();
   const userData = user.user_metadata;
+  console.log(userData);
   // if (isPending) return <Spinner />;
   return (
     <StyledUserAvatar>

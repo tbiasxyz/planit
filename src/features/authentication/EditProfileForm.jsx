@@ -166,6 +166,13 @@ function EditProfileForm() {
             dataToUpdate.socials = userData.socials;
           }
           dataToUpdate.socials[key] = value;
+        }
+        if (key === "country") {
+          const newCountry = countries
+            .filter((country) => country.cca2 === value)
+            .at(0);
+          dataToUpdate.country = newCountry.name.common;
+          dataToUpdate.countryFlag = newCountry.flags.svg;
         } else {
           dataToUpdate[key] = value;
         }

@@ -10,7 +10,6 @@ export function useSignUp() {
       signUpApi(user, provider);
     },
     onSuccess: (data) => {
-      console.log(data);
       toast.success(
         "Succesfully signed up! Confirm your account through e-mail"
       );
