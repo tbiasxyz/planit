@@ -15,7 +15,7 @@ export function useLogIn() {
       navigate("/app");
     },
     onError: () => {
-      toast.error("Provided wrong E-Mail or password");
+      toast.error("Provided wrong login or you didn't confirm your account");
     },
   });
 

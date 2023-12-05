@@ -10,8 +10,7 @@ import Tag from "../../ui/Tag";
 import Divider from "../../ui/Divider";
 import { Link } from "react-router-dom";
 import Dots from "../../ui/Dots";
-import ProjectUsers from "./ProjectItemUsers";
-import { useCurrentUser } from "../authentication/useCurrentUser";
+import ProjectUsers from "./ProjectUsers";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);

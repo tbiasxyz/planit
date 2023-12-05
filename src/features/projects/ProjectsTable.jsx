@@ -1,7 +1,7 @@
 import Table from "../../ui/Table";
 import Dots from "../../ui/Dots";
 import ProjectTag from "./ProjectTag";
-import ProjectUsers from "./ProjectItemUsers";
+import ProjectUsers from "./ProjectUsers";
 import ProjectProgressBar from "./ProjectProgressBar";
 import { capitalize } from "../../utils/helpers";
 import { format } from "date-fns";

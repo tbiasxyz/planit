@@ -9,7 +9,7 @@ export function useSignUp() {
     mutationFn: ({ user, provider }) => {
       signUpApi(user, provider);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success(
         "Succesfully signed up! Confirm your account through e-mail"
       );

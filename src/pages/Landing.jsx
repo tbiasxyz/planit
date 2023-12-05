@@ -70,7 +70,7 @@ function Landing() {
           role="button"
           withIcon
           to="auth/signup"
-          cursor="false"
+          cursor={false}
         >
           <span>Get started</span>
           <HiArrowSmallRight />

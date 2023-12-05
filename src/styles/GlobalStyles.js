@@ -141,13 +141,9 @@ const GlobalStyles = createGlobalStyle`
          --color-accent-500: #6363F1;
          --color-accent-600: #4F4FE5;
          --color-accent-700: #4343CA;
-         --color-accent-800: #32329A;
-         --color-accent-900: #2E2E81;
+         --color-accent-900: #32329A;
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
-
-
-        
 
         --color-online: #4caf50;
         --color-solo-100: #b7e4c7;

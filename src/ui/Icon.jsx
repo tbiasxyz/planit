@@ -42,9 +42,14 @@ StyledIcon.defaultProps = {
   inputIcon: false,
 };
 
-function Icon({ children, onClick, inputIcon, size }) {
+function Icon({ children, onClick, inputIcon, size, style }) {
   return (
-    <StyledIcon onClick={() => onClick?.()} inputIcon={inputIcon} size={size}>
+    <StyledIcon
+      onClick={() => onClick?.()}
+      inputIcon={inputIcon}
+      size={size}
+      style={style}
+    >
       {children}
     </StyledIcon>
   );

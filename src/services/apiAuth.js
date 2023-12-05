@@ -5,7 +5,7 @@ export async function signUp(user, provider) {
   // !provider - user used email and password to sign up
   if (!provider) {
     console.log("No provider");
-    const { data, error } = await supabase.auth.signUp({
+    const { data: newSignedUpUser, error } = await supabase.auth.signUp({
       email: user.email,
       password: user.password,
       options: {
@@ -30,10 +30,11 @@ export async function signUp(user, provider) {
     if (error) {
       throw new Error(error.message);
     }
-    return data;
 
-    // google signup
-  } else {
+    return newSignedUpUser;
+  }
+  // google signup
+  else {
     console.log("provider: ");
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
@@ -71,6 +72,19 @@ export async function getLoggedUser() {
 
   if (error) throw new Error(error.message);
   return user;
+}
+
+export async function getAllUsers() {
+  // const {
+  //   data: { users },
+  //   error,
+  // } = await supabase.auth.admin.listUsers();
+  // if (error) throw new Error(error.message);
+  // return users;
+  const { data: users, error } = await supabase.from("auth.users").select("*");
+
+  if (error) throw new Error(error.message);
+  return users;
 }
 
 export async function updateLoggedUser(formUpdateData) {
