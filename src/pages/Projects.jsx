@@ -21,7 +21,7 @@ function Projects() {
 
   if (isLoadingProjects || isPending) return <Spinner size="page" />;
 
-  const filterProjects = projects.filter((project) =>
+  const filterProjects = projects?.filter((project) =>
     project?.user_ids?.includes(user.id)
   );
 
