@@ -53,7 +53,7 @@ const ProjectLogo = styled.span.attrs({ role: "img" })`
   align-items: center;
   background-color: var(--color-white);
   & svg {
-    font-size: 2rem;
+    font-size: 2.125rem;
     color: var(--color-accent-500);
   }
 `;
