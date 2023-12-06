@@ -35,6 +35,7 @@ const ProjectHeader = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   margin: 1rem 0 1.2rem 0;
+  box-shadow: var(--shadow-md);
 `;
 
 const HeaderDescription = styled.div`
