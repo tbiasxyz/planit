@@ -17,7 +17,7 @@ function ProjectsList({ projects }) {
   if (isPending) return <Spinner size="page" />;
   return projectsCount ? (
     <StyledProjectsView>
-      {projects.map((project) => (
+      {projects?.map((project) => (
         <ProjectItem project={project} key={project.id} user={userData} />
       ))}
     </StyledProjectsView>

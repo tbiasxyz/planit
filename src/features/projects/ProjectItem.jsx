@@ -11,6 +11,7 @@ import Divider from "../../ui/Divider";
 import { Link } from "react-router-dom";
 import Dots from "../../ui/Dots";
 import ProjectUsers from "./ProjectUsers";
+import ProjectTag from "./ProjectTag";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);

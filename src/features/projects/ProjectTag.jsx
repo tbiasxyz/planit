@@ -1,14 +1,24 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyledProjectTag = styled.div`
   display: flex;
   gap: 1rem;
   background-color: var(--color-${(props) => props.color}-100);
-  padding: 0.25rem;
+
   width: 80%;
   justify-content: center;
   align-items: center;
   border-radius: var(--border-radius-md);
+  ${(props) =>
+    props.size === "normal" &&
+    css`
+      padding: 0.25rem;
+    `}
+  ${(props) =>
+    props.size === "large" &&
+    css`
+      padding: 0.5rem;
+    `}
 `;
 
 const StatusTag = styled.span`
@@ -24,9 +34,9 @@ const StatusDot = styled.span`
   background-color: var(--color-${(props) => props.color}-700);
 `;
 
-function ProjectTag({ tag, color, type }) {
+function ProjectTag({ tag, color, type, size = "normal" }) {
   return (
-    <StyledProjectTag color={color}>
+    <StyledProjectTag color={color} size={size}>
       {type === "status" && <StatusDot color={color} />}
       <StatusTag color={color}>{tag}</StatusTag>
     </StyledProjectTag>

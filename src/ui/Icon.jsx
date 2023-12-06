@@ -6,7 +6,6 @@ const StyledIcon = styled.span`
   justify-content: center;
   align-items: center;
   border-radius: var(--border-radius-md);
-  background-color: var(--color-grey-0);
   cursor: pointer;
   ${(props) =>
     props.inputIcon &&
@@ -17,6 +16,7 @@ const StyledIcon = styled.span`
       transform: translate(-2%, -50%);
     `}
   & svg {
+    color: var(--color-grey-500);
     ${(props) =>
       props.size === "normal" &&
       css`
@@ -27,7 +27,6 @@ const StyledIcon = styled.span`
       css`
         font-size: 1.75rem;
       `}
-    color: var(--color-grey-500);
   }
   &:hover {
     background-color: var(--color-accent-50);
@@ -35,6 +34,8 @@ const StyledIcon = styled.span`
       color: var(--color-accent-700);
     }
   }
+
+  ${(props) => props.style}
 `;
 
 StyledIcon.defaultProps = {

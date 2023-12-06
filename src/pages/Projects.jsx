@@ -10,6 +10,7 @@ import NewProjectForm from "../features/projects/NewProjectForm";
 import { useProjects } from "../features/projects/useProjects";
 import Spinner from "../ui/Spinner";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
+import PrimaryButton from "../ui/PrimaryButton";
 
 function Projects() {
   const [isOpenForm, setIsOpenForm] = useState(false);
@@ -33,14 +34,10 @@ function Projects() {
         <ToggleView />
         <div>
           {/* <span>Filter</span> */}
-          <Button
-            variation="icon"
-            type="icon"
-            size="icon"
-            onClick={() => setIsOpenForm((s) => !s)}
-          >
+          <PrimaryButton onClick={() => setIsOpenForm((s) => !s)}>
             <HiPlus />
-          </Button>
+            <span>New</span>
+          </PrimaryButton>
         </div>
       </Row>
       {isOpenForm && <NewProjectForm closeForm={closeForm} />}

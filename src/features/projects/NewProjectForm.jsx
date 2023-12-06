@@ -216,7 +216,7 @@ function NewProjectForm({ closeForm }) {
           id="description"
           placeholder="Short project description"
           register={register}
-          charsLimit={50}
+          charsLimit={100}
           required={true}
         />
       </FormSection>

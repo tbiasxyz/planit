@@ -21,6 +21,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import Teams from "./pages/Teams";
 import EditProfile from "./pages/EditProfile";
 import { ThemeModeProvider } from "./context/ThemeModeContext";
+import { AccentColorProvider } from "./context/AccentColorContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,62 +32,67 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <ThemeModeProvider>
-      <QueryClientProvider client={queryClient} contextSharing={true}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <GlobalStyles />
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Landing />} />
-            <Route path="auth" element={<AuthPage />}>
-              <Route index element={<Navigate replace to="login" />} />
-              <Route path="signup" element={<SignupForm />} />
-              <Route path="login" element={<LoginForm />} />
-            </Route>
+      <AccentColorProvider>
+        <QueryClientProvider client={queryClient} contextSharing={true}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <GlobalStyles />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Landing />} />
+              <Route path="auth" element={<AuthPage />}>
+                <Route index element={<Navigate replace to="login" />} />
+                <Route path="signup" element={<SignupForm />} />
+                <Route path="login" element={<LoginForm />} />
+              </Route>
 
-            <Route
-              path="app"
-              element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate replace to="dashboard" />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="teams" element={<Teams />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="projects/project/:projectID" element={<Project />} />
-              <Route path="messages" element={<Messages />} />
-              <Route path="calendar" element={<CalendarPage />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="profile/edit" element={<EditProfile />} />
-              <Route path="settings" element={<Settings />} />
+              <Route
+                path="app"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Navigate replace to="dashboard" />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="teams" element={<Teams />} />
+                <Route path="projects" element={<Projects />} />
+                <Route
+                  path="projects/project/:projectID"
+                  element={<Project />}
+                />
+                <Route path="messages" element={<Messages />} />
+                <Route path="calendar" element={<CalendarPage />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="profile/edit" element={<EditProfile />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="*" element={<PageNotFound />} />
+              </Route>
               <Route path="*" element={<PageNotFound />} />
-            </Route>
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
 
-        <Toaster
-          position="top-center"
-          gutter={10}
-          containerStyle={{ marginTop: "8px" }}
-          toastOptions={{
-            success: {
-              duration: 4000,
-            },
-            error: {
-              duration: 5000,
-            },
-            style: {
-              fontSize: "1rem",
-              padding: "1rem 1.25rem",
-              backgroundColor: "var(--color-grey-0)",
-              color: "var(--color-grey-700)",
-            },
-          }}
-        />
-      </QueryClientProvider>
+          <Toaster
+            position="top-center"
+            gutter={10}
+            containerStyle={{ marginTop: "8px" }}
+            toastOptions={{
+              success: {
+                duration: 4000,
+              },
+              error: {
+                duration: 5000,
+              },
+              style: {
+                fontSize: "1rem",
+                padding: "1rem 1.25rem",
+                backgroundColor: "var(--color-grey-0)",
+                color: "var(--color-grey-700)",
+              },
+            }}
+          />
+        </QueryClientProvider>
+      </AccentColorProvider>
     </ThemeModeProvider>
   );
 }

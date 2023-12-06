@@ -10,6 +10,7 @@ const StyledHeader = styled.thead`
     background-color: var(--color-grey-0);
     padding: 0.75rem;
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+    box-shadow: var(--shadow-md);
   }
 
   & tr td {

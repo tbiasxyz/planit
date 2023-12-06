@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
-import { HiOutlinePencil } from "react-icons/hi2";
+import { HiOutlinePencilSquare } from "react-icons/hi2";
 import Spinner from "../ui/Spinner";
 import { useNavigate } from "react-router-dom";
 
@@ -237,7 +237,7 @@ function Profile() {
           )}
 
           <EditButton onClick={() => navigate("edit")}>
-            <HiOutlinePencil />
+            <HiOutlinePencilSquare />
           </EditButton>
         </UserInfo>
       </UserInfoContainer>

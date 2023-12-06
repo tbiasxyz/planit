@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import EditProfileForm from "../features/authentication/EditProfileForm";
-import BackButton from "../ui/BackButton";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import PrimaryButton from "../ui/PrimaryButton";
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -10,9 +10,9 @@ function EditProfile() {
     <>
       <Row>
         <Heading as="h3">Edit Profile</Heading>
-        <BackButton onClick={() => navigate("/app/profile")}>
+        <PrimaryButton onClick={() => navigate("/app/profile")}>
           Go back
-        </BackButton>
+        </PrimaryButton>
       </Row>
 
       <EditProfileForm />

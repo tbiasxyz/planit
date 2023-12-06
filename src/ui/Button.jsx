@@ -15,10 +15,10 @@ const variations = {
   `,
   icon: css`
     background-color: var(--color-accent-700);
+    color: var(--color-white);
     & svg {
       width: 1.75rem;
       height: 1.75rem;
-      color: var(--color-white);
     }
   `,
 

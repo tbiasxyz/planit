@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { HiChevronDown } from "react-icons/hi2";
 import Searchbar from "./Searchbar";
 import { useClickOutside } from "../hooks/useClickOutside";
@@ -66,6 +66,11 @@ const Option = styled.span`
   &:hover {
     background-color: var(--color-accent-50);
   }
+  ${(props) =>
+    props.isSelected &&
+    css`
+      background-color: var(--color-accent-50);
+    `}
 `;
 
 function Select({
@@ -88,10 +93,6 @@ function Select({
   });
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const selectOptions = options?.filter(
-    (option) => option?.value !== selectedValue?.value
-  );
 
   function handleSelect(option) {
     setSelectedValue(option);
@@ -117,7 +118,7 @@ function Select({
         {isOpen && (
           <Options type={type} ref={ref}>
             {type === "search" && <Searchbar setSearchValue={setSearchValue} />}
-            {selectOptions.map((option, i) => (
+            {options.map((option, i) => (
               <Option
                 role="option"
                 key={i}
@@ -126,6 +127,7 @@ function Select({
                   setIsOpen((s) => !s);
                   if (setSearchValue) setSearchValue("");
                 }}
+                isSelected={option.value === selectedValue.value}
               >
                 {option.tag}
               </Option>

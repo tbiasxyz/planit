@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const BackButton = styled.button`
-  padding: 1rem 1.75rem;
+const PrimaryButton = styled.button`
+  padding: 0.875rem 1.5rem;
   outline: none;
   cursor: pointer;
   border: none;
@@ -13,6 +13,14 @@ const BackButton = styled.button`
   &:hover {
     background-color: var(--color-accent-700);
   }
+  &:has(svg) {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    & svg {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
-export default BackButton;
+export default PrimaryButton;
