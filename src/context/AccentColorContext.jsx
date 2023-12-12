@@ -37,7 +37,7 @@ function useAccentColor() {
   const accentContext = useContext(AccentColorContext);
   if (ThemeContext === undefined)
     throw new Error(
-      "AccentColorProvider is used outside of AccentColorProvider"
+      "AccentColorContext is used outside of AccentColorProvider"
     );
   return accentContext;
 }

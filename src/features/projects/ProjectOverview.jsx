@@ -37,6 +37,7 @@ const OverviewPart = styled.div`
     color: var(--color-grey-200);
     font-size: 1rem;
     font-weight: 500;
+    align-self: flex-start;
   }
   margin-bottom: 1rem;
   & > span:nth-of-type(2),
@@ -44,6 +45,7 @@ const OverviewPart = styled.div`
   & > p {
     font-size: 1.1rem;
     color: var(--color-grey-500);
+    max-width: 40rem;
   }
 `;
 
@@ -67,7 +69,6 @@ function ProjectOverview({ project }) {
         <span>Type:</span>
         <ProjectTag
           size="large"
-          // color={project.type}
           color="project"
           tag={capitalize(project.type)}
         />

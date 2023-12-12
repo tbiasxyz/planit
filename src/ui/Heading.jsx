@@ -24,7 +24,6 @@ const Heading = styled.h1`
     css`
       font-size: 2.5rem;
       color: var(--color-white);
-      /* color: var(--color-grey-700); */
     `}
     ${(props) =>
     props.as === "h3" &&

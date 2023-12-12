@@ -16,7 +16,7 @@ const StyledAccentColor = styled.button`
   ${(props) =>
     props.isActive
       ? css`
-          border: 2px solid var(--color-grey-700);
+          border: 2px solid var(--color-white);
         `
       : css`
           border: 2px solid transparent;

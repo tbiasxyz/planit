@@ -16,6 +16,7 @@ function AccentColorToggle() {
       <AccentColor color="red" />
       <AccentColor color="orange" />
       <AccentColor color="green" />
+      {/* <AccentColor color="black" /> */}
     </AccentColors>
   );
 }

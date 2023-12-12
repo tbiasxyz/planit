@@ -59,6 +59,11 @@ export async function logIn({ email, password }) {
   return data;
 }
 
+export async function signOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) throw new Error(error.message);
+}
+
 export async function getLoggedUser() {
   const {
     data: { session },
@@ -72,19 +77,6 @@ export async function getLoggedUser() {
 
   if (error) throw new Error(error.message);
   return user;
-}
-
-export async function getAllUsers() {
-  // const {
-  //   data: { users },
-  //   error,
-  // } = await supabase.auth.admin.listUsers();
-  // if (error) throw new Error(error.message);
-  // return users;
-  const { data: users, error } = await supabase.from("auth.users").select("*");
-
-  if (error) throw new Error(error.message);
-  return users;
 }
 
 export async function updateLoggedUser(formUpdateData) {

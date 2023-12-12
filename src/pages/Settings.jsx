@@ -1,32 +1,33 @@
 import styled from "styled-components";
 import AccentColorToggle from "../ui/AccentColorToggle";
+import FontToggle from "../ui/FontToggle";
 
 const SettingsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.25rem;
+  gap: 2rem;
 `;
 
 const SettingsPart = styled.div`
   display: flex;
-  & div:first-of-type {
+  & > div:first-of-type {
     margin-right: 3rem;
     width: 15rem;
-  }
-  & span {
-    color: var(--color-grey-700);
-    font-weight: 700;
-    font-size: 1.125rem;
-  }
-  & p {
-    color: var(--color-grey-500);
+    & span {
+      color: var(--color-grey-700);
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    & p {
+      color: var(--color-grey-500);
+    }
   }
 `;
 
 function Settings() {
   return (
     <>
-      {/* <Heading as="h3">Settings</Heading> */}
       <SettingsContainer>
         <SettingsPart>
           <div>
@@ -34,6 +35,13 @@ function Settings() {
             <p>Select your accent color</p>
           </div>
           <AccentColorToggle />
+        </SettingsPart>
+        <SettingsPart>
+          <div>
+            <span>Font</span>
+            <p>Select your font</p>
+          </div>
+          <FontToggle />
         </SettingsPart>
       </SettingsContainer>
     </>

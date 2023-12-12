@@ -1,103 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
-// --color-accent-50: #e0f8e0;
-// --color-accent-100: #c3f0c2;
-// --color-accent-200: #9be09a;
-// --color-accent-500: #4caf50;
-// --color-accent-600: #43a047;
-// --color-accent-700: #388e3d;
-// --color-accent-900: #276e2d;
-
-// --color-accent-50: #E4F7FF;
-// --color-accent-100: #E0EEFF;
-// --color-accent-200: #C7D8FE;
-// --color-accent-500: #63A6F1;
-// --color-accent-600: #4F8FE5;
-// --color-accent-700: #4382CA;
-// --color-accent-800: #326060;
-// --color-accent-900: #2E5657;
-
-// --color-accent-50: #E4E4FF;
-// --color-accent-100: #E0E0FF;
-// --color-accent-200: #C7C7FE;
-// --color-accent-500: #6363F1;
-// --color-accent-600: #4F4FE5;
-// --color-accent-700: #4343CA;
-// --color-accent-800: #32329A;
-// --color-accent-900: #2E2E81;
-
-// --color-accent-50: #fff9e0;
-// --color-accent-100: #ffefb2;
-// --color-accent-200: #ffe581;
-// --color-accent-500: #ffd600;
-// --color-accent-600: #ffc300;
-// --color-accent-700: #ffb100;
-// --color-accent-900: #ff8e00;
-
-// --color-accent-50: #E4F4FF;
-// --color-accent-100: #E0EDFF;
-// --color-accent-200: #C7D3FE;
-// --color-accent-500: #6383F1;
-// --color-accent-600: #4F6EE5;
-// --color-accent-700: #4364CA;
-// --color-accent-800: #324B9A;
-// --color-accent-900: #2E4781;
-
-// --color-accent-50: #FFE4EA;
-// --color-accent-100: #FFDFE0;
-// --color-accent-200: #FFC7D2;
-// --color-accent-500: #F16377;
-// --color-accent-600: #E54F61;
-// --color-accent-700: #CA434E;
-// --color-accent-900: #7E2E3C;
-
-// --color-accent-50: #FFE4F4;
-// --color-accent-100: #FFDFEE;
-// --color-accent-200: #FFC7D2;
-// --color-accent-500: #F163A6;
-// --color-accent-600: #E54F94;
-// --color-accent-700: #CA4382;
-// --color-accent-800: #9A3267;
-// --color-accent-900: #7E2E5D;
-
-// --color-accent-50: #F5F5F5;
-// --color-accent-100: #E0E0E0;
-// --color-accent-200: #B3B3B3;
-// --color-accent-500: #333333;
-// --color-accent-600: #222222;
-// --color-accent-700: #111111;
-// --color-accent-800: #000000;
-// --color-accent-900: #000000;
-
 const GlobalStyles = createGlobalStyle`
     :root {
-        /* --color-accent-50: #F5F5F5;
-        --color-accent-100: #E0E0E0;
-        --color-accent-200: #B3B3B3;
-        --color-accent-500: #333333;
-        --color-accent-600: #222222;
-        --color-accent-700: #111111;
-        --color-accent-800: #000000;
-        --color-accent-900: #000000; */
 
-
-            /* --color-accent-50: #E1BEE7;
-            --color-accent-100: #CE93D8;
-            --color-accent-200: #BA68C8;
-            --color-accent-300: #AB47BC;
-            --color-accent-400: #9C27B0;
-            --color-accent-500: #8E24AA;
-            --color-accent-600: #7B1FA2;
-            --color-accent-700: #6A1B9A; */
-
-        /* --color-accent-50: #EDE7F6;
-        --color-accent-100: #D1C4E9;
-        --color-accent-200: #B39DDB;
-        --color-accent-300: #9575CD;
-        --color-accent-400: #7E57C2;
-        --color-accent-500: #673AB7;
-        --color-accent-600: #5E35B1;
-        --color-accent-700: #512DA8; */
 
         --color-white: rgb(255,255,255);
         --color-black: rgb(12,12,12);
@@ -122,6 +27,8 @@ const GlobalStyles = createGlobalStyle`
             --color-accent-600: #4F4FE5;
             --color-accent-700: #4343CA;
             --color-accent-900: #32329A;
+
+            font-family: 'Poppins', sans-serif;
         }
 
         &.dark-mode {
@@ -139,13 +46,6 @@ const GlobalStyles = createGlobalStyle`
             --color-grey-0-transparent: rgba(255,255,255,0.1);
         }
 
-        /* --color-accent-50: #E4E4FF;
-         --color-accent-100: #E0E0FF;
-         --color-accent-200: #C7C7FE;
-         --color-accent-500: #6363F1;
-         --color-accent-600: #4F4FE5;
-         --color-accent-700: #4343CA;
-         --color-accent-900: #32329A; */
         &.accent-purple {    
          --color-accent-50: #E4E4FF;
          --color-accent-100: #E0E0FF;
@@ -192,10 +92,27 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-700: #388e3d;
         --color-accent-900: #276e2d;
         }
+        /* &.accent-black {
+            --color-accent-50: #F5F5F5;
+            --color-accent-100: #E0E0E0;
+            --color-accent-200: #B3B3B3;
+            --color-accent-500: #333333;
+            --color-accent-600: #222222;
+            --color-accent-700: #111111;
+            --color-accent-900: #000000;
+        } */
 
+        &.font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        &.font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        &.font-mukta {
+            font-family: 'Mukta', sans-serif;
+        }
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
-
         --color-online: #4caf50;
         --color-solo-100: #b7e4c7;
         --color-solo-700: #2d6a4f;
@@ -221,11 +138,6 @@ const GlobalStyles = createGlobalStyle`
         --color-canceled-100: #ffeaea;
         --color-canceled-700: #fd5151;
 
-
-        --color-development-100: #e3d9f1;
-        --color-development-700: #6363F1;
-        --color-design-100: #ffdac1;
-        --color-design-700: #ff8c00;
         --color-project-100: var(--color-accent-50);
         --color-project-700: var(--color-accent-500);
 
@@ -239,6 +151,8 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-orange-preview-700: #ff7a00;
         --color-accent-green-preview-500: #4caf50;
         --color-accent-green-preview-700: #388e3d;
+        /* --color-accent-black-preview-500: #333333;
+        --color-accent-black-preview-700: #111111; */
 
         --border-radius-rounded: 50%;
         --border-radius-sm: 0.4rem;
@@ -251,15 +165,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         transition: background-color 0.3s ease, border 0.3s ease;
     }
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-
 
     a {
         text-decoration: none;
     }
-
 `;
 
 export default GlobalStyles;

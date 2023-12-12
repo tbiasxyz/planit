@@ -1,5 +1,4 @@
 import Table from "../../ui/Table";
-import Dots from "../../ui/Dots";
 import ProjectTag from "./ProjectTag";
 import ProjectUsers from "./ProjectUsers";
 import ProjectProgressBar from "./ProjectProgressBar";
@@ -8,6 +7,8 @@ import { format } from "date-fns";
 import { useCurrentUser } from "../authentication/useCurrentUser";
 import Spinner from "../../ui/Spinner";
 import Heading from "../../ui/Heading";
+import Menu from "../../ui/Menu";
+import { HiOutlineTrash, HiOutlinePencil, HiEye } from "react-icons/hi2";
 
 function ProjectsTable({ projects }) {
   const projectsCount = projects.length;
@@ -79,7 +80,17 @@ function ProjectsTable({ projects }) {
               </ProjectUsers>
             </Table.Data>
             <Table.Data>
-              <Dots top={50} right={1} type="project" />
+              <Menu>
+                <Menu.Open openId={project.id} />
+
+                <Menu.List openId={project.id}>
+                  <Menu.ListItem icon={<HiEye />}>View</Menu.ListItem>
+                  <Menu.ListItem icon={<HiOutlinePencil />}>Edit</Menu.ListItem>
+                  <Menu.ListItem icon={<HiOutlineTrash />}>
+                    Delete
+                  </Menu.ListItem>
+                </Menu.List>
+              </Menu>
             </Table.Data>
           </Table.Row>
         ))}

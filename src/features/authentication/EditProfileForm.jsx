@@ -7,19 +7,17 @@ import { useEffect, useState } from "react";
 import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
 import FormInputWithIcon from "../../ui/FormInputWithIcon";
-import { HiOutlineTrash } from "react-icons/hi2";
-
-import TextArea from "../../ui/TextArea";
-import Select from "../../ui/Select";
-import { useCountries } from "../../hooks/useCountries";
-import { useForm } from "react-hook-form";
+import { HiOutlineTrash, HiOutlineXMark } from "react-icons/hi2";
 import {
   FaInstagram,
   FaTwitter,
   FaLinkedin,
   FaFacebook,
 } from "react-icons/fa6";
-import { HiOutlineXMark } from "react-icons/hi2";
+import TextArea from "../../ui/TextArea";
+import Select from "../../ui/Select";
+import { useCountries } from "../../hooks/useCountries";
+import { useForm } from "react-hook-form";
 import DragAndDrop from "../../ui/DragAndDrop";
 import FormButton from "../../ui/FormButton";
 import { useUpdateUserData } from "./useUpdateUserData";
