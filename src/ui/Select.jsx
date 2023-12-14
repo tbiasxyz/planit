@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { HiChevronDown } from "react-icons/hi2";
 import Searchbar from "./Searchbar";
+import { capitalize } from "lodash";
 import { useClickOutside } from "../hooks/useClickOutside";
 
 const StyledSelect = styled.div`
@@ -81,10 +82,12 @@ function Select({
   type,
   setSearchValue,
   defaultValue,
+  required = true,
 }) {
   const [selectedValue, setSelectedValue] = useState(() => {
     if (!defaultValue) return "";
-    if (typeof defaultValue === "object") return defaultValue;
+    if (typeof defaultValue === "object" || typeof defaultValue === "string")
+      return defaultValue;
     if (typeof defaultValue === "boolean") return options[0];
   });
 
@@ -113,7 +116,9 @@ function Select({
         }}
         type={type}
       >
-        <span onClick={() => setIsOpen((s) => !s)}>{selectedValue.tag}</span>
+        <span onClick={() => setIsOpen((s) => !s)}>
+          {selectedValue.tag || capitalize(selectedValue)}
+        </span>
         <HiChevronDown />
         {isOpen && (
           <Options type={type} ref={ref}>
@@ -139,7 +144,7 @@ function Select({
         type="hidden"
         id={id}
         name={id}
-        {...register?.(id, { required: "This field is required" })}
+        {...register?.(id, required && { required: "This field is required" })}
       />
     </>
   );

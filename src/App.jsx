@@ -24,6 +24,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import Teams from "./pages/Teams";
 import EditProfile from "./pages/EditProfile";
 import { FontContextProvider } from "./context/FontContext";
+import EditProject from "./pages/EditProject";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -64,6 +65,7 @@ function App() {
             <Route path="teams" element={<Teams />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/project/:projectID" element={<Project />} />
+            <Route path="projects/project/edit" element={<EditProject />} />
             <Route path="messages" element={<Messages />} />
             <Route path="calendar" element={<CalendarPage />} />
             <Route path="profile" element={<Profile />} />

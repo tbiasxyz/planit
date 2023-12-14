@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Heading from "../ui/Heading";
 import styled from "styled-components";
 import { useProjects } from "../features/projects/useProjects";
@@ -95,6 +95,7 @@ const ProjectMain = styled.div`
 `;
 
 function Project() {
+  const navigate = useNavigate();
   const { projectID } = useParams();
   const { projects, isPending: isLoadingProjects } = useProjects();
   const { user, isPending: isLoadingUser } = useCurrentUser();
@@ -117,7 +118,11 @@ function Project() {
               {openedProject.solo ? <HiOutlineUser /> : <HiOutlineUserGroup />}
             </ProjectLogo>
             <Heading as="h2">{openedProject.name}</Heading>
-            <EditProjectButton>
+            <EditProjectButton
+              onClick={() =>
+                navigate("/app/projects/project/edit", { state: openedProject })
+              }
+            >
               <HiOutlinePencilSquare />
             </EditProjectButton>
           </HeaderDescription>

@@ -43,7 +43,7 @@ function AppHeader() {
           </Modal.Open>
           <Modal.Window name="signout">
             <ModalConfirm
-              action="sign out"
+              action="Sign out"
               onConfirm={signOut}
               isLoading={isSigningOut}
             />

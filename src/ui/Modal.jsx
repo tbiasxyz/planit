@@ -50,7 +50,7 @@ function Window({ children, name }) {
   if (openElementName !== name) return null;
   return createPortal(
     <Overlay>
-      <StyledModalWindow ref={ref}>
+      <StyledModalWindow ref={ref} onClick={(e) => e.stopPropagation()}>
         {cloneElement(children, { onClose: closeElement })}
       </StyledModalWindow>
     </Overlay>,

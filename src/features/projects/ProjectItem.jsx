@@ -4,14 +4,18 @@ import Row from "../../ui/Row";
 import {
   HiOutlineChatBubbleLeftEllipsis,
   HiOutlinePaperClip,
+  HiOutlinePencil,
   HiOutlineSquare3Stack3D,
+  HiOutlineTrash,
+  HiOutlineUser,
 } from "react-icons/hi2";
 import Tag from "../../ui/Tag";
 import Divider from "../../ui/Divider";
-import { Link } from "react-router-dom";
-import Dots from "../../ui/Dots";
+import { Link, useNavigate } from "react-router-dom";
 import ProjectUsers from "./ProjectUsers";
-import ProjectTag from "./ProjectTag";
+import Menu from "../../ui/Menu";
+import Modal from "../../ui/Modal";
+import ModalConfirm from "../../ui/ModalConfirm";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);
@@ -65,11 +69,40 @@ const Dot = styled.span`
 
 function ProjectItem({ project, user }) {
   const { id: projectId, description, name, solo } = project;
+  const navigate = useNavigate();
   return (
     <StyledProjectItem to={`project/${projectId}`}>
       <Row>
         <Heading as="h4">{name}</Heading>
-        <Dots top={0} right={0} type="project" />
+        <Modal>
+          <Menu>
+            <Menu.Open openId={project.id} />
+            <Menu.List openId={project.id}>
+              <Menu.ListItem
+                icon={<HiOutlineUser />}
+                onClick={() => navigate(`/app/projects/project/${projectId}`)}
+              >
+                View
+              </Menu.ListItem>
+              <Menu.ListItem
+                icon={<HiOutlinePencil />}
+                onClick={() =>
+                  navigate(`/app/projects/project/edit`, {
+                    state: project,
+                  })
+                }
+              >
+                Edit
+              </Menu.ListItem>
+              <Modal.Open opens="delete">
+                <Menu.ListItem icon={<HiOutlineTrash />}>Delete</Menu.ListItem>
+              </Modal.Open>
+            </Menu.List>
+          </Menu>
+          <Modal.Window name="delete">
+            <ModalConfirm action="Delete project (not working yet)" />
+          </Modal.Window>
+        </Modal>
       </Row>
       <Description>{description}</Description>
       <Tag type={solo ? "solo" : "team"}>{solo ? "Solo" : "Team"}</Tag>

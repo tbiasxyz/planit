@@ -13,6 +13,7 @@ const StyledOpen = styled.div`
   border-radius: 50%;
   & svg {
     font-size: 1.5rem;
+    color: var(--color-grey-700);
   }
   &:hover {
     background-color: var(--color-grey-0-transparent);
@@ -76,7 +77,6 @@ function Menu({ children }) {
         closeMenu,
         openMenuPosition,
         setOpenMenuPosition,
-        setOpenMenuId,
       }}
     >
       {children}
@@ -89,6 +89,7 @@ function Open({ openId }) {
 
   function handleOpen(e) {
     e.stopPropagation();
+    e.preventDefault();
     const domRect = e.target.closest("div").getBoundingClientRect();
     const newPosition = {
       y: domRect.y + 36,
@@ -116,9 +117,15 @@ function List({ children, openId }) {
   );
 }
 
-function ListItem({ icon, children }) {
+function ListItem({ icon, children, onClick }) {
+  const { closeMenu } = useContext(MenuContext);
+  function handleClick(e) {
+    e.preventDefault();
+    onClick?.();
+    closeMenu();
+  }
   return (
-    <StyledListItem>
+    <StyledListItem onClick={handleClick}>
       {icon}
       <span>{children}</span>
     </StyledListItem>

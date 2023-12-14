@@ -9,8 +9,12 @@ import Spinner from "../../ui/Spinner";
 import Heading from "../../ui/Heading";
 import Menu from "../../ui/Menu";
 import { HiOutlineTrash, HiOutlinePencil, HiEye } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../ui/Modal";
+import ModalConfirm from "../../ui/ModalConfirm";
 
 function ProjectsTable({ projects }) {
+  const navigate = useNavigate();
   const projectsCount = projects.length;
   const { user, isPending } = useCurrentUser();
   if (isPending) return <Spinner size="page" />;
@@ -80,17 +84,41 @@ function ProjectsTable({ projects }) {
               </ProjectUsers>
             </Table.Data>
             <Table.Data>
-              <Menu>
-                <Menu.Open openId={project.id} />
+              <Modal>
+                <Menu>
+                  <Menu.Open openId={project.id} />
 
-                <Menu.List openId={project.id}>
-                  <Menu.ListItem icon={<HiEye />}>View</Menu.ListItem>
-                  <Menu.ListItem icon={<HiOutlinePencil />}>Edit</Menu.ListItem>
-                  <Menu.ListItem icon={<HiOutlineTrash />}>
-                    Delete
-                  </Menu.ListItem>
-                </Menu.List>
-              </Menu>
+                  <Menu.List openId={project.id}>
+                    <Menu.ListItem
+                      icon={<HiEye />}
+                      onClick={() =>
+                        navigate(`/app/projects/project/${project.id}`)
+                      }
+                    >
+                      View
+                    </Menu.ListItem>
+                    <Menu.ListItem
+                      icon={<HiOutlinePencil />}
+                      onClick={() =>
+                        navigate(`/app/projects/project/edit`, {
+                          state: project,
+                        })
+                      }
+                    >
+                      Edit
+                    </Menu.ListItem>
+                    <Modal.Open opens="delete">
+                      <Menu.ListItem icon={<HiOutlineTrash />}>
+                        Delete
+                      </Menu.ListItem>
+                    </Modal.Open>
+                  </Menu.List>
+                </Menu>
+
+                <Modal.Window name="delete">
+                  <ModalConfirm action="Delete project (not working yet)" />
+                </Modal.Window>
+              </Modal>
             </Table.Data>
           </Table.Row>
         ))}

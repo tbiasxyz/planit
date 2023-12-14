@@ -1,7 +1,16 @@
 import styled from "styled-components";
-import Dots from "../../ui/Dots";
 import { useCurrentUser } from "./useCurrentUser";
 import Spinner from "../../ui/Spinner";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../ui/Modal";
+import Menu from "../../ui/Menu";
+import {
+  HiArrowRightOnRectangle,
+  HiOutlinePencilSquare,
+  HiOutlineUser,
+} from "react-icons/hi2";
+import { useSignOut } from "./useSignOut";
+import ModalConfirm from "../../ui/ModalConfirm";
 
 const StyledUserAvatar = styled.div`
   display: grid;
@@ -71,7 +80,13 @@ const Nationality = styled.div`
   }
 `;
 
+const Dots = styled.div`
+  align-self: center;
+`;
+
 function UserAvatar() {
+  const navigate = useNavigate();
+  const { signOut, isSigningOut } = useSignOut();
   const { user, isPending } = useCurrentUser();
   if (isPending) return <Spinner />;
   const userData = user.user_metadata;
@@ -93,7 +108,39 @@ function UserAvatar() {
           <img src={userData.countryFlag} alt={`Flag of ${userData.country}`} />
         </Nationality>
       </User>
-      <Dots right="2" top="50" type="avatar" />
+      <Dots>
+        <Modal>
+          <Menu>
+            <Menu.Open openId="user" />
+            <Menu.List openId="user">
+              <Menu.ListItem
+                icon={<HiOutlineUser />}
+                onClick={() => navigate("/app/profile")}
+              >
+                Profile
+              </Menu.ListItem>
+              <Menu.ListItem
+                icon={<HiOutlinePencilSquare />}
+                onClick={() => navigate("/app/profile/edit")}
+              >
+                Edit
+              </Menu.ListItem>
+              <Modal.Open opens="signout">
+                <Menu.ListItem icon={<HiArrowRightOnRectangle />}>
+                  Sign out
+                </Menu.ListItem>
+              </Modal.Open>
+            </Menu.List>
+          </Menu>
+          <Modal.Window name="signout">
+            <ModalConfirm
+              action="Sign out"
+              onConfirm={signOut}
+              isLoading={isSigningOut}
+            />
+          </Modal.Window>
+        </Modal>
+      </Dots>
     </StyledUserAvatar>
   );
 }
