@@ -1,22 +1,21 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import Divider from "./Divider";
 import {
   HiOutlineCalendarDays,
   HiOutlineChartBar,
-  HiOutlineChatBubbleLeftEllipsis,
   HiOutlineCog6Tooth,
   HiOutlineFolderOpen,
   HiOutlineUser,
   HiOutlineUserGroup,
 } from "react-icons/hi2";
+import { useCurrentUser } from "../features/authentication/useCurrentUser";
 
 const StyledNavbar = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 2rem 0 2rem 2rem;
+  padding: 1rem 0 2rem 2rem;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -58,6 +57,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function Navbar() {
+  const { user } = useCurrentUser();
   return (
     <StyledNavbar>
       <li>
@@ -78,7 +78,7 @@ function Navbar() {
           <span>Calendar</span>
         </StyledNavLink>
       </li>
-      <li>
+      {/* <li>
         <StyledNavLink to="messages">
           <HiOutlineChatBubbleLeftEllipsis />
           <span>Messages</span>
@@ -89,10 +89,15 @@ function Navbar() {
           <HiOutlineUserGroup />
           <span>Teams</span>
         </StyledNavLink>
-      </li>
-      {/* <Divider /> */}
+      </li> */}
       <li>
-        <StyledNavLink to="profile">
+        <StyledNavLink to="users">
+          <HiOutlineUserGroup />
+          <span>Users</span>
+        </StyledNavLink>
+      </li>
+      <li>
+        <StyledNavLink to={`profile/${user?.id}`}>
           <HiOutlineUser />
           <span>My Profile</span>
         </StyledNavLink>

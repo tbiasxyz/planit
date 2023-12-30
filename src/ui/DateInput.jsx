@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { HiChevronDown } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
-import { format } from "date-fns";
 
 const StyledDateInput = styled.div`
   position: relative;

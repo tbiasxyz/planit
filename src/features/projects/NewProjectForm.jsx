@@ -87,7 +87,6 @@ function NewProjectForm({ closeForm }) {
   function onSubmit(formData) {
     const newProject = {
       name: formData.projectName,
-      type: formData.projectType,
       description: formData.description,
       due_date:
         formData.dueDate !== null
@@ -97,11 +96,14 @@ function NewProjectForm({ closeForm }) {
         format(new Date(formData.startDate), "yyyy-MM-dd") ||
         format(startOfToday(), "yyyy-MM-dd"),
       status: formData.status,
+      priority: formData.priority,
+      type: formData.projectType,
       solo: true,
       progress: 0,
-      priority: formData.priority,
       user_ids: [user.id],
     };
+    console.log(formData);
+    console.log(newProject);
     createProject(newProject);
     reset();
     closeForm();
@@ -146,7 +148,7 @@ function NewProjectForm({ closeForm }) {
             { tag: "Healthcare", value: "healthcare" },
             { tag: "Finance", value: "finance" },
           ]}
-          defaultValue={true}
+          defaultValue={"development"}
           register={register}
           id="projectType"
           setValue={setValue}
@@ -162,7 +164,7 @@ function NewProjectForm({ closeForm }) {
             { tag: "Testing", value: "testing" },
             { tag: "Canceled", value: "canceled" },
           ]}
-          defaultValue={true}
+          defaultValue={"active"}
           register={register}
           id="status"
           setValue={setValue}
@@ -178,7 +180,7 @@ function NewProjectForm({ closeForm }) {
             { tag: "Low", value: "low" },
             { tag: "High", value: "high" },
           ]}
-          defaultValue={true}
+          defaultValue={"normal"}
           id="priority"
           register={register}
           setValue={setValue}

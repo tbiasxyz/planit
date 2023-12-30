@@ -112,3 +112,10 @@ export async function updateLoggedUser(formUpdateData) {
   if (avatarError) throw new Error(avatarError.message);
   return avatarData;
 }
+
+export async function getAllUsers() {
+  const { data, error } = await supabase.from("users").select("*");
+
+  if (error) throw new Error(error.message);
+  return data;
+}

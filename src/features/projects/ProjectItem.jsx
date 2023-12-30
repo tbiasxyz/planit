@@ -16,6 +16,7 @@ import ProjectUsers from "./ProjectUsers";
 import Menu from "../../ui/Menu";
 import Modal from "../../ui/Modal";
 import ModalConfirm from "../../ui/ModalConfirm";
+import { useDeleteProject } from "./useDeleteProject";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);
@@ -70,6 +71,7 @@ const Dot = styled.span`
 function ProjectItem({ project, user }) {
   const { id: projectId, description, name, solo } = project;
   const navigate = useNavigate();
+  const { deleteProject, isDeletingProject } = useDeleteProject();
   return (
     <StyledProjectItem to={`project/${projectId}`}>
       <Row>
@@ -100,7 +102,11 @@ function ProjectItem({ project, user }) {
             </Menu.List>
           </Menu>
           <Modal.Window name="delete">
-            <ModalConfirm action="Delete project (not working yet)" />
+            <ModalConfirm
+              action="Delete project"
+              onConfirm={() => deleteProject(projectId)}
+              isLoading={isDeletingProject}
+            />
           </Modal.Window>
         </Modal>
       </Row>

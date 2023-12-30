@@ -8,7 +8,6 @@ import Spinner from "../../ui/Spinner";
 const StyledProjectOverview = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
   padding: 1rem;
 `;
 
@@ -120,7 +119,14 @@ function ProjectOverview({ project }) {
         )}
       </OverviewPart>
       <OverviewPart>
-        <span></span>
+        <span>Finish date:</span>
+        {project.finish_date ? (
+          <time dateTime={format(new Date(project.due_date), "yyyy-MMM-dd")}>
+            {format(new Date(project.finish_date), "d MMMM yyyy")}
+          </time>
+        ) : (
+          <span>Unknown</span>
+        )}
       </OverviewPart>
     </StyledProjectOverview>
   );

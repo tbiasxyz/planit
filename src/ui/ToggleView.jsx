@@ -1,50 +1,41 @@
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { HiBars3, HiOutlineSquares2X2 } from "react-icons/hi2";
 
 const StyledToggleView = styled.div`
   border-radius: var(--border-radius-sm);
   background-color: var(--color-grey-0);
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   padding: 0.25rem;
   box-shadow: var(--shadow-md);
-  margin-bottom: 2rem;
 `;
 
 const ToggleViewButton = styled.button`
   background-color: var(--color-grey-0);
-  border: 1px solid transparent;
-  padding: 0.25rem;
+  border: none;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-grey-700);
+  font-size: 1.1rem;
+  font-weight: 500;
 
-  & svg {
-    color: var(--color-grey-700);
-    width: 1.5rem;
-    height: 1.5rem;
-  }
   ${(props) =>
     props.active &&
     css`
-      background-color: var(--color-accent-200);
-      border: 1px solid var(--color-accent-500);
-      & svg {
-        color: var(--color-accent-700);
-      }
+      background-color: var(--color-accent-500);
+      color: var(--color-white);
+      cursor: not-allowed;
     `}
   &:hover {
-    background-color: var(--color-accent-200);
-    border: 1px solid var(--color-accent-500);
-  }
-  &:hover svg {
-    color: var(--color-accent-700);
+    background-color: var(--color-accent-500);
+    color: var(--color-white);
   }
 `;
 
 function ToggleView() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentView = searchParams.get("view") || "list";
+  const currentView = searchParams.get("view") || "table";
 
   function handleSetView(view) {
     searchParams.set("view", view);
@@ -54,16 +45,18 @@ function ToggleView() {
   return (
     <StyledToggleView>
       <ToggleViewButton
-        onClick={() => handleSetView("list")}
-        active={currentView === "list"}
-      >
-        <HiOutlineSquares2X2 />
-      </ToggleViewButton>
-      <ToggleViewButton
         onClick={() => handleSetView("table")}
         active={currentView === "table"}
+        disabled={currentView === "table"}
       >
-        <HiBars3 />
+        Table
+      </ToggleViewButton>
+      <ToggleViewButton
+        onClick={() => handleSetView("list")}
+        active={currentView === "list"}
+        disabled={currentView === "list"}
+      >
+        List
       </ToggleViewButton>
     </StyledToggleView>
   );

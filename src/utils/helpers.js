@@ -9,3 +9,10 @@ export const capitalize = (word) => {
     ? capitalizedWords.join("-")
     : capitalizedWords.join(" ");
 };
+
+export const calcProgress = (tasks) => {
+  return Math.ceil(
+    (tasks.filter((task) => task.type === "finished").length / tasks.length) *
+      100
+  );
+};

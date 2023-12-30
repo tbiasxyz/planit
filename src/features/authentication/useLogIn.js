@@ -10,7 +10,7 @@ export function useLogIn() {
     mutationFn: ({ email, password }) => logInApi({ email, password }),
     onSuccess: (data) => {
       const { user } = data;
-      toast.success("Succesfully logged in!");
+      toast.success("Successfully logged in!");
       queryClient.setQueryData(["user"], user);
       navigate("/app");
     },

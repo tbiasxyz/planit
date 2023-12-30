@@ -22,6 +22,9 @@ const ModalMessage = styled.p`
 
 const ModalConfirmButton = styled(FormButton)`
   align-self: flex-start;
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 // onClose - attached to div in Modal component

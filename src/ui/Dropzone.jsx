@@ -41,7 +41,7 @@ function Dropzone({ setAvatar, id, setValue }) {
       const file = acceptedFiles[0];
       const reader = new FileReader();
       reader.onload = () => {
-        setAvatar(reader.result);
+        setAvatar?.(reader.result);
         setValue?.(id, file);
       };
       reader.readAsDataURL(file);

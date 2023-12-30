@@ -114,10 +114,14 @@ const GlobalStyles = createGlobalStyle`
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
         --color-online: #4caf50;
-        --color-solo-100: #b7e4c7;
+        /* --color-solo-100: #b7e4c7;
         --color-solo-700: #2d6a4f;
         --color-team-100: #ccc8f9;
-        --color-team-700: #867bef;
+        --color-team-700: #867bef; */
+        --color-solo-100: var(--color-accent-100);
+        --color-solo-700: var(--color-accent-500);
+        --color-team-100: var(--color-accent-200);
+        --color-team-700: var(--color-accent-700);
         --color-low-100: #e5fada;
         --color-low-700: #69b04b;
         --color-normal-100: #fff1eb;
@@ -151,8 +155,6 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-orange-preview-700: #ff7a00;
         --color-accent-green-preview-500: #4caf50;
         --color-accent-green-preview-700: #388e3d;
-        /* --color-accent-black-preview-500: #333333;
-        --color-accent-black-preview-700: #111111; */
 
         --border-radius-rounded: 50%;
         --border-radius-sm: 0.4rem;

@@ -16,7 +16,8 @@ const StyledUserAvatar = styled.div`
   display: grid;
   grid-template-columns: 5rem auto 2rem;
   background-color: var(--color-grey-0);
-  box-shadow: var(--shadow-md);
+  /* box-shadow: var(--shadow-md); */
+  border: 1px solid var(--color-grey-50);
   border-radius: var(--border-radius-md);
   padding: 0.5rem 0.6rem;
   margin: 2rem 1.5rem 3rem 1.5rem;
@@ -90,7 +91,6 @@ function UserAvatar() {
   const { user, isPending } = useCurrentUser();
   if (isPending) return <Spinner />;
   const userData = user.user_metadata;
-  console.log(userData);
   return (
     <StyledUserAvatar>
       <AvatarContainer>

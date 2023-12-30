@@ -3,17 +3,14 @@ import Heading from "../ui/Heading";
 import styled from "styled-components";
 import { useProjects } from "../features/projects/useProjects";
 import Spinner from "../ui/Spinner";
-import ProjectUsers from "../features/projects/ProjectUsers";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import Breadcrumb from "../ui/Breadcrumb";
 import {
-  HiMiniUserPlus,
   HiOutlineUser,
   HiOutlineUserGroup,
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
 
-import IconButton from "../ui/IconButton";
 import ProjectToggleView from "../features/projects/ProjectToggleView";
 import ProjectOverview from "../features/projects/ProjectOverview";
 import ProjectDashboard from "../features/projects/ProjectDashboard";
@@ -23,7 +20,7 @@ const StyledProject = styled.div`
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
-  height: 50rem;
+  min-height: 50rem;
   width: 100%;
   padding: 1rem 1.75rem;
   display: flex;
@@ -63,12 +60,6 @@ const ProjectLogo = styled.span.attrs({ role: "img" })`
   }
 `;
 
-const HeaderMain = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-`;
-
 const EditProjectButton = styled.div`
   position: absolute;
   top: 10%;
@@ -99,15 +90,18 @@ function Project() {
   const { projectID } = useParams();
   const { projects, isPending: isLoadingProjects } = useProjects();
   const { user, isPending: isLoadingUser } = useCurrentUser();
-  const userData = user.user_metadata;
   const [searchParams] = useSearchParams();
   const view = searchParams.get("view") || "overview";
 
   if (isLoadingProjects || isLoadingUser) return <Spinner size="page" />;
 
+  const filteredProjects = projects?.filter((project) =>
+    project?.user_ids?.includes(user.id)
+  );
   const openedProject = projects.find((project) => project.id === +projectID);
   console.log(openedProject);
 
+  if (!filteredProjects.includes(openedProject)) navigate("/app/projects");
   return (
     <>
       <StyledProject>
@@ -120,27 +114,14 @@ function Project() {
             <Heading as="h2">{openedProject.name}</Heading>
             <EditProjectButton
               onClick={() =>
-                navigate("/app/projects/project/edit", { state: openedProject })
+                navigate("/app/projects/project/edit", {
+                  state: openedProject,
+                })
               }
             >
               <HiOutlinePencilSquare />
             </EditProjectButton>
           </HeaderDescription>
-          <HeaderMain>
-            <ProjectUsers>
-              <img src={userData.avatar} alt="user" />
-              {!openedProject.solo && (
-                <img
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  alt="user"
-                />
-              )}
-            </ProjectUsers>
-            <IconButton>
-              <HiMiniUserPlus />
-              <span>Invite</span>
-            </IconButton>
-          </HeaderMain>
         </ProjectHeader>
 
         <ProjectMain>

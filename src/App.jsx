@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { ThemeModeProvider } from "./context/ThemeModeContext";
 import { AccentColorProvider } from "./context/AccentColorContext";
+import { FontContextProvider } from "./context/FontContext";
 import GlobalStyles from "./styles/GlobalStyles";
 
 import Landing from "./pages/Landing";
@@ -12,7 +13,6 @@ import AppLayout from "./ui/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
-import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import PageNotFound from "./pages/PageNotFound";
@@ -21,9 +21,8 @@ import AuthPage from "./pages/AuthPage";
 import SignupForm from "./features/authentication/SignupForm";
 import LoginForm from "./features/authentication/LoginForm";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import Teams from "./pages/Teams";
+import Users from "./pages/Users";
 import EditProfile from "./pages/EditProfile";
-import { FontContextProvider } from "./context/FontContext";
 import EditProject from "./pages/EditProject";
 
 const queryClient = new QueryClient({
@@ -62,13 +61,12 @@ function App() {
           >
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="teams" element={<Teams />} />
+            <Route path="users" element={<Users />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/project/:projectID" element={<Project />} />
             <Route path="projects/project/edit" element={<EditProject />} />
-            <Route path="messages" element={<Messages />} />
             <Route path="calendar" element={<CalendarPage />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile/:userID" element={<Profile />} />
             <Route path="profile/edit" element={<EditProfile />} />
             <Route path="settings" element={<Settings />} />
             <Route path="*" element={<PageNotFound />} />

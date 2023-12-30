@@ -11,7 +11,7 @@ export function useSignUp() {
     },
     onSuccess: () => {
       toast.success(
-        "Succesfully signed up! Confirm your account through e-mail"
+        "Successfully signed up! Confirm your account through e-mail"
       );
       navigate("/auth/login");
     },

@@ -106,6 +106,10 @@ function Select({
     setValue(id, selectedValue.value);
   }, [setValue, id, selectedValue]);
 
+  useEffect(() => {
+    setValue(id, defaultValue);
+  }, [defaultValue, id, setValue]);
+
   return (
     <>
       <StyledSelect
@@ -132,7 +136,10 @@ function Select({
                   setIsOpen((s) => !s);
                   if (setSearchValue) setSearchValue("");
                 }}
-                isSelected={option.value === selectedValue.value}
+                isSelected={
+                  option.value === selectedValue.value ||
+                  option.value === selectedValue
+                }
               >
                 {option.tag}
               </Option>
@@ -144,7 +151,12 @@ function Select({
         type="hidden"
         id={id}
         name={id}
-        {...register?.(id, required && { required: "This field is required" })}
+        {...register?.(
+          id,
+          required && {
+            required: "This field is required",
+          }
+        )}
       />
     </>
   );

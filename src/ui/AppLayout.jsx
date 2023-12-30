@@ -16,7 +16,6 @@ const Main = styled.main`
   grid-column: 2 / -1;
   grid-row: 2 / -1;
   padding: 1rem 1.5rem;
-  overflow: auto;
   height: 100%;
 `;
 

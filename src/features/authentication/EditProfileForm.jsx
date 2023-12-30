@@ -1,7 +1,6 @@
 import _ from "lodash";
 import styled from "styled-components";
 import Form from "../../ui/Form";
-import { useCurrentUser } from "./useCurrentUser";
 import Spinner from "../../ui/Spinner";
 import { useEffect, useState } from "react";
 import FormSection from "../../ui/FormSection";
@@ -18,7 +17,7 @@ import TextArea from "../../ui/TextArea";
 import Select from "../../ui/Select";
 import { useCountries } from "../../hooks/useCountries";
 import { useForm } from "react-hook-form";
-import DragAndDrop from "../../ui/DragAndDrop";
+import Dropzone from "../../ui/Dropzone";
 import FormButton from "../../ui/FormButton";
 import { useUpdateUserData } from "./useUpdateUserData";
 import Icon from "../../ui/Icon";
@@ -87,13 +86,12 @@ const AvatarReset = styled.button`
   }
 `;
 
-function EditProfileForm() {
+function EditProfileForm({ user }) {
   const { register, handleSubmit, setValue } = useForm();
 
   const { updateUserData, isUpdatingUser } = useUpdateUserData();
 
   const { countries, isPending: isLoadingCountries } = useCountries();
-  const { user, isPending } = useCurrentUser();
   const { email } = user;
   const userData = user.user_metadata;
 
@@ -101,14 +99,12 @@ function EditProfileForm() {
     setValue("avatar", userData.avatar);
   }, [setValue, userData.avatar]);
 
-  // console.log(userData);
-
   const [firstName, setFirstName] = useState(userData.firstName);
   const [lastName, setLastName] = useState(userData.lastName);
   const [searchValue, setSearchValue] = useState("");
   const [avatar, setAvatar] = useState(userData.avatar);
 
-  if (isLoadingCountries || isPending) return <Spinner size="page" />;
+  if (isLoadingCountries) return <Spinner size="page" />;
 
   const initialCountryObj = countries.filter(
     (country) => country.name.common === userData.country
@@ -141,7 +137,7 @@ function EditProfileForm() {
     firstName: userData.firstName,
     lastName: userData.lastName,
     description: userData.description,
-    country: initialCountry.value,
+    country: initialCountry.tag,
     instagram: userData.socials?.instagram,
     twitter: userData.socials?.twitter,
     linkedin: userData.socials?.linkedin,
@@ -169,6 +165,7 @@ function EditProfileForm() {
           const newCountry = countries
             .filter((country) => country.cca2 === value)
             .at(0);
+          console.log(newCountry);
           dataToUpdate.country = newCountry.name.common;
           dataToUpdate.countryFlag = newCountry.flags.svg;
         } else {
@@ -239,7 +236,7 @@ function EditProfileForm() {
               tag: country?.name.common,
               value: country?.cca2,
             }))}
-            defaultValue={initialCountry}
+            defaultValue={initialCountry.tag}
             setValue={setValue}
             type="search"
             setSearchValue={setSearchValue}
@@ -340,7 +337,7 @@ function EditProfileForm() {
           )}
         </AvatarContainer>
 
-        <DragAndDrop setAvatar={setAvatar} setValue={setValue} id="avatar" />
+        <Dropzone setAvatar={setAvatar} setValue={setValue} id="avatar" />
         <FormButton disabled={isUpdatingUser}>Submit changes</FormButton>
       </EditProfilePicture>
     </StyledEditProfileForm>

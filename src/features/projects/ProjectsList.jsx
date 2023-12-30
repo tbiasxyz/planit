@@ -13,8 +13,8 @@ const StyledProjectsView = styled.div`
 function ProjectsList({ projects }) {
   const projectsCount = projects.length;
   const { user, isPending } = useCurrentUser();
-  const userData = user.user_metadata;
   if (isPending) return <Spinner size="page" />;
+  const userData = user.user_metadata;
   return projectsCount ? (
     <StyledProjectsView>
       {projects?.map((project) => (
@@ -22,7 +22,7 @@ function ProjectsList({ projects }) {
       ))}
     </StyledProjectsView>
   ) : (
-    <Heading as="h4">Start by creating new project</Heading>
+    <Heading as="h4">No projects to show</Heading>
   );
 }
 

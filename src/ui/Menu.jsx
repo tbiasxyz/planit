@@ -13,7 +13,8 @@ const StyledOpen = styled.div`
   border-radius: 50%;
   & svg {
     font-size: 1.5rem;
-    color: var(--color-grey-700);
+    color: ${(props) =>
+      props.color === "white" ? "var(--color-white)" : "var(--color-grey-700)"};
   }
   &:hover {
     background-color: var(--color-grey-0-transparent);
@@ -45,8 +46,7 @@ const StyledListItem = styled.div`
   color: var(--color-grey-700);
   font-size: 1rem;
   &:hover {
-    background-color: var(--color-accent-500);
-    color: var(--color-white);
+    background-color: var(--color-grey-0-transparent);
   }
   &:first-child {
     border-top-left-radius: var(--border-radius-md);
@@ -76,7 +76,6 @@ function Menu({ children }) {
         openMenu,
         closeMenu,
         openMenuPosition,
-        setOpenMenuPosition,
       }}
     >
       {children}
@@ -84,7 +83,7 @@ function Menu({ children }) {
   );
 }
 
-function Open({ openId }) {
+function Open({ openId, lastChild, color }) {
   const { openMenu, closeMenu, openMenuId } = useContext(MenuContext);
 
   function handleOpen(e) {
@@ -92,13 +91,15 @@ function Open({ openId }) {
     e.preventDefault();
     const domRect = e.target.closest("div").getBoundingClientRect();
     const newPosition = {
-      y: domRect.y + 36,
-      x: domRect.x - domRect.width - 66,
+      y: !lastChild ? domRect.y + 36 : domRect.y,
+      x: !lastChild
+        ? domRect.x - domRect.width - 66
+        : domRect.x - domRect.width - 80,
     };
     openMenuId !== openId ? openMenu(openId, newPosition) : closeMenu();
   }
   return (
-    <StyledOpen onClick={handleOpen}>
+    <StyledOpen onClick={handleOpen} color={color}>
       <HiEllipsisVertical />
     </StyledOpen>
   );

@@ -3,7 +3,8 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import Spinner from "../ui/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAllUsers } from "../features/authentication/useAllUsers";
 
 const StyledProfile = styled.div`
   display: grid;
@@ -151,12 +152,21 @@ const EditButton = styled.button`
 `;
 
 function Profile() {
-  const { user, isPending } = useCurrentUser();
+  const { user: currentUser, isPending } = useCurrentUser();
+  const { users, isLoadingUsers } = useAllUsers();
   const navigate = useNavigate();
+  const { userID } = useParams();
 
-  if (isPending) return <Spinner size="page" />;
-  const { email } = user;
-  const userData = user.user_metadata;
+  const isCurrentAuthUser = currentUser.id === userID;
+
+  if (isPending || isLoadingUsers) return <Spinner size="page" />;
+
+  const email = isCurrentAuthUser
+    ? currentUser.email
+    : users.find((user) => user.id === userID).email;
+  const userData = isCurrentAuthUser
+    ? currentUser.user_metadata
+    : users.find((user) => user.id === userID).raw_user_meta_data;
 
   return (
     <StyledProfile>
@@ -190,12 +200,12 @@ function Profile() {
             </div>
           </Description>
 
-          {(userData.socials.instagram ||
-            userData.socials.twitter ||
-            userData.socials.linkedin ||
-            userData.socials.facebook) && (
+          {(userData.socials?.instagram ||
+            userData.socials?.twitter ||
+            userData.socials?.linkedin ||
+            userData.socials?.facebook) && (
             <Socials>
-              {userData.socials.instagram && (
+              {userData.socials?.instagram && (
                 <a
                   href={userData.socials.instagram}
                   target="_blank"
@@ -204,7 +214,7 @@ function Profile() {
                   <FaInstagram />
                 </a>
               )}
-              {userData.socials.twitter && (
+              {userData.socials?.twitter && (
                 <a
                   href={userData.socials.twitter}
                   target="_blank"
@@ -214,7 +224,7 @@ function Profile() {
                 </a>
               )}
 
-              {userData.socials.linkedin && (
+              {userData.socials?.linkedin && (
                 <a
                   href={userData.socials.linkedin}
                   target="_blank"
@@ -224,7 +234,7 @@ function Profile() {
                 </a>
               )}
 
-              {userData.socials.facebook && (
+              {userData.socials?.facebook && (
                 <a
                   href={userData.socials.facebook}
                   target="_blank"
@@ -236,9 +246,11 @@ function Profile() {
             </Socials>
           )}
 
-          <EditButton onClick={() => navigate("edit")}>
-            <HiOutlinePencilSquare />
-          </EditButton>
+          {isCurrentAuthUser && (
+            <EditButton onClick={() => navigate("/app/profile/edit")}>
+              <HiOutlinePencilSquare />
+            </EditButton>
+          )}
         </UserInfo>
       </UserInfoContainer>
     </StyledProfile>

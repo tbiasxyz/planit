@@ -93,6 +93,10 @@ const MonthDay = styled.button`
 
   position: relative;
 
+  &:hover {
+    background-color: var(--color-grey-0-transparent);
+  }
+
   & time {
     position: absolute;
     top: 10%;
@@ -108,7 +112,7 @@ const MonthDay = styled.button`
   }
 `;
 
-function Calendar() {
+function Calendar({ projects }) {
   const today = startOfToday();
   const [selectedDay, setSelectedDay] = useState(today);
   const [selectedMonth, setSelectedMonth] = useState(format(today, "MMM-yyyy"));

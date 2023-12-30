@@ -9,6 +9,7 @@ const StyledProjectToggleView = styled.div`
   border-radius: var(--border-radius-md);
   background-color: var(--color-grey-50);
   align-self: flex-start;
+  margin-bottom: 1.5rem;
 `;
 
 const ToggleButton = styled.button`

@@ -4,6 +4,7 @@ const Row = styled.div`
   display: flex;
   position: relative;
   width: 100%;
+  padding: 1rem 0;
   ${(props) =>
     props.direction === "horizontal" &&
     css`
@@ -12,6 +13,7 @@ const Row = styled.div`
       align-items: center;
       & > div {
         display: flex;
+        gap: 1rem;
       }
     `}
   ${(props) =>
