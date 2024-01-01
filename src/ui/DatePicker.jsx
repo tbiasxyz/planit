@@ -139,10 +139,17 @@ const Day = styled.button`
     `}
 `;
 
-function DatePicker({ setSelectedFormDate, close }) {
+function DatePicker({ setSelectedFormDate, close, selectedDate }) {
   const today = startOfToday();
-  const [selectedDay, setSelectedDay] = useState(today);
-  const [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
+
+  const [selectedDay, setSelectedDay] = useState(
+    selectedDate !== "Unknown" && selectedDate !== null
+      ? new Date(selectedDate)
+      : today
+  );
+  const [currentMonth, setCurrentMonth] = useState(
+    format(selectedDay || today, "MMM-yyyy")
+  );
   const firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
   const newDays = eachDayOfInterval({

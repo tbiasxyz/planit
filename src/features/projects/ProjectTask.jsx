@@ -9,6 +9,8 @@ import Row from "../../ui/Row";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import ModalConfirm from "../../ui/ModalConfirm";
 import { useDeleteProjectTask } from "./useDeleteProjectTask";
+import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
+import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
 
 const StyledProjectTask = styled.div`
   display: flex;
@@ -39,6 +41,8 @@ const TaskDate = styled.time`
 
 function ProjectTask({ task, index, project }) {
   const { deleteProjectTask } = useDeleteProjectTask();
+  const { updateProjectTasks, isUpdatingProjectTasks } =
+    useUpdateProjectTasks();
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -54,8 +58,12 @@ function ProjectTask({ task, index, project }) {
               <Menu>
                 <Menu.Open openId={task.id} color="white" />
                 <Menu.List openId={task.id}>
-                  <Menu.ListItem icon={<HiOutlinePencil />}>Edit</Menu.ListItem>
                   <Modal.Open opens="edit-task">
+                    <Menu.ListItem icon={<HiOutlinePencil />}>
+                      Edit
+                    </Menu.ListItem>
+                  </Modal.Open>
+                  <Modal.Open opens="delete-task">
                     <Menu.ListItem icon={<HiOutlineTrash />}>
                       Delete
                     </Menu.ListItem>
@@ -65,9 +73,9 @@ function ProjectTask({ task, index, project }) {
             </Row>
             <ProjectTag tag={capitalize(task.priority)} color={task.priority} />
             <TaskDate time={format(new Date(task.due_date), "d MMMM, yyyy")}>
-              Due: {task.due_date}
+              Due: {format(new Date(task.due_date), "d MMMM, yyyy")}
             </TaskDate>
-            <Modal.Window name="edit-task">
+            <Modal.Window name="delete-task">
               <ModalConfirm
                 action="Delete task"
                 onConfirm={() =>
@@ -76,6 +84,18 @@ function ProjectTask({ task, index, project }) {
                     taskId: task.id,
                   })
                 }
+              />
+            </Modal.Window>
+            <Modal.Window name="edit-task">
+              <ProjectTaskModalWindow
+                title="Edit project task"
+                action="edit"
+                task={task}
+                project={project}
+                onConfirm={(newTasks) =>
+                  updateProjectTasks({ projectId: project.id, tasks: newTasks })
+                }
+                isLoading={isUpdatingProjectTasks}
               />
             </Modal.Window>
           </Modal>

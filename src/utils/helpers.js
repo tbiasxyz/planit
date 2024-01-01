@@ -11,6 +11,7 @@ export const capitalize = (word) => {
 };
 
 export const calcProgress = (tasks) => {
+  if (!tasks.length) return 0;
   return Math.ceil(
     (tasks.filter((task) => task.type === "finished").length / tasks.length) *
       100

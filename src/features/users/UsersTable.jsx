@@ -23,7 +23,7 @@ function UsersTable({ users }) {
           <Table.Data>Name</Table.Data>
           <Table.Data>E-Mail</Table.Data>
           <Table.Data>Country</Table.Data>
-          <Table.Data>Created at</Table.Data>
+          <Table.Data>Joined</Table.Data>
         </Table.Row>
       </Table.Header>
       <Table.Body>

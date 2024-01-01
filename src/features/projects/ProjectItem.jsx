@@ -2,21 +2,19 @@ import styled from "styled-components";
 import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 import {
-  HiOutlineChatBubbleLeftEllipsis,
-  HiOutlinePaperClip,
   HiOutlinePencil,
   HiOutlineSquare3Stack3D,
   HiOutlineTrash,
   HiOutlineUser,
 } from "react-icons/hi2";
-import Tag from "../../ui/Tag";
 import Divider from "../../ui/Divider";
 import { Link, useNavigate } from "react-router-dom";
-import ProjectUsers from "./ProjectUsers";
 import Menu from "../../ui/Menu";
 import Modal from "../../ui/Modal";
 import ModalConfirm from "../../ui/ModalConfirm";
 import { useDeleteProject } from "./useDeleteProject";
+import ProjectTag from "./ProjectTag";
+import { capitalize } from "lodash";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);
@@ -34,14 +32,13 @@ const Description = styled.p`
   margin: 1rem 0 0.5rem 0;
 `;
 
-const InfoContainer = styled.div`
+const TagsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-
-  & div {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  & > div {
+    max-width: 8rem;
   }
 `;
 
@@ -61,17 +58,18 @@ const Info = styled.div`
   }
 `;
 
-const Dot = styled.span`
-  height: 5px;
-  width: 5px;
-  background-color: var(--color-grey-200);
-  border-radius: 50%;
-`;
-
-function ProjectItem({ project, user }) {
-  const { id: projectId, description, name, solo } = project;
+function ProjectItem({ project }) {
+  const { id: projectId, description, name } = project;
   const navigate = useNavigate();
   const { deleteProject, isDeletingProject } = useDeleteProject();
+
+  let projectTasksText;
+  if (!project.tasks.length) projectTasksText = "No Tasks";
+  else {
+    projectTasksText = `${project.tasks.length} ${
+      project.tasks.length === 1 ? "Task" : "Tasks"
+    }`;
+  }
   return (
     <StyledProjectItem to={`project/${projectId}`}>
       <Row>
@@ -111,36 +109,22 @@ function ProjectItem({ project, user }) {
         </Modal>
       </Row>
       <Description>{description}</Description>
-      <Tag type={solo ? "solo" : "team"}>{solo ? "Solo" : "Team"}</Tag>
+      <TagsContainer>
+        <ProjectTag
+          tag={capitalize(project.priority)}
+          color={project.priority}
+        />
+        <ProjectTag tag={capitalize(project.status)} color={project.status} />
+        <ProjectTag
+          color="project"
+          tag={capitalize(project.type).replace("-", " ")}
+        />
+      </TagsContainer>
       <Divider />
-      <InfoContainer>
-        {!solo && (
-          <ProjectUsers>
-            <img src={user.avatar} alt="user" />
-            <img
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              alt="user"
-            />
-          </ProjectUsers>
-        )}
-
-        <div>
-          <Info>
-            <HiOutlineSquare3Stack3D />
-            <span>3 Tasks</span>
-          </Info>
-          <Dot />
-          <Info>
-            <HiOutlinePaperClip />
-            <span>0</span>
-          </Info>
-          <Dot />
-          <Info>
-            <HiOutlineChatBubbleLeftEllipsis />
-            <span>2</span>
-          </Info>
-        </div>
-      </InfoContainer>
+      <Info>
+        <HiOutlineSquare3Stack3D />
+        <span>{projectTasksText}</span>
+      </Info>
     </StyledProjectItem>
   );
 }

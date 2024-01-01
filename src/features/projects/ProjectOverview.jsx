@@ -69,7 +69,7 @@ function ProjectOverview({ project }) {
         <ProjectTag
           size="large"
           color="project"
-          tag={capitalize(project.type)}
+          tag={capitalize(project.type).replace("-", " ")}
         />
       </OverviewPart>
       <OverviewPart>

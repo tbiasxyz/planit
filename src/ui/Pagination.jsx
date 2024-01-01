@@ -56,21 +56,21 @@ const PageButton = styled.button`
         `};
 `;
 
-function Pagination({ items }) {
+function Pagination({ items, itemsPerPage = ITEMS_PER_PAGE }) {
   const [searchParams, setSearchParams] = useSearchParams();
   let curPage = +searchParams.get("page") || 1;
-  const numPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+  const numPages = Math.ceil(items.length / itemsPerPage);
 
   // if (items.length < ITEMS_PER_PAGE) {
   //   curPage = 1;
   // }
 
   useEffect(() => {
-    if (items.length < ITEMS_PER_PAGE) {
+    if (items.length < itemsPerPage) {
       searchParams.set("page", 1);
       setSearchParams(searchParams);
     }
-  }, [items.length, searchParams, setSearchParams]);
+  }, [items.length, searchParams, setSearchParams, itemsPerPage]);
 
   function handleNextPage() {
     const nextPage = curPage + 1;
@@ -93,7 +93,7 @@ function Pagination({ items }) {
     <StyledPagination>
       {numPages === 1 ? (
         <p>
-          Showing <span>{(curPage - 1) * ITEMS_PER_PAGE + 1}</span> to{" "}
+          Showing <span>{(curPage - 1) * itemsPerPage + 1}</span> to{" "}
           <span>{items.length}</span> of <span>{items.length}</span> results
         </p>
       ) : (

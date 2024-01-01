@@ -3,6 +3,7 @@ import supabase from "./supabase";
 
 export async function signUp(user, provider) {
   // !provider - user used email and password to sign up
+  console.log(user);
   if (!provider) {
     console.log("No provider");
     const { data: newSignedUpUser, error } = await supabase.auth.signUp({

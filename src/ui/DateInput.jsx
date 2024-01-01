@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { HiChevronDown } from "react-icons/hi2";
+import { HiOutlineTrash } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
+import Icon from "./Icon";
 
 const StyledDateInput = styled.div`
   position: relative;
@@ -16,16 +17,11 @@ const StyledDateInput = styled.div`
   font-size: 1.1rem;
   transition: 0.2s ease;
   cursor: pointer;
-
-  & svg {
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translate(-5%, -50%);
-  }
+  display: flex;
+  justify-content: space-between;
 `;
 
-function DateInput({ date, id, setValue, register }) {
+function DateInput({ date, id, setValue, register, required = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedFormDate] = useState(date);
 
@@ -44,12 +40,29 @@ function DateInput({ date, id, setValue, register }) {
     <>
       <StyledDateInput onClick={() => setIsOpen((s) => !s)}>
         <span>{selectedDate}</span>
-        <HiChevronDown />
+        <Icon
+          onClick={() => {
+            setSelectedFormDate("Unknown");
+          }}
+        >
+          <HiOutlineTrash />
+        </Icon>
       </StyledDateInput>
       {isOpen && (
-        <DatePicker setSelectedFormDate={handleSelectFormDate} close={close} />
+        <DatePicker
+          setSelectedFormDate={handleSelectFormDate}
+          close={close}
+          selectedDate={selectedDate}
+        />
       )}
-      <input type="hidden" id={id} name={id} {...register(id)} />
+      <input
+        type="hidden"
+        id={id}
+        name={id}
+        {...register(id, {
+          required: required ? "This field is required" : false,
+        })}
+      />
     </>
   );
 }

@@ -3,7 +3,6 @@ import Row from "../../ui/Row";
 import Heading from "../../ui/Heading";
 import Icon from "../../ui/Icon";
 import { HiOutlineXMark } from "react-icons/hi2";
-import Form from "../../ui/Form";
 import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
 import { useForm } from "react-hook-form";
@@ -11,8 +10,10 @@ import DateInput from "../../ui/DateInput";
 import { format, startOfToday } from "date-fns";
 import Select from "../../ui/Select";
 import PrimaryButton from "../../ui/PrimaryButton";
+import { capitalize } from "lodash";
+import { v4 as uuidv4 } from "uuid";
 
-const StyledNewProjectTaskModalWindow = styled.div`
+const StyledProjectTaskModalWindow = styled.div`
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-md);
   padding: 1.5rem 2.5rem;
@@ -22,57 +23,86 @@ const StyledNewProjectTaskModalWindow = styled.div`
   gap: 1rem;
 `;
 
-const NewTaskForm = styled.form`
+const TaskForm = styled.form`
   & > button {
     width: 100%;
     margin-top: 1rem;
   }
 `;
 
-function NewProjectTaskModalWindow({ type, onClose, project }) {
+function ProjectTaskModalWindow({
+  title,
+  onClose,
+  project,
+  onConfirm,
+  isLoading,
+  action,
+  type,
+  task,
+}) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     setValue,
   } = useForm();
-  function onSubmit(formData) {
-    console.log(formData);
-    const projectTasks = project.tasks;
-    const newTask = {
-      type: formData.type,
-      task: formData.title,
-      due_date: formData.due_date,
-    };
-    console.log(newTask);
-    console.log(projectTasks);
-  }
+
   //fix dates (date input) - everywhere, new project etc.
   const today = format(startOfToday(), "MMMM-dd-yyyy");
+
+  function onSubmit(formData) {
+    console.log(formData);
+    const newTask = {
+      id: `task-${uuidv4()}`,
+      type: formData.type,
+      task: formData.title,
+      priority: formData.priority,
+      due_date: format(new Date(formData.dueDate), "yyyy-MM-d") || today,
+    };
+    console.log(project);
+    const projectTasks =
+      action === "create"
+        ? project.tasks
+        : project.tasks.filter((projectTask) => projectTask.id !== task.id);
+    const newTasks = [newTask, ...projectTasks];
+
+    onConfirm(newTasks);
+    onClose();
+  }
+
+  let defaultDate;
+  if (action === "create") defaultDate = today;
+  else {
+    defaultDate = task.due_date
+      ? format(new Date(task.due_date), "MMMM-d-yyyy")
+      : null;
+  }
+
   return (
-    <StyledNewProjectTaskModalWindow>
+    <StyledProjectTaskModalWindow>
       <Row>
-        <Heading as="h4">Create new task</Heading>
+        <Heading as="h4">{capitalize(title)}</Heading>
         <Icon onClick={onClose}>
           <HiOutlineXMark />
         </Icon>
       </Row>
-      <NewTaskForm onSubmit={handleSubmit(onSubmit)}>
+      <TaskForm onSubmit={handleSubmit(onSubmit)}>
         <FormSection inputLabel="Task" error={errors?.title?.message}>
           <FormInput
             type="text"
             placeholder="Task"
+            defaultValue={task?.task}
             id="title"
             {...register("title", { required: "Task title is required" })}
           />
         </FormSection>
-        <FormSection inputLabel="Due date">
+        <FormSection inputLabel="Due date" error={errors?.dueDate?.message}>
           <DateInput
-            date={today}
+            date={defaultDate}
             register={register}
             id="dueDate"
             setValue={setValue}
+            required
           />
         </FormSection>
         <FormSection inputLabel="Priority">
@@ -85,7 +115,7 @@ function NewProjectTaskModalWindow({ type, onClose, project }) {
             id="priority"
             register={register}
             setValue={setValue}
-            defaultValue="normal"
+            defaultValue={task?.priority || "normal"}
           />
         </FormSection>
         <FormSection inputLabel="Type">
@@ -98,13 +128,15 @@ function NewProjectTaskModalWindow({ type, onClose, project }) {
             id="type"
             register={register}
             setValue={setValue}
-            defaultValue={type}
+            defaultValue={type || task?.type}
           />
         </FormSection>
-        <PrimaryButton type="submit">Submit</PrimaryButton>
-      </NewTaskForm>
-    </StyledNewProjectTaskModalWindow>
+        <PrimaryButton type="submit" disabled={isLoading}>
+          Submit
+        </PrimaryButton>
+      </TaskForm>
+    </StyledProjectTaskModalWindow>
   );
 }
 
-export default NewProjectTaskModalWindow;
+export default ProjectTaskModalWindow;

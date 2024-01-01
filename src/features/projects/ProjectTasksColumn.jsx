@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import ProjectTask from "./ProjectTask";
 import { Droppable } from "react-beautiful-dnd";
-import Spinner from "../../ui/Spinner";
 import Modal from "../../ui/Modal";
-import NewProjectTaskModalWindow from "./NewProjectTaskModalWindow";
+import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
+import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
 
 const StyledProjectTasksColumn = styled.div`
   display: flex;
@@ -53,6 +53,8 @@ const NewTaskButton = styled.button`
 
 function ProjectTasksColumn({ title, type, project, icon }) {
   const tasksToShow = project.tasks.filter((task) => task.type === type);
+  const { updateProjectTasks, isUpdatingProjectTasks } =
+    useUpdateProjectTasks();
 
   return (
     <StyledProjectTasksColumn>
@@ -67,7 +69,19 @@ function ProjectTasksColumn({ title, type, project, icon }) {
                 <NewTaskButton>New Task</NewTaskButton>
               </Modal.Open>
               <Modal.Window name="new-task">
-                <NewProjectTaskModalWindow type={type} project={project} />
+                <ProjectTaskModalWindow
+                  title="Create new task"
+                  type={type}
+                  project={project}
+                  action="create"
+                  onConfirm={(newTasks) =>
+                    updateProjectTasks({
+                      projectId: project.id,
+                      tasks: newTasks,
+                    })
+                  }
+                  isLoading={isUpdatingProjectTasks}
+                />
               </Modal.Window>
             </Modal>
             <Tasks ref={provided.innerRef} {...provided.droppableProps}>

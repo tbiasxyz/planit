@@ -141,6 +141,8 @@ const GlobalStyles = createGlobalStyle`
         --color-testing-700: #5db6b5;
         --color-canceled-100: #ffeaea;
         --color-canceled-700: #fd5151;
+        --color-todo-100: #cbdff7;
+        --color-todo-700: 	#5b9cea;
 
         --color-project-100: var(--color-accent-50);
         --color-project-700: var(--color-accent-500);

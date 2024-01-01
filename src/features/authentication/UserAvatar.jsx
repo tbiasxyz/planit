@@ -16,7 +16,6 @@ const StyledUserAvatar = styled.div`
   display: grid;
   grid-template-columns: 5rem auto 2rem;
   background-color: var(--color-grey-0);
-  /* box-shadow: var(--shadow-md); */
   border: 1px solid var(--color-grey-50);
   border-radius: var(--border-radius-md);
   padding: 0.5rem 0.6rem;
@@ -115,7 +114,7 @@ function UserAvatar() {
             <Menu.List openId="user">
               <Menu.ListItem
                 icon={<HiOutlineUser />}
-                onClick={() => navigate("/app/profile")}
+                onClick={() => navigate(`/app/profile/${user.id}`)}
               >
                 Profile
               </Menu.ListItem>

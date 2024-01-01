@@ -1,6 +1,5 @@
 import Table from "../../ui/Table";
 import ProjectTag from "./ProjectTag";
-import ProjectUsers from "./ProjectUsers";
 import ProjectProgressBar from "./ProjectProgressBar";
 import { calcProgress, capitalize } from "../../utils/helpers";
 import { format } from "date-fns";
@@ -15,6 +14,14 @@ import ModalConfirm from "../../ui/ModalConfirm";
 import { useDeleteProject } from "./useDeleteProject";
 import Pagination from "../../ui/Pagination";
 import { ITEMS_PER_PAGE } from "../../utils/constants";
+import styled from "styled-components";
+
+const UserAvatar = styled.img`
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+`;
 
 function ProjectsTable({ projects }) {
   const [searchParams] = useSearchParams();
@@ -48,7 +55,7 @@ function ProjectsTable({ projects }) {
           <Table.Data>Finished</Table.Data>
           <Table.Data>Progress</Table.Data>
           <Table.Data>Priority</Table.Data>
-          <Table.Data>Participants</Table.Data>
+          <Table.Data>Created by</Table.Data>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -92,13 +99,11 @@ function ProjectsTable({ projects }) {
               )}
             </Table.Data>
             <Table.Data>
-              <ProjectUsers>
-                <img src={userData.avatar} alt="User avatar" />
-                <img
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  alt="User avatar"
-                />
-              </ProjectUsers>
+              <UserAvatar
+                src={userData.avatar}
+                alt="User avatar"
+                onClick={() => navigate(`/app/profile/${user.id}`)}
+              />
             </Table.Data>
             <Table.Data>
               <Modal>

@@ -98,8 +98,7 @@ function NewProjectForm({ closeForm }) {
       status: formData.status,
       priority: formData.priority,
       type: formData.projectType,
-      solo: true,
-      progress: 0,
+      tasks: [],
       user_ids: [user.id],
     };
     console.log(formData);
@@ -196,6 +195,7 @@ function NewProjectForm({ closeForm }) {
           register={register}
           id="startDate"
           setValue={setValue}
+          required={true}
         />
       </FormSection>
       <FormSection

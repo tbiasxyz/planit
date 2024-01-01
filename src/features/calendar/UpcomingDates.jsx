@@ -1,7 +1,9 @@
-import { isAfter, isToday, startOfToday } from "date-fns";
 import styled from "styled-components";
 import UpcomingDate from "./UpcomingDate";
 import Heading from "../../ui/Heading";
+import { DATES_ITEMS_PER_PAGE } from "../../utils/constants";
+import Pagination from "../../ui/Pagination";
+import { useUpcomingDates } from "../../hooks/useUpcomingDates";
 
 const StyledUpcomingDates = styled.div`
   display: flex;
@@ -18,37 +20,18 @@ const StyledUpcomingDates = styled.div`
 `;
 
 function UpcomingDates({ projects }) {
-  const today = startOfToday();
-  const startDates = projects
-    ?.filter((project) => project.start_date)
-    ?.map((project) => ({
-      projectId: project.id,
-      type: "Start date",
-      date: new Date(project.start_date),
-    }));
-  const dueDates = projects
-    ?.filter((project) => project.due_date)
-    ?.map((project) => ({
-      projectId: project.id,
-      type: "Due date",
-      date: new Date(project.due_date),
-    }));
-  const sortedDates = [...dueDates, ...startDates]
-    ?.filter((dateObj) => isAfter(dateObj.date, today) || isToday(dateObj.date))
-    ?.sort((a, b) => a.date - b.date);
+  const { datesToShow, sortedDates } = useUpcomingDates(projects);
+
   return (
     <StyledUpcomingDates>
       <Heading as="h5">Upcoming dates</Heading>
-      {sortedDates.length > 0 ? (
-        sortedDates.map((date) => (
-          <UpcomingDate
-            date={date}
-            project={projects.find((project) => project.id === date.projectId)}
-            key={`${date.projectId}-${date.type}`}
-          />
-        ))
+      {datesToShow.length > 0 ? (
+        datesToShow.map((date) => <UpcomingDate data={date} key={date.id} />)
       ) : (
         <p>No upcoming dates</p>
+      )}
+      {sortedDates.length > DATES_ITEMS_PER_PAGE && (
+        <Pagination items={sortedDates} itemsPerPage={DATES_ITEMS_PER_PAGE} />
       )}
     </StyledUpcomingDates>
   );

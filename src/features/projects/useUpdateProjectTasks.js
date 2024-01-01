@@ -10,7 +10,7 @@ export function useUpdateProjectTasks() {
         updateProjectTasksApi(projectId, tasks),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["projects"] });
-        toast.success("Successfully updated task");
+        toast.success("Successfully updated tasks");
       },
       onError: () => toast.error("Something went wrong while updating tasks"),
     });

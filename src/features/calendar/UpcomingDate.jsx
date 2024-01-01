@@ -51,30 +51,28 @@ const Date = styled.div`
   }
 `;
 
-function UpcomingDate({ date, project }) {
+function UpcomingDate({ data }) {
   const navigate = useNavigate();
   return (
     <StyledUpcomingDate
-      onClick={() => navigate(`/app/projects/project/${project.id}`)}
+      onClick={() => navigate(`/app/projects/project/${data.projectId}`)}
     >
-      <ProjectTitle>
-        {project.name} (#{project.id})
-      </ProjectTitle>
+      <ProjectTitle>{data.title}</ProjectTitle>
       <ProjectInfo>
         <ProjectTag
-          tag={`${capitalize(project.priority)} priority`}
-          color={project.priority}
+          tag={`${capitalize(data.priority)} priority`}
+          color={data.priority}
         />
         <ProjectTag
           // type="status"
-          tag={capitalize(project.status)}
-          color={project.status}
+          tag={capitalize(data.status)}
+          color={data.status}
         />
       </ProjectInfo>
       <Date>
         <HiOutlineClock />
         <p>
-          {date.type}: <span>{format(date.date, "MMMM d, yyyy")}</span>
+          {data.field}: <span>{format(data.date, "MMMM d, yyyy")}</span>
         </p>
       </Date>
     </StyledUpcomingDate>

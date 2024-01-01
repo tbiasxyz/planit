@@ -51,6 +51,9 @@ function EditProjectForm({ project }) {
       due_date: formData.due_date
         ? format(new Date(formData.due_date), "MMMM-dd-yyyy")
         : null,
+      finish_date: formData.finish_date
+        ? format(new Date(formData.finish_date), "MMMM-dd-yyyy")
+        : null,
     };
 
     if (_.isEqual(initialProjectObj, formattedFormData)) return;
@@ -62,7 +65,6 @@ function EditProjectForm({ project }) {
       }
     }
     const projectId = project.id;
-    // console.log(projectId);
     editProject({ dataToEdit, projectId });
   }
 
@@ -80,7 +82,6 @@ function EditProjectForm({ project }) {
           id="name"
           {...register("name", {
             required: "Project name is required",
-            // defaultValue: project.name,
           })}
           placeholder="Enter project name"
           defaultValue={project.name}
@@ -88,7 +89,7 @@ function EditProjectForm({ project }) {
       </FormSection>
       <FormSection
         inputLabel="Start date"
-        error={errors?.startDate?.message}
+        error={errors?.start_date?.message}
         gridArea={{ column: "1 / 2" }}
       >
         <DateInput
@@ -99,6 +100,7 @@ function EditProjectForm({ project }) {
           }
           register={register}
           id="start_date"
+          required={true}
           setValue={setValue}
         />
       </FormSection>
@@ -115,8 +117,24 @@ function EditProjectForm({ project }) {
         />
       </FormSection>
       <FormSection
+        gridArea={{ column: "1 / 2", row: "3/4" }}
+        inputLabel="Finish date"
+      >
+        <DateInput
+          date={
+            project.finish_date
+              ? format(new Date(project.finish_date), "MMMM-dd-yyyy")
+              : "Unknown"
+          }
+          register={register}
+          id="finish_date"
+          setValue={setValue}
+        />
+      </FormSection>
+      <FormSection
         inputLabel="Project type"
         error={errors?.projectType?.message}
+        gridArea={{ row: "4/5" }}
       >
         <Select
           options={[
@@ -137,7 +155,11 @@ function EditProjectForm({ project }) {
           setValue={setValue}
         />
       </FormSection>
-      <FormSection inputLabel="Status" error={errors?.status?.message}>
+      <FormSection
+        inputLabel="Status"
+        error={errors?.status?.message}
+        gridArea={{ row: "4/5" }}
+      >
         <Select
           options={[
             { tag: "Active", value: "active" },
@@ -182,7 +204,9 @@ function EditProjectForm({ project }) {
       </FormSection>
 
       <FormSection gridArea={{ column: "1 / 2" }}>
-        <FormButton type="submit">Submit</FormButton>
+        <FormButton type="submit" disabled={isEditingProject}>
+          Submit
+        </FormButton>
       </FormSection>
     </StyledEditProjectForm>
   );

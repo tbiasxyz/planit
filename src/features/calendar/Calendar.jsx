@@ -4,15 +4,16 @@ import {
   endOfMonth,
   format,
   getDay,
+  isSameDay,
   parse,
-  startOfMonth,
   startOfToday,
 } from "date-fns";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Row from "../../ui/Row";
 import Heading from "../../ui/Heading";
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
 import { useState } from "react";
+import { useUpcomingDates } from "../../hooks/useUpcomingDates";
 
 const StyledCalendar = styled.div`
   display: flex;
@@ -106,15 +107,21 @@ const MonthDay = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-accent-500);
-    color: var(--color-white);
+    color: var(--color-grey-500);
+    ${(props) =>
+      props.isActiveDate &&
+      css`
+        background-color: var(--color-accent-500);
+        color: var(--color-white);
+      `}
     border-radius: 50%;
   }
 `;
 
 function Calendar({ projects }) {
   const today = startOfToday();
-  const [selectedDay, setSelectedDay] = useState(today);
+  const { sortedDates } = useUpcomingDates(projects);
+  console.log(sortedDates);
   const [selectedMonth, setSelectedMonth] = useState(format(today, "MMM-yyyy"));
   const firstDaySelectedMonth = parse(selectedMonth, "MMM-yyyy", new Date());
 
@@ -160,8 +167,10 @@ function Calendar({ projects }) {
           <MonthDay
             key={i}
             index={i}
-            onClick={() => setSelectedDay(day)}
             weekDay={getDay(day)}
+            isActiveDate={sortedDates?.some((date) =>
+              isSameDay(date.date, day)
+            )}
           >
             <time dateTime={format(day, "yyyy-MMM-dd")}>
               {format(day, "d")}

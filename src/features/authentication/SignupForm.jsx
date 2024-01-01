@@ -15,8 +15,6 @@ import FormButton from "../../ui/FormButton";
 import FormInputWithIcon from "../../ui/FormInputWithIcon";
 import AuthFormHeading from "../../ui/AuthFormHeading";
 import Icon from "../../ui/Icon";
-// import GoogleButton from "../authentication/GoogleButton";
-// import Divider from "../../ui/Divider";
 
 const StyledSignupForm = styled(Form)`
   display: grid;
@@ -203,16 +201,6 @@ function SignupForm2() {
 
       <SignUpButtons>
         <FormButton type="submit">Sign Up</FormButton>
-        {/* <Divider />
-        <GoogleButton
-          onClick={(e) => {
-            e.preventDefault();
-            console.log("clicked google");
-            signUp({ user: {}, provider: "google" });
-          }}
-        >
-          Sign Up with Google
-        </GoogleButton> */}
       </SignUpButtons>
     </StyledSignupForm>
   );

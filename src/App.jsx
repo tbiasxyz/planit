@@ -8,8 +8,9 @@ import { AccentColorProvider } from "./context/AccentColorContext";
 import { FontContextProvider } from "./context/FontContext";
 import GlobalStyles from "./styles/GlobalStyles";
 
-import Landing from "./pages/Landing";
 import AppLayout from "./ui/AppLayout";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
@@ -20,7 +21,6 @@ import CalendarPage from "./pages/CalendarPage";
 import AuthPage from "./pages/AuthPage";
 import SignupForm from "./features/authentication/SignupForm";
 import LoginForm from "./features/authentication/LoginForm";
-import ProtectedRoute from "./pages/ProtectedRoute";
 import Users from "./pages/Users";
 import EditProfile from "./pages/EditProfile";
 import EditProject from "./pages/EditProject";
