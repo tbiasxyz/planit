@@ -121,7 +121,6 @@ const MonthDay = styled.button`
 function Calendar({ projects }) {
   const today = startOfToday();
   const { sortedDates } = useUpcomingDates(projects);
-  console.log(sortedDates);
   const [selectedMonth, setSelectedMonth] = useState(format(today, "MMM-yyyy"));
   const firstDaySelectedMonth = parse(selectedMonth, "MMM-yyyy", new Date());
 

@@ -99,7 +99,6 @@ function Project() {
     project?.user_ids?.includes(user.id)
   );
   const openedProject = projects.find((project) => project.id === +projectID);
-  console.log(openedProject);
 
   if (!filteredProjects.includes(openedProject)) navigate("/app/projects");
   return (

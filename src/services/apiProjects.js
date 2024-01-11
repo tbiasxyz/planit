@@ -10,7 +10,6 @@ export async function getProjects() {
 }
 
 export async function createProject(project) {
-  console.log("new project", project);
   const { data, error } = await supabase
     .from("projects")
     .insert([{ ...project }])
@@ -54,7 +53,6 @@ export async function deleteProjectTask(project, taskId) {
 }
 
 export async function updateProjectTasks(projectId, newTasks) {
-  console.log(projectId, newTasks);
   const { data, error } = await supabase
     .from("projects")
     .update({ tasks: newTasks })

@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import Row from "../ui/Row";
-import ToggleView from "../ui/ToggleView";
+import Toggle from "../ui/Toggle";
 import UsersList from "../features/users/UsersList";
 import UsersTable from "../features/users/UsersTable";
 import Spinner from "../ui/Spinner";
@@ -13,7 +13,13 @@ function Users() {
   return (
     <>
       <Row>
-        <ToggleView />
+        <Toggle
+          field="view"
+          options={[
+            { tag: "Table", value: "table" },
+            { tag: "List", value: "list" },
+          ]}
+        />
       </Row>
       {isLoadingUsers && <Spinner size="page" />}
       {!isLoadingUsers && (

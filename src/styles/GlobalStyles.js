@@ -2,8 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root {
-
-
         --color-white: rgb(255,255,255);
         --color-black: rgb(12,12,12);
         &, &.light-mode {
@@ -13,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
             --color-grey-200: rgb(119,119,119);
             --color-grey-300: rgb(85,85,85);
             --color-grey-500: rgb(51,51,51);
+            --color-grey-600: rgb(40,40,40);
             --color-grey-700: rgb(29,29,29);
 
             --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
@@ -33,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
 
         &.dark-mode {
             --color-grey-700: rgb(255, 255, 255);
+            --color-grey-600: rgb(156,163,175);
             --color-grey-500: rgb(167,167,167);
             --color-grey-300: rgb(102, 102, 102);
             --color-grey-200: rgb(79, 79, 79);
@@ -92,15 +92,6 @@ const GlobalStyles = createGlobalStyle`
         --color-accent-700: #388e3d;
         --color-accent-900: #276e2d;
         }
-        /* &.accent-black {
-            --color-accent-50: #F5F5F5;
-            --color-accent-100: #E0E0E0;
-            --color-accent-200: #B3B3B3;
-            --color-accent-500: #333333;
-            --color-accent-600: #222222;
-            --color-accent-700: #111111;
-            --color-accent-900: #000000;
-        } */
 
         &.font-poppins {
             font-family: 'Poppins', sans-serif;
@@ -114,14 +105,6 @@ const GlobalStyles = createGlobalStyle`
 
         --color-accent-opacity: rgba(199, 210, 254, 0.3);
         --color-online: #4caf50;
-        /* --color-solo-100: #b7e4c7;
-        --color-solo-700: #2d6a4f;
-        --color-team-100: #ccc8f9;
-        --color-team-700: #867bef; */
-        --color-solo-100: var(--color-accent-100);
-        --color-solo-700: var(--color-accent-500);
-        --color-team-100: var(--color-accent-200);
-        --color-team-700: var(--color-accent-700);
         --color-low-100: #e5fada;
         --color-low-700: #69b04b;
         --color-normal-100: #fff1eb;
@@ -142,7 +125,18 @@ const GlobalStyles = createGlobalStyle`
         --color-canceled-100: #ffeaea;
         --color-canceled-700: #fd5151;
         --color-todo-100: #cbdff7;
-        --color-todo-700: 	#5b9cea;
+        --color-todo-700: #5b9cea;
+
+        --color-development-700: #4b8bd2;
+        --color-design-700: #f94141;
+        --color-ecommerce-700: #509b9a;
+        --color-entertainment-700:#e50058;
+        --color-socialmedia-700:#219e7f;
+        --color-marketing-700:#d07d4c;
+        --color-research-700:#0079ad;
+        --color-education-700:#ffcc00;
+        --color-healthcare-700:#a080d4;
+        --color-finance-700:#33cc99;
 
         --color-project-100: var(--color-accent-50);
         --color-project-700: var(--color-accent-500);
@@ -173,6 +167,10 @@ const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    
+
+
 `;
 
 export default GlobalStyles;

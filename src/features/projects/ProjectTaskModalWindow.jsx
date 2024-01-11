@@ -47,19 +47,22 @@ function ProjectTaskModalWindow({
     setValue,
   } = useForm();
 
-  //fix dates (date input) - everywhere, new project etc.
   const today = format(startOfToday(), "MMMM-dd-yyyy");
 
   function onSubmit(formData) {
-    console.log(formData);
     const newTask = {
+      created_at: new Date(),
       id: `task-${uuidv4()}`,
       type: formData.type,
       task: formData.title,
       priority: formData.priority,
-      due_date: format(new Date(formData.dueDate), "yyyy-MM-d") || today,
+      due_date: format(new Date(formData.date), "yyyy-MM-d") || today,
+      finished:
+        type === "finished"
+          ? format(new Date(formData.date), "yyyy-MM-d")
+          : null,
     };
-    console.log(project);
+    console.log(newTask);
     const projectTasks =
       action === "create"
         ? project.tasks
@@ -96,11 +99,11 @@ function ProjectTaskModalWindow({
             {...register("title", { required: "Task title is required" })}
           />
         </FormSection>
-        <FormSection inputLabel="Due date" error={errors?.dueDate?.message}>
+        <FormSection inputLabel="Due date" error={errors?.date?.message}>
           <DateInput
             date={defaultDate}
             register={register}
-            id="dueDate"
+            id="date"
             setValue={setValue}
             required
           />

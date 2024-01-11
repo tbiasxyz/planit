@@ -1,7 +1,7 @@
 import { HiPlus } from "react-icons/hi2";
 import ProjectsList from "../features/projects/ProjectsList";
 import Row from "../ui/Row";
-import ToggleView from "../ui/ToggleView";
+import Toggle from "../ui/Toggle";
 import { useSearchParams } from "react-router-dom";
 import ProjectsTable from "../features/projects/ProjectsTable";
 import { useState } from "react";
@@ -24,6 +24,10 @@ function Projects() {
 
   if (isLoadingProjects || isPending) return <Spinner size="page" />;
 
+  const userProjects = projects?.filter((project) =>
+    project?.user_ids?.includes(user.id)
+  );
+
   const appliedFiltersAndSorts = Object.fromEntries(searchParams.entries());
 
   function getAppliedFiltersOrSorts(type) {
@@ -41,10 +45,6 @@ function Projects() {
 
   const appliedFilters = getAppliedFiltersOrSorts("filter");
   const appliedSorts = getAppliedFiltersOrSorts("sort");
-
-  const userProjects = projects?.filter((project) =>
-    project?.user_ids?.includes(user.id)
-  );
 
   const filteredProjects = userProjects.filter((project) => {
     // Apply filters
@@ -103,7 +103,13 @@ function Projects() {
   return (
     <>
       <Row>
-        <ToggleView />
+        <Toggle
+          field="view"
+          options={[
+            { tag: "Table", value: "table" },
+            { tag: "List", value: "list" },
+          ]}
+        />
         <div>
           <PrimaryButton onClick={() => setIsOpenedFilterAndSort((s) => !s)}>
             {isOpenedFilterAndSort ? "Close" : "Open"} Filter and Sort

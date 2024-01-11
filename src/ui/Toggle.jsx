@@ -1,16 +1,18 @@
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-const StyledToggleView = styled.div`
+const StyledToggle = styled.div`
   border-radius: var(--border-radius-sm);
   background-color: var(--color-grey-0);
   display: flex;
-  gap: 0.25rem;
+  gap: 0.5rem;
   padding: 0.25rem;
   box-shadow: var(--shadow-md);
+  width: fit-content;
+  height: fit-content;
 `;
 
-const ToggleViewButton = styled.button`
+const ToggleButton = styled.button`
   background-color: var(--color-grey-0);
   border: none;
   padding: 0.5rem 1rem;
@@ -33,33 +35,29 @@ const ToggleViewButton = styled.button`
   }
 `;
 
-function ToggleView() {
+function Toggle({ options, field, style = {} }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentView = searchParams.get("view") || "table";
+  const currentView = searchParams.get(field) || options[0].value;
 
   function handleSetView(view) {
-    searchParams.set("view", view);
+    searchParams.set(field, view);
     setSearchParams(searchParams);
   }
 
   return (
-    <StyledToggleView>
-      <ToggleViewButton
-        onClick={() => handleSetView("table")}
-        active={currentView === "table"}
-        disabled={currentView === "table"}
-      >
-        Table
-      </ToggleViewButton>
-      <ToggleViewButton
-        onClick={() => handleSetView("list")}
-        active={currentView === "list"}
-        disabled={currentView === "list"}
-      >
-        List
-      </ToggleViewButton>
-    </StyledToggleView>
+    <StyledToggle style={style}>
+      {options.map((option) => (
+        <ToggleButton
+          key={option.value}
+          active={currentView === option.value}
+          disabled={currentView === option.value}
+          onClick={() => handleSetView(option.value)}
+        >
+          {option.tag}
+        </ToggleButton>
+      ))}
+    </StyledToggle>
   );
 }
 
-export default ToggleView;
+export default Toggle;

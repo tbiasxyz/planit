@@ -11,7 +11,7 @@ const Row = styled.div`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      & > div {
+      & > div:nth-of-type(2) {
         display: flex;
         gap: 1rem;
       }

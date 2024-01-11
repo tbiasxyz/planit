@@ -4,6 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Modal from "../../ui/Modal";
 import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
 import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
+import Spinner from "../../ui/Spinner";
 
 const StyledProjectTasksColumn = styled.div`
   display: flex;
@@ -21,11 +22,17 @@ const TypeTitle = styled.h4`
   font-weight: 500;
   display: flex;
   gap: 0.5rem;
-  & span {
+  & span:first-of-type {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: var(--color-accent-500);
     font-size: 1.5rem;
+  }
+  & span:nth-of-type(2) {
+    background-color: var(--color-accent-500);
+    color: var(--color-white);
+    border-radius: 50%;
   }
 `;
 

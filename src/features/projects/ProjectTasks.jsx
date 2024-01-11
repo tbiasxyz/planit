@@ -26,7 +26,19 @@ function ProjectTasks({ project }) {
         destination.index === source.index)
     )
       return;
-    const draggedTask = project.tasks.find((task) => task.id === draggableId);
+    let draggedTask = project.tasks.find((task) => task.id === draggableId);
+    if (destination.droppableId === "finished") {
+      draggedTask = { ...draggedTask, finished: new Date() };
+    }
+    if (
+      destination.droppableId !== "finished" &&
+      draggedTask.finished !== null
+    ) {
+      draggedTask.finished = null;
+    }
+
+    console.log(draggedTask);
+
     const tasksInDestinationColumn = project.tasks.filter(
       (task) => task.type === destination.droppableId
     );
@@ -58,6 +70,7 @@ function ProjectTasks({ project }) {
       projectId: project.id,
       tasks: finalTasks,
     });
+    console.log(finalTasks);
   }
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
