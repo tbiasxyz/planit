@@ -1,18 +1,18 @@
 import { useForm } from "react-hook-form";
 import { format, startOfToday } from "date-fns";
 import styled, { keyframes } from "styled-components";
+import { useCreateProject } from "./useCreateProject";
+import { useCurrentUser } from "../authentication/useCurrentUser";
+import { HiChevronLeft } from "react-icons/hi2";
 
 import Form from "../../ui/Form";
 import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
 import Select from "../../ui/Select";
 import TextArea from "../../ui/TextArea";
-import { useCreateProject } from "./useCreateProject";
 import Heading from "../../ui/Heading";
 import DateInput from "../../ui/DateInput";
 import FormButton from "../../ui/FormButton";
-import { useCurrentUser } from "../authentication/useCurrentUser";
-import { HiChevronLeft } from "react-icons/hi2";
 
 const move = keyframes`
   0% {

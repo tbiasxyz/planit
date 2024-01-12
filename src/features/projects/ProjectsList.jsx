@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { useCurrentUser } from "../authentication/useCurrentUser";
+
 import ProjectItem from "./ProjectItem";
 import Heading from "../../ui/Heading";
-import { useCurrentUser } from "../authentication/useCurrentUser";
 import Spinner from "../../ui/Spinner";
 
 const StyledProjectsView = styled.div`

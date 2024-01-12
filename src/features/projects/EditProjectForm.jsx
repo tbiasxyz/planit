@@ -1,15 +1,16 @@
-import styled from "styled-components";
-import Form from "../../ui/Form";
 import { useForm } from "react-hook-form";
+import { format, startOfToday } from "date-fns";
+import { useEditProject } from "./useEditProject";
+import styled from "styled-components";
+import _ from "lodash";
+
+import Form from "../../ui/Form";
+import FormButton from "../../ui/FormButton";
+import TextArea from "../../ui/TextArea";
 import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
 import DateInput from "../../ui/DateInput";
 import Select from "../../ui/Select";
-import { format, startOfToday } from "date-fns";
-import FormButton from "../../ui/FormButton";
-import TextArea from "../../ui/TextArea";
-import { useEditProject } from "./useEditProject";
-import _ from "lodash";
 
 const StyledEditProjectForm = styled(Form)`
   display: grid;

@@ -1,20 +1,21 @@
-import Table from "../../ui/Table";
-import ProjectTag from "./ProjectTag";
-import ProjectProgressBar from "./ProjectProgressBar";
+import styled from "styled-components";
+import { HiOutlineTrash, HiOutlinePencil, HiEye } from "react-icons/hi2";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useDeleteProject } from "./useDeleteProject";
+import { ITEMS_PER_PAGE } from "../../utils/constants";
 import { calcProgress, capitalize } from "../../utils/helpers";
 import { format } from "date-fns";
 import { useCurrentUser } from "../authentication/useCurrentUser";
+
 import Spinner from "../../ui/Spinner";
 import Heading from "../../ui/Heading";
 import Menu from "../../ui/Menu";
-import { HiOutlineTrash, HiOutlinePencil, HiEye } from "react-icons/hi2";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "../../ui/Modal";
 import ModalConfirm from "../../ui/ModalConfirm";
-import { useDeleteProject } from "./useDeleteProject";
 import Pagination from "../../ui/Pagination";
-import { ITEMS_PER_PAGE } from "../../utils/constants";
-import styled from "styled-components";
+import Table from "../../ui/Table";
+import ProjectTag from "./ProjectTag";
+import ProjectProgressBar from "./ProjectProgressBar";
 
 const UserAvatar = styled.img`
   height: 3rem;

@@ -19,7 +19,7 @@ export function useUpcomingDates(projects) {
       priority: project.priority,
       status: project.status,
       field: "Start date",
-      date: new Date(project.due_date),
+      date: new Date(project.start_date),
     }));
   const dueDates = projects
     ?.filter((project) => project.due_date)

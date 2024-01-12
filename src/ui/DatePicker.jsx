@@ -11,11 +11,12 @@ import {
   startOfToday,
 } from "date-fns";
 import styled, { css } from "styled-components";
-import Heading from "./Heading";
-import Row from "./Row";
 import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useClickOutside } from "../hooks/useClickOutside";
+
+import Heading from "./Heading";
+import Row from "./Row";
 
 const StyledDatePicker = styled.div`
   background-color: var(--color-grey-50);

@@ -1,9 +1,10 @@
+import { DATES_ITEMS_PER_PAGE } from "../../utils/constants";
+import { useUpcomingDates } from "../../hooks/useUpcomingDates";
 import styled from "styled-components";
+
 import UpcomingDate from "./UpcomingDate";
 import Heading from "../../ui/Heading";
-import { DATES_ITEMS_PER_PAGE } from "../../utils/constants";
 import Pagination from "../../ui/Pagination";
-import { useUpcomingDates } from "../../hooks/useUpcomingDates";
 
 const StyledUpcomingDates = styled.div`
   display: flex;

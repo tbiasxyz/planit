@@ -19,6 +19,7 @@ import Icon from "../../ui/Icon";
 const StyledSignupForm = styled(Form)`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
 `;
 
 const SignUpButtons = styled.div`

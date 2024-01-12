@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import ProjectTag from "./ProjectTag";
 import { capitalize } from "lodash";
 import { format } from "date-fns";
 import { useCurrentUser } from "../authentication/useCurrentUser";
+
+import ProjectTag from "./ProjectTag";
 import Spinner from "../../ui/Spinner";
 
 const StyledProjectOverview = styled.div`

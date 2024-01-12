@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import ProjectTask from "./ProjectTask";
 import { Droppable } from "react-beautiful-dnd";
-import Modal from "../../ui/Modal";
-import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
 import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
-import Spinner from "../../ui/Spinner";
+
+import Modal from "../../ui/Modal";
+import ProjectTask from "./ProjectTask";
+import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
 
 const StyledProjectTasksColumn = styled.div`
   display: flex;

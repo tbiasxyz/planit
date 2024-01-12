@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Calendar from "../features/calendar/Calendar";
-import UpcomingDates from "../features/calendar/UpcomingDates";
 import { useProjects } from "../features/projects/useProjects";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
+
+import Calendar from "../features/calendar/Calendar";
+import UpcomingDates from "../features/calendar/UpcomingDates";
 import Spinner from "../ui/Spinner";
 
 const StyledCalendarPage = styled.div`

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
-import Spinner from "../ui/Spinner";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
+import Spinner from "../ui/Spinner";
 
 const StyledProtectedRoute = styled.div`
   height: 100vh;

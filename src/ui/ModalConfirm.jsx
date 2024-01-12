@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { capitalize, lowerCase } from "lodash";
+import { HiOutlineXMark } from "react-icons/hi2";
+
+import Icon from "./Icon";
+import FormButton from "./FormButton";
 import Row from "./Row";
 import Heading from "./Heading";
-import { capitalize, lowerCase } from "lodash";
-import Icon from "./Icon";
-import { HiOutlineXMark } from "react-icons/hi2";
-import FormButton from "./FormButton";
 
 const StyledModalConfirm = styled.div`
   background-color: var(--color-grey-0);

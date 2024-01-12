@@ -1,6 +1,7 @@
-import Spinner from "../ui/Spinner";
 import { useProjects } from "../features/projects/useProjects";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
+
+import Spinner from "../ui/Spinner";
 import DashboardLayout from "../features/dashboard/DashboardLayout";
 
 function Dashboard() {

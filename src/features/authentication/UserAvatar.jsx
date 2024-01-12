@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { useCurrentUser } from "./useCurrentUser";
-import Spinner from "../../ui/Spinner";
+import { useSignOut } from "./useSignOut";
 import { useNavigate } from "react-router-dom";
-import Modal from "../../ui/Modal";
-import Menu from "../../ui/Menu";
 import {
   HiArrowRightOnRectangle,
   HiOutlinePencilSquare,
   HiOutlineUser,
 } from "react-icons/hi2";
-import { useSignOut } from "./useSignOut";
+
+import Menu from "../../ui/Menu";
+import Modal from "../../ui/Modal";
+import Spinner from "../../ui/Spinner";
 import ModalConfirm from "../../ui/ModalConfirm";
 
 const StyledUserAvatar = styled.div`

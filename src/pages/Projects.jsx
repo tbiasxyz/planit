@@ -1,17 +1,18 @@
+import { useSearchParams } from "react-router-dom";
+import { calcProgress } from "../utils/helpers";
 import { HiPlus } from "react-icons/hi2";
+import { useState } from "react";
+import { useProjects } from "../features/projects/useProjects";
+import { useCurrentUser } from "../features/authentication/useCurrentUser";
+
+import NewProjectForm from "../features/projects/NewProjectForm";
+import Spinner from "../ui/Spinner";
+import PrimaryButton from "../ui/PrimaryButton";
+import ProjectsFiltersAndSorts from "../features/projects/ProjectsFiltersAndSorts";
+import ProjectsTable from "../features/projects/ProjectsTable";
 import ProjectsList from "../features/projects/ProjectsList";
 import Row from "../ui/Row";
 import Toggle from "../ui/Toggle";
-import { useSearchParams } from "react-router-dom";
-import ProjectsTable from "../features/projects/ProjectsTable";
-import { useState } from "react";
-import NewProjectForm from "../features/projects/NewProjectForm";
-import { useProjects } from "../features/projects/useProjects";
-import Spinner from "../ui/Spinner";
-import { useCurrentUser } from "../features/authentication/useCurrentUser";
-import PrimaryButton from "../ui/PrimaryButton";
-import ProjectsFiltersAndSorts from "../features/projects/ProjectsFiltersAndSorts";
-import { calcProgress } from "../utils/helpers";
 
 function Projects() {
   const [isOpenForm, setIsOpenForm] = useState(false);

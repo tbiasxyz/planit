@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../features/authentication/useCurrentUser";
+
 import EditProfileForm from "../features/authentication/EditProfileForm";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import PrimaryButton from "../ui/PrimaryButton";
-import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import Spinner from "../ui/Spinner";
 
 function EditProfile() {

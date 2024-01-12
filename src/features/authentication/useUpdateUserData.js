@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateLoggedUser } from "../../services/apiAuth";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useCurrentUser } from "./useCurrentUser";
+import toast from "react-hot-toast";
 
 export function useUpdateUserData() {
   const queryClient = useQueryClient();

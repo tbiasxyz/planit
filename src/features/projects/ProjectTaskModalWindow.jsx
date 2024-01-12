@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import { HiOutlineXMark } from "react-icons/hi2";
+import { useForm } from "react-hook-form";
+import { format, startOfToday } from "date-fns";
+import { capitalize } from "lodash";
+import { v4 as uuidv4 } from "uuid";
+
 import Row from "../../ui/Row";
 import Heading from "../../ui/Heading";
 import Icon from "../../ui/Icon";
-import { HiOutlineXMark } from "react-icons/hi2";
 import FormSection from "../../ui/FormSection";
 import FormInput from "../../ui/FormInput";
-import { useForm } from "react-hook-form";
 import DateInput from "../../ui/DateInput";
-import { format, startOfToday } from "date-fns";
 import Select from "../../ui/Select";
 import PrimaryButton from "../../ui/PrimaryButton";
-import { capitalize } from "lodash";
-import { v4 as uuidv4 } from "uuid";
 
 const StyledProjectTaskModalWindow = styled.div`
   background-color: var(--color-grey-0);

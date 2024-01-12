@@ -4,7 +4,6 @@ const Heading = styled.h1`
   ${(props) =>
     props.as === "h1" &&
     css`
-      /* color: var(--color-grey-700); */
       background-image: linear-gradient(
         to top left,
         var(--color-accent-100) 10%,

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import FontOption from "./FontOption";
 
 const StyledFontToggle = styled.div`

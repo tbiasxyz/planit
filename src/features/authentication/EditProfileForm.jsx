@@ -1,11 +1,7 @@
-import _ from "lodash";
-import styled from "styled-components";
-import Form from "../../ui/Form";
-import Spinner from "../../ui/Spinner";
 import { useEffect, useState } from "react";
-import FormSection from "../../ui/FormSection";
-import FormInput from "../../ui/FormInput";
-import FormInputWithIcon from "../../ui/FormInputWithIcon";
+import { useCountries } from "../../hooks/useCountries";
+import { useForm } from "react-hook-form";
+import { useUpdateUserData } from "./useUpdateUserData";
 import { HiOutlineTrash, HiOutlineXMark } from "react-icons/hi2";
 import {
   FaInstagram,
@@ -13,13 +9,18 @@ import {
   FaLinkedin,
   FaFacebook,
 } from "react-icons/fa6";
+import _ from "lodash";
+import styled from "styled-components";
+
+import Form from "../../ui/Form";
+import Spinner from "../../ui/Spinner";
+import FormSection from "../../ui/FormSection";
+import FormInput from "../../ui/FormInput";
+import FormInputWithIcon from "../../ui/FormInputWithIcon";
 import TextArea from "../../ui/TextArea";
 import Select from "../../ui/Select";
-import { useCountries } from "../../hooks/useCountries";
-import { useForm } from "react-hook-form";
 import Dropzone from "../../ui/Dropzone";
 import FormButton from "../../ui/FormButton";
-import { useUpdateUserData } from "./useUpdateUserData";
 import Icon from "../../ui/Icon";
 
 const StyledEditProfileForm = styled(Form)`
@@ -268,13 +269,7 @@ function EditProfileForm({ user }) {
                 id="instagram"
                 defaultValue={userData.socials.instagram}
                 disabled={isUpdatingUser}
-                {...register("instagram", {
-                  // pattern: {
-                  //   value:
-                  //     /((?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:p|reel)\/([^/?#&]+))*/g,
-                  //   message: "Provide instagram URL",
-                  // },
-                })}
+                {...register("instagram", {})}
               />
               <Icon inputIcon={true}>
                 <FaInstagram />

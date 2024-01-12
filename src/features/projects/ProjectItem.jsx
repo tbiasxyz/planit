@@ -1,20 +1,21 @@
 import styled from "styled-components";
-import Heading from "../../ui/Heading";
-import Row from "../../ui/Row";
+import { capitalize } from "lodash";
+import { useDeleteProject } from "./useDeleteProject";
 import {
   HiOutlinePencil,
   HiOutlineSquare3Stack3D,
   HiOutlineTrash,
   HiOutlineUser,
 } from "react-icons/hi2";
-import Divider from "../../ui/Divider";
 import { Link, useNavigate } from "react-router-dom";
+
+import Divider from "../../ui/Divider";
 import Menu from "../../ui/Menu";
 import Modal from "../../ui/Modal";
 import ModalConfirm from "../../ui/ModalConfirm";
-import { useDeleteProject } from "./useDeleteProject";
 import ProjectTag from "./ProjectTag";
-import { capitalize } from "lodash";
+import Heading from "../../ui/Heading";
+import Row from "../../ui/Row";
 
 const StyledProjectItem = styled(Link)`
   background-color: var(--color-grey-0);

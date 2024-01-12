@@ -1,16 +1,16 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Heading from "../ui/Heading";
 import styled from "styled-components";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useProjects } from "../features/projects/useProjects";
-import Spinner from "../ui/Spinner";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
-import Breadcrumb from "../ui/Breadcrumb";
 import {
   HiOutlineUser,
   HiOutlineUserGroup,
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
 
+import Spinner from "../ui/Spinner";
+import Breadcrumb from "../ui/Breadcrumb";
+import Heading from "../ui/Heading";
 import ProjectToggleView from "../features/projects/ProjectToggleView";
 import ProjectOverview from "../features/projects/ProjectOverview";
 import ProjectTasks from "../features/projects/ProjectTasks";

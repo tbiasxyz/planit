@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import ProjectTag from "../projects/ProjectTag";
 import { capitalize } from "lodash";
 import { HiOutlineClock } from "react-icons/hi2";
 import { format } from "date-fns";
+import styled from "styled-components";
+
+import ProjectTag from "../projects/ProjectTag";
 
 const StyledUpcomingDate = styled.div`
   display: flex;
@@ -63,11 +64,7 @@ function UpcomingDate({ data }) {
           tag={`${capitalize(data.priority)} priority`}
           color={data.priority}
         />
-        <ProjectTag
-          // type="status"
-          tag={capitalize(data.status)}
-          color={data.status}
-        />
+        <ProjectTag tag={capitalize(data.status)} color={data.status} />
       </ProjectInfo>
       <Date>
         <HiOutlineClock />

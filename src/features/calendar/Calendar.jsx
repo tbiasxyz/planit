@@ -9,11 +9,12 @@ import {
   startOfToday,
 } from "date-fns";
 import styled, { css } from "styled-components";
-import Row from "../../ui/Row";
-import Heading from "../../ui/Heading";
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
 import { useState } from "react";
 import { useUpcomingDates } from "../../hooks/useUpcomingDates";
+
+import Heading from "../../ui/Heading";
+import Row from "../../ui/Row";
 
 const StyledCalendar = styled.div`
   display: flex;
@@ -114,6 +115,12 @@ const MonthDay = styled.button`
         background-color: var(--color-accent-500);
         color: var(--color-white);
       `}
+    ${(props) =>
+      props.isToday &&
+      !props.isActiveDate &&
+      css`
+        background-color: var(--color-grey-0-transparent);
+      `}
     border-radius: 50%;
   }
 `;
@@ -170,6 +177,7 @@ function Calendar({ projects }) {
             isActiveDate={sortedDates?.some((date) =>
               isSameDay(date.date, day)
             )}
+            isToday={isSameDay(day, today)}
           >
             <time dateTime={format(day, "yyyy-MMM-dd")}>
               {format(day, "d")}

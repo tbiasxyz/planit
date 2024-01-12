@@ -3,9 +3,7 @@ import supabase from "./supabase";
 
 export async function signUp(user, provider) {
   // !provider - user used email and password to sign up
-  console.log(user);
   if (!provider) {
-    console.log("No provider");
     const { data: newSignedUpUser, error } = await supabase.auth.signUp({
       email: user.email,
       password: user.password,
@@ -36,7 +34,6 @@ export async function signUp(user, provider) {
   }
   // google signup
   else {
-    console.log("provider: ");
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
     });
@@ -101,7 +98,6 @@ export async function updateLoggedUser(formUpdateData) {
 
   //https://ydltfforautdvpauyudx.supabase.co/storage/v1/object/public/userAvatars/avatar-default.jpg
   const avatarURL = `${SUPABASE_URL}/storage/v1/object/public/userAvatars/${avatarUniqueName}`;
-  console.log(avatarURL);
 
   const { data: avatarData, error: avatarError } =
     await supabase.auth.updateUser({

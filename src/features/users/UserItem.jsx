@@ -46,7 +46,6 @@ const Description = styled.div`
 
 function UserItem({ user }) {
   const userData = user.raw_user_meta_data;
-  console.log(user);
   return (
     <StyledUserItem to={`/app/profile/${user.id}`}>
       <UserAvatar src={userData.avatar} />

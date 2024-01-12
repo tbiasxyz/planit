@@ -1,7 +1,8 @@
 import { HiOutlineCheckBadge, HiOutlineRectangleStack } from "react-icons/hi2";
+import styled from "styled-components";
+
 import Statistic from "./Statistic";
 import Statistics from "./Statistics";
-import styled from "styled-components";
 
 const StyledDashboardStatistics = styled(Statistics)`
   display: flex;

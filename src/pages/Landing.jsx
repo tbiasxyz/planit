@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { HiArrowSmallRight } from "react-icons/hi2";
+
 import Heading from "../ui/Heading";
 import Cursor from "../ui/Cursor";
 import LandingHeader from "../ui/LandingHeader";
 import LinkButton from "../ui/LinkButton";
-import { HiArrowSmallRight } from "react-icons/hi2";
 
 const FullPageContainer = styled.div`
   max-width: 100vw;
@@ -61,9 +62,9 @@ function Landing() {
         </Heading>
         <Paragraph>
           With Plan It, you can <span>create</span>, <span>manage</span>, and
-          <span> track</span> multiple <span>projects</span> with ease. Invite
-          your team members and collaborate in real-time, ensuring everyone is
-          on the same page and focused on the right tasks.
+          <span> track</span> multiple <span>projects</span> with ease. Enhance
+          your project planning journey nd reach milestones with our robust and
+          user-friendly platform.
         </Paragraph>
         <LinkButton
           size="large"

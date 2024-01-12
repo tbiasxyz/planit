@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Toggle from "../../ui/Toggle";
 import { useDashboardStats } from "../../hooks/useDashboardStats";
+
+import Toggle from "../../ui/Toggle";
 import DashboardStatistics from "./DashboardStatistics";
 import DashboardPieCharts from "./DashboardPieCharts";
 import DashboardAreaChart from "./DashboardAreaChart";

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
+
 import LinkButton from "../ui/LinkButton";
 
 const StyledAuthPage = styled.div`

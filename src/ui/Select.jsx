@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { HiChevronDown } from "react-icons/hi2";
-import Searchbar from "./Searchbar";
 import { capitalize } from "lodash";
 import { useClickOutside } from "../hooks/useClickOutside";
+
+import Searchbar from "./Searchbar";
 
 const StyledSelect = styled.div`
   padding: 0.75rem 0.875rem;

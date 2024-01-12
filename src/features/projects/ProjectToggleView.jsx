@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { useSearchParams } from "react-router-dom";
 
 const StyledProjectToggleView = styled.div`
   display: flex;

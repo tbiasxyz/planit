@@ -1,7 +1,8 @@
-import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
-import FormButton from "./FormButton";
+import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
+
+import FormButton from "./FormButton";
 
 const getColor = (props) => {
   if (props.isDragAccept) {

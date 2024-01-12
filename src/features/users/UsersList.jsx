@@ -9,7 +9,6 @@ const StyledUsersList = styled.div`
 `;
 
 function UsersList({ users }) {
-  console.log(users);
   if (!users.length) return <Heading as="h4">No projects to show</Heading>;
   return (
     <StyledUsersList>

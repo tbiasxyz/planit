@@ -1,6 +1,3 @@
-import styled from "styled-components";
-import Heading from "../../ui/Heading";
-import ChartHeading from "./ChartHeading";
 import {
   Cell,
   Legend,
@@ -10,6 +7,10 @@ import {
   Tooltip,
 } from "recharts";
 import { usePieChartData } from "../../hooks/usePieChartData";
+
+import styled from "styled-components";
+import Heading from "../../ui/Heading";
+import ChartHeading from "./ChartHeading";
 
 const StyledDashboardPieChart = styled.div`
   flex: 1;

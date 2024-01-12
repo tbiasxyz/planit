@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import DashboardPieChart from "./DashboardPieChart";
+
 const StyledDashboardPieCharts = styled.div`
   display: flex;
   gap: 1rem;

@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import Icon from "./Icon";
+import { useSignOut } from "../features/authentication/useSignOut";
 import { useThemeMode } from "../context/ThemeModeContext";
 import {
   HiOutlineMoon,
   HiOutlineSun,
   HiArrowRightOnRectangle,
 } from "react-icons/hi2";
+
+import Icon from "./Icon";
 import Modal from "./Modal";
 import ModalConfirm from "./ModalConfirm";
-import { useSignOut } from "../features/authentication/useSignOut";
 
 const StyledAppHeader = styled.header`
   background-color: var(--color-grey-0);

@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import ProjectTasksColumn from "./ProjectTasksColumn";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
 import {
   HiOutlineBellAlert,
   HiOutlineCheckCircle,
   HiOutlineListBullet,
 } from "react-icons/hi2";
-import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
+
+import ProjectTasksColumn from "./ProjectTasksColumn";
 
 const StyledProjectTasks = styled.div`
   display: flex;

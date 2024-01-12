@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
+import { useAllUsers } from "../features/authentication/useAllUsers";
+
 import Row from "../ui/Row";
 import Toggle from "../ui/Toggle";
 import UsersList from "../features/users/UsersList";
 import UsersTable from "../features/users/UsersTable";
 import Spinner from "../ui/Spinner";
-import { useAllUsers } from "../features/authentication/useAllUsers";
 
 function Users() {
   const [searchParams] = useSearchParams();

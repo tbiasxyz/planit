@@ -48,14 +48,17 @@ function Breadcrumb({ currentPart, style = {} }) {
       {filteredPathParts.map((pathPart, i) => (
         <>
           {i + 1 !== filteredPathParts.length ? (
-            <Link to={`/app/${pathPart}`}>
-              <PathPart key={i} isCurrent={i + 1 === filteredPathParts.length}>
+            <Link to={`/app/${pathPart}`} key={pathPart}>
+              <PathPart isCurrent={i + 1 === filteredPathParts.length}>
                 {pathPart}
               </PathPart>
               <Slash>/</Slash>
             </Link>
           ) : (
-            <PathPart key={i} isCurrent={i + 1 === filteredPathParts.length}>
+            <PathPart
+              key={pathPart}
+              isCurrent={i + 1 === filteredPathParts.length}
+            >
               {pathPart}
             </PathPart>
           )}

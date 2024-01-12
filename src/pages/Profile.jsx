@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useCurrentUser } from "../features/authentication/useCurrentUser";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import Spinner from "../ui/Spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAllUsers } from "../features/authentication/useAllUsers";
+
+import Spinner from "../ui/Spinner";
 
 const StyledProfile = styled.div`
   display: grid;

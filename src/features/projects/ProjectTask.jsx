@@ -1,16 +1,17 @@
-import { format } from "date-fns";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
-import ProjectTag from "./ProjectTag";
+import { format } from "date-fns";
+import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
+import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import { capitalize } from "lodash";
+import { useDeleteProjectTask } from "./useDeleteProjectTask";
+
 import Modal from "../../ui/Modal";
 import Menu from "../../ui/Menu";
 import Row from "../../ui/Row";
-import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import ModalConfirm from "../../ui/ModalConfirm";
-import { useDeleteProjectTask } from "./useDeleteProjectTask";
 import ProjectTaskModalWindow from "./ProjectTaskModalWindow";
-import { useUpdateProjectTasks } from "./useUpdateProjectTasks";
+import ProjectTag from "./ProjectTag";
 
 const StyledProjectTask = styled.div`
   display: flex;
