@@ -25,8 +25,6 @@ export function useAreaChartData(tasks) {
     )
   );
 
-  // let allDates;
-  // if (days !== "all")
   const dataLength = [...Object.keys(data)].length;
   if (dataLength === 0) days = 7;
   const allDates =

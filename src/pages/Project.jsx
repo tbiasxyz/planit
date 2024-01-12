@@ -13,7 +13,6 @@ import {
 
 import ProjectToggleView from "../features/projects/ProjectToggleView";
 import ProjectOverview from "../features/projects/ProjectOverview";
-import ProjectDashboard from "../features/projects/ProjectDashboard";
 import ProjectTasks from "../features/projects/ProjectTasks";
 
 const StyledProject = styled.div`
@@ -126,7 +125,6 @@ function Project() {
         <ProjectMain>
           <ProjectToggleView />
           {view === "overview" && <ProjectOverview project={openedProject} />}
-          {view === "dashboard" && <ProjectDashboard project={openedProject} />}
           {view === "tasks" && <ProjectTasks project={openedProject} />}
         </ProjectMain>
       </StyledProject>

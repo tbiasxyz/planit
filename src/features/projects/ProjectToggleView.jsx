@@ -59,12 +59,6 @@ function ProjectToggleView() {
         Overview
       </ToggleButton>
       <ToggleButton
-        isCurrent={currentView === "dashboard"}
-        onClick={() => handleSetView("dashboard")}
-      >
-        Dashboard
-      </ToggleButton>
-      <ToggleButton
         isCurrent={currentView === "tasks"}
         onClick={() => handleSetView("tasks")}
       >
