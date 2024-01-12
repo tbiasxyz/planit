@@ -7,8 +7,6 @@ import DashboardAreaChart from "./DashboardAreaChart";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
-  grid-template-rows: auto auto auto auto;
-  grid-template-columns: 1fr 20rem;
   padding: 2rem 0;
   gap: 1rem;
 `;

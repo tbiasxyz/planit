@@ -3,7 +3,6 @@ import DashboardPieChart from "./DashboardPieChart";
 const StyledDashboardPieCharts = styled.div`
   display: flex;
   gap: 1rem;
-  grid-row: 2/3;
 `;
 
 function DashboardPieCharts({ tasks, activeToDoTasks, createdProjects }) {

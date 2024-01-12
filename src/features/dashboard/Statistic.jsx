@@ -9,7 +9,6 @@ const StyledStatistic = styled.div`
   border-bottom-right-radius: var(--border-radius-sm);
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius-md);
-  width: 100%;
 `;
 
 const Icon = styled.span`

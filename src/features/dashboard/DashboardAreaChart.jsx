@@ -13,8 +13,6 @@ import { useThemeMode } from "../../context/ThemeModeContext";
 import { useAreaChartData } from "../../hooks/useAreaChartData";
 
 const StyledDashboardAreaChart = styled.div`
-  grid-column: 1/-1;
-  grid-row: 3/4;
   box-shadow: var(--shadow-sm);
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-sm);
